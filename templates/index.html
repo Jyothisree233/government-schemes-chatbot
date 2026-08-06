@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot for Government Scheme Recommendation</title>
+    <!-- Google Fonts: Outfit & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Background visual assets for ambient glow -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <div class="page-container">
+        <!-- Navigation Bar -->
+        <header class="navbar">
+            <div class="brand" onclick="window.location.href='/'" style="cursor: pointer;">
+                <div class="brand-logo">
+                    <i class="fa-solid fa-landmark"></i>
+                </div>
+                <span class="brand-name">Scheme<span>AI</span></span>
+            </div>
+            <nav class="nav-links">
+                <a href="#home" class="nav-item active">Home</a>
+                <a href="#about" class="nav-item">About</a>
+                <a href="#schemes" class="nav-item">Government Schemes</a>
+                <a href="#contact" class="nav-item">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                {% if logged_in %}
+                    <span class="user-greeting"><i class="fa-solid fa-user-circle"></i> Hello, <strong>{{ username }}</strong></span>
+                    <a href="{{ url_for('chat_workspace') }}" class="btn btn-secondary btn-sm" style="padding: 0.5rem 1rem; font-size: 0.85rem; margin-left: 1rem;">
+                        <i class="fa-solid fa-comments"></i> Workspace
+                    </a>
+                    <a href="{{ url_for('logout') }}" class="btn btn-primary btn-sm" style="padding: 0.5rem 1rem; font-size: 0.85rem; margin-left: 0.5rem;">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+                    </a>
+                {% else %}
+                    <a href="{{ url_for('login') }}" class="btn btn-secondary btn-sm" style="padding: 0.5rem 1rem; font-size: 0.85rem;">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i> Login
+                    </a>
+                    <a href="{{ url_for('register') }}" class="btn btn-primary btn-sm" style="padding: 0.5rem 1rem; font-size: 0.85rem; margin-left: 0.5rem;">
+                        <i class="fa-solid fa-user-plus"></i> Register
+                    </a>
+                {% endif %}
+            </div>
+        </header>
+
+        <!-- Main Hero Section / Landing Portal -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <div class="tagline">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Personalized Eligibility Matching
+                </div>
+                <h1 class="hero-title">
+                    AI Chatbot for Government Scheme Recommendation
+                </h1>
+                <p class="hero-description">
+                    Empowering citizens by instantly matching them with eligible central and state government benefits using conversational intelligence. Find scholarships, subsidies, healthcare benefits, and financial support.
+                </p>
+                <div class="cta-container">
+                    {% if logged_in %}
+                        <a href="{{ url_for('chat_workspace') }}" class="btn btn-primary">
+                            <span>Go to Workspace</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    {% else %}
+                        <a href="{{ url_for('login') }}" class="btn btn-primary">
+                            <span>Start Chat</span>
+                            <i class="fa-solid fa-comments"></i>
+                        </a>
+                    {% endif %}
+                    <a href="#about" class="btn btn-secondary">
+                        <span>Learn More</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Lock Mockup / UI Graphic Preview -->
+            <div class="hero-visual">
+                <div class="chat-container landing-chat-mock">
+                    <div class="chat-header">
+                        <div class="chat-bot-info">
+                            <div class="chat-bot-avatar">
+                                <i class="fa-solid fa-robot"></i>
+                            </div>
+                            <div class="chat-bot-status">
+                                <h3>SchemeAI Assistant</h3>
+                                <p><span class="online-indicator"></span> Active Now</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-messages-area" style="opacity: 0.7;">
+                        <div class="chat-bubble bot">
+                            <div class="chat-avatar"><i class="fa-solid fa-robot"></i></div>
+                            <div class="chat-message-content">
+                                <p>Welcome to **SchemeAI**! Register or log in to search the database and fetch targeted recommendations.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-lock-overlay">
+                        <div class="lock-box">
+                            <i class="fa-solid fa-lock"></i>
+                            <h3>Secure Portal</h3>
+                            <p>Authentication is required to query eligible schemes and store your chat logs securely.</p>
+                            <a href="{{ url_for('login') }}" class="btn btn-primary btn-sm" style="margin-top: 1rem;">
+                                <span>Sign In to Access</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="section-header">
+                <h2 class="section-title">How SchemeAI Works</h2>
+                <p class="section-subtitle">A simple three-step process to fetch personalized government aid recommendations.</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-card">
+                    <div class="process-number">01</div>
+                    <h3>Demographic Profiling</h3>
+                    <p>Tell the chatbot about your age, gender, occupation, location, and income class in natural language.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-number">02</div>
+                    <h3>Semantic Parsing</h3>
+                    <p>Our AI extraction engine isolates eligibility triggers and compares them to our scheme databases.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-number">03</div>
+                    <h3>Direct Recommendations</h3>
+                    <p>Receive list of eligible central/state schemes along with direct link coordinates to official apply forms.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Government Schemes Display Section -->
+        <section id="schemes" class="schemes-section">
+            <div class="section-header">
+                <h2 class="section-title">Popular Government Schemes</h2>
+                <p class="section-subtitle">Explore primary benefit categories managed under key social and economic ministries.</p>
+            </div>
+            <div class="schemes-grid">
+                <!-- Scheme Card 1 -->
+                <div class="scheme-card">
+                    <div class="scheme-tag agriculture">Agriculture</div>
+                    <h3>PM-KISAN</h3>
+                    <p>Pradhan Mantri Kisan Samman Nidhi provides an income support of ₹6,000 per year in three equal installments to all landholding farmer families.</p>
+                    <a href="https://pmkisan.gov.in/" target="_blank" class="scheme-link">Official Portal <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+                <!-- Scheme Card 2 -->
+                <div class="scheme-card">
+                    <div class="scheme-tag education">Education</div>
+                    <h3>PM Vidyalaxmi</h3>
+                    <p>Offers seamless educational loans and interest subvention opportunities for students wishing to pursue higher education in premium institutions.</p>
+                    <a href="https://www.pmvidyalaxmi.gov.in/" target="_blank" class="scheme-link">Official Portal <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+                <!-- Scheme Card 3 -->
+                <div class="scheme-card">
+                    <div class="scheme-tag health">Healthcare</div>
+                    <h3>Ayushman Bharat (PM-JAY)</h3>
+                    <p>The world's largest health assurance scheme, providing a health cover of ₹5 Lakhs per family per year for secondary and tertiary care hospitalization.</p>
+                    <a href="https://pmjay.gov.in/" target="_blank" class="scheme-link">Official Portal <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="section-header">
+                <h2 class="section-title">Get in Touch</h2>
+                <p class="section-subtitle">Have questions or feedback regarding the SchemeAI Recommendation platform?</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Project Contact Info</h3>
+                    <p>Developed as a final-year academic project focusing on Conversational AI and public sector portal accessibility.</p>
+                    <ul class="contact-list">
+                        <li><i class="fa-solid fa-envelope"></i> support@schemeai.org</li>
+                        <li><i class="fa-solid fa-location-dot"></i> Computer Science Department, University Campus</li>
+                        <li><i class="fa-solid fa-clock"></i> Mon - Fri, 9:00 AM - 5:00 PM</li>
+                    </ul>
+                </div>
+                <!-- Simple form UI -->
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Feedback received! Thank you.'); this.reset();">
+                    <div class="form-group">
+                        <label for="contact-name">Name</label>
+                        <input type="text" id="contact-name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Email Address</label>
+                        <input type="email" id="contact-email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message">Message</label>
+                        <textarea id="contact-message" rows="4" placeholder="Type your message..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Feedback</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 SchemeAI Project. All rights reserved. Created as a Final Year Academic Project.</p>
+        </footer>
+    </div>
+
+    <!-- Main JavaScript File -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

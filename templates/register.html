@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - SchemeAI</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="auth-page">
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <div class="page-container" style="justify-content: center; align-items: center; min-height: 100vh;">
+        <div class="auth-container">
+            <div class="auth-brand" onclick="window.location.href='/'">
+                <div class="brand-logo">
+                    <i class="fa-solid fa-landmark"></i>
+                </div>
+                <span class="brand-name">Scheme<span>AI</span></span>
+            </div>
+            
+            <div class="auth-card">
+                <h2>Create Account</h2>
+                <p class="auth-subtitle">Register to begin searching matching schemes.</p>
+                
+                <!-- Errors -->
+                {% if error %}
+                <div class="auth-alert error">
+                    <i class="fa-solid fa-circle-exclamation"></i> {{ error }}
+                </div>
+                {% endif %}
+                
+                <form action="{{ url_for('register') }}" method="POST">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-user"></i>
+                            <input type="text" id="username" name="username" placeholder="Create username (min 3 chars)" required autocomplete="off">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="password" name="password" placeholder="Create password (min 6 chars)" required>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                        <span>Register</span> <i class="fa-solid fa-user-plus"></i>
+                    </button>
+                </form>
+                
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="{{ url_for('login') }}">Log in here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
