@@ -196,6 +196,108 @@ def init_db():
         ''', seed_schemes)
         conn.commit()
         print("Database seeded with sample government schemes (with Required Documents support).")
+        # 5. Add additional government schemes
+    additional_schemes = [
+        (
+            "Central Sector Scheme of Scholarship for College and University Students",
+            "student",
+            "Scholarship scheme providing financial assistance to meritorious students from low-income families for higher education.",
+            "Students who have scored well in Class 12 and are pursuing regular undergraduate or postgraduate courses, subject to the scheme's income and other eligibility conditions.",
+            "Financial scholarship support for higher education.",
+            "Aadhaar Card, Class 12 Marksheet, Income Certificate, Bank Account Details, Admission/Institution Details.",
+            "https://scholarships.gov.in/"
+        ),
+        (
+            "PM KUSUM Scheme",
+            "farmer",
+            "Scheme promoting solar energy use in agriculture, including solar pumps and renewable energy systems for farmers.",
+            "Eligible farmers and other permitted agricultural beneficiaries, subject to state and component-specific conditions.",
+            "Financial support/subsidy for eligible solar agricultural installations and solar pumps.",
+            "Aadhaar Card, Land Documents, Bank Account Details, Farmer Registration Documents, Mobile Number.",
+            "https://pmkusum.mnre.gov.in/"
+        ),
+        (
+            "Kisan Credit Card (KCC) Scheme",
+            "farmer",
+            "Provides farmers access to timely credit for agricultural and related activities.",
+            "Farmers and other eligible agricultural borrowers meeting lending and scheme requirements.",
+            "Access to agricultural credit for cultivation and eligible allied activities.",
+            "Aadhaar Card, Land Records, Identity Proof, Address Proof, Bank Account Details, Passport Size Photograph.",
+            "https://www.myscheme.gov.in/"
+        ),
+        (
+            "Pradhan Mantri Matsya Sampada Yojana (PMMSY)",
+            "farmer",
+            "Scheme supporting sustainable development of fisheries and improving the income of people involved in fisheries.",
+            "Eligible fish farmers, fishermen, fish workers, entrepreneurs, cooperatives and other approved beneficiaries.",
+            "Financial assistance and support for eligible fisheries development activities.",
+            "Aadhaar Card, Bank Account Details, Project Proposal, Land/Lease Documents where applicable, Beneficiary Registration Documents.",
+            "https://pmmsy.dof.gov.in/"
+        ),
+        (
+            "Pradhan Mantri Ujjwala Yojana (PMUY)",
+            "women",
+            "Government scheme supporting eligible households in accessing clean cooking fuel through LPG connections.",
+            "Eligible adult women from qualifying households as per the current PMUY eligibility requirements.",
+            "Support for obtaining an LPG connection and related benefits as applicable under the scheme.",
+            "Aadhaar Card, Address Proof, Bank Account Details, Ration Card/Family Composition Document, Mobile Number.",
+            "https://www.pmuy.gov.in/"
+        ),
+        (
+            "Sukanya Samriddhi Account Scheme",
+            "women",
+            "Small savings scheme designed to support the education and future financial needs of a girl child.",
+            "A guardian can open an account for an eligible girl child subject to the scheme's age and account rules.",
+            "Long-term savings with government-declared interest and tax benefits subject to applicable rules.",
+            "Girl Child Birth Certificate, Guardian Aadhaar Card, Guardian PAN Card, Address Proof, Passport Size Photograph.",
+            "https://www.indiapost.gov.in/"
+        ),
+        (
+            "PM SVANidhi",
+            "unemployed",
+            "Micro-credit scheme designed to provide working capital support to eligible street vendors.",
+            "Eligible street vendors who meet the scheme's identification and lending requirements.",
+            "Working capital loans with incentives for eligible borrowers based on the scheme rules.",
+            "Aadhaar Card, Street Vendor Certificate/Identity Card or approved vendor details, Bank Account Details, Mobile Number.",
+            "https://pmsvanidhi.mohua.gov.in/"
+        ),
+        (
+            "Stand-Up India Scheme",
+            "unemployed",
+            "Bank loan scheme supporting entrepreneurship among eligible women and SC/ST entrepreneurs.",
+            "Eligible SC/ST borrowers and women entrepreneurs aged 18 years and above starting eligible greenfield enterprises.",
+            "Bank loans generally ranging from ₹10 lakh to ₹1 crore for eligible enterprises, subject to scheme and bank conditions.",
+            "Aadhaar Card, PAN Card, Business Plan/Project Report, Address Proof, Bank Documents, Category Certificate where applicable.",
+            "https://www.standupmitra.in/"
+        ),
+        (
+            "PM Vishwakarma Scheme",
+            "unemployed",
+            "Support scheme for traditional artisans and craftspeople working with their hands and tools.",
+            "Eligible traditional artisans and craftspeople in the notified trades, subject to scheme conditions.",
+            "Skill training, toolkit support, concessional credit and other benefits subject to eligibility and scheme rules.",
+            "Aadhaar Card, Mobile Number, Bank Account Details, Artisan/Trade Details, Other Documents as required during registration.",
+            "https://pmvishwakarma.gov.in/"
+        ),
+        (
+            "Pradhan Mantri Employment Generation Programme (PMEGP) - New Entrepreneurs",
+            "unemployed",
+            "Credit-linked subsidy programme supporting eligible individuals in establishing new micro-enterprises.",
+            "Eligible individuals and other permitted applicants meeting PMEGP requirements for new projects.",
+            "Margin money subsidy for eligible projects subject to category, location, project cost and other scheme conditions.",
+            "Aadhaar Card, PAN Card, Project Report, Education Certificate where applicable, Category Certificate where applicable, Bank Details.",
+            "https://www.kviconline.gov.in/pmegpeportal/"
+        )
+    ]
+
+    cursor.executemany('''
+        INSERT OR IGNORE INTO schemes
+        (name, category, description, eligibility, benefits, required_documents, portal_link)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+    ''', additional_schemes)
+
+    conn.commit()
+    print("Additional 10 government schemes added successfully.")
         
     conn.close()
 
