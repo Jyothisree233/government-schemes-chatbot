@@ -1034,3 +1034,17 @@ def search_schemes(user_query):
             
     conn.close()
     return [dict(row) for row in results]
+def get_all_schemes():
+    """
+    Retrieves all government schemes from the database.
+    Used to build the S-BERT + FAISS semantic search index.
+    """
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM schemes")
+    results = cursor.fetchall()
+
+    conn.close()
+
+    return [dict(row) for row in results]

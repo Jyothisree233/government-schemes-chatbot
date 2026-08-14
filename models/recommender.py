@@ -1,50 +1,69 @@
-from utils.db import search_schemes
+from utils.db import get_all_schemes
+from services.faiss_service import SchemeFAISS
 from gemini_service import generate_gemini_response
+
+
+# Create FAISS search system once
+faiss_search = SchemeFAISS()
+
+# Load schemes from SQLite
+schemes = get_all_schemes()
+
+# Build FAISS index
+faiss_search.build_index(schemes)
+
 
 def generate_recommendation_response(user_message):
     """
-    Parses user input, queries the database, and returns a formatted HTML response
-    with relevant government scheme recommendations. If no match is found,
-    delegates to the Google Gemini API to return a detailed AI-generated response.
+    RAG-based government scheme recommendation.
+
+    User query
+        ↓
+    S-BERT embedding
+        ↓
+    FAISS semantic retrieval
+        ↓
+    Retrieved schemes
+        ↓
+    Gemini with retrieved context
+        ↓
+    Final response
     """
+
     query = user_message.strip()
-    
-    # Fetch matched schemes from the local database
-    matched_schemes = search_schemes(query)
-    
-    # If no matching scheme exists in local database, call Gemini AI
+
+    if not query:
+        return "<p>Please enter your question.</p>"
+
+    # 1. Retrieve relevant schemes using FAISS
+    matched_schemes = faiss_search.search(query, top_k=5)
+
+    # 2. If FAISS finds no schemes, use Gemini normally
     if not matched_schemes:
         return generate_gemini_response(query)
-        
-    # Format matching schemes from database into a clean responsive interface response
-    response_html = f"<p>Based on your profile search, I found the following scheme(s) in our database:</p>"
-    
-    for idx, scheme in enumerate(matched_schemes, 1):
-        # Color tags based on category
-        cat_class = scheme['category'].replace('_', '-')
-        cat_label = scheme['category'].replace('_', ' ').title()
-        
-        # Build Scheme details including Required Documents column
-        response_html += (
-            f"<div class='recommended-scheme-card'>"
-            f"  <div class='scheme-card-header'>"
-            f"    <span class='scheme-num'>{idx}</span>"
-            f"    <h4>{scheme['name']}</h4>"
-            f"    <span class='scheme-badge badge-{cat_class}'>{cat_label}</span>"
-            f"  </div>"
-            f"  <div class='scheme-card-body'>"
-            f"    <p><strong>Description:</strong> {scheme['description']}</p>"
-            f"    <p><strong>Eligibility:</strong> {scheme['eligibility']}</p>"
-            f"    <p><strong>Benefits:</strong> {scheme['benefits']}</p>"
-            f"    <p><strong>Required Documents:</strong> {scheme['required_documents']}</p>"
-            f"  </div>"
-            f"  <div class='scheme-card-footer'>"
-            f"    <a href='{scheme['portal_link']}' target='_blank' class='scheme-apply-link'>"
-            f"      Apply on Official Portal <i class='fa-solid fa-arrow-up-right-from-square'></i>"
-            f"    </a>"
-            f"  </div>"
-            f"</div>"
+
+    # 3. Build RAG context from retrieved schemes
+    context_parts = []
+
+    for scheme in matched_schemes:
+        context_parts.append(
+            f"""
+Scheme Name: {scheme.get('name', '')}
+Category: {scheme.get('category', '')}
+Description: {scheme.get('description', '')}
+Eligibility: {scheme.get('eligibility', '')}
+Benefits: {scheme.get('benefits', '')}
+Required Documents: {scheme.get('required_documents', '')}
+State: {scheme.get('state', '')}
+Sector: {scheme.get('sector', '')}
+Official Portal: {scheme.get('portal_link', '')}
+"""
         )
-        
-    response_html += "<p>Would you like to ask about eligibility details for another scheme, or check benefits for a different family member?</p>"
-    return response_html
+
+    rag_context = "\n---\n".join(context_parts)
+
+    # 4. Send user question + retrieved scheme context to Gemini
+    return generate_gemini_response(
+        query,
+        rag_context=rag_context
+    )
