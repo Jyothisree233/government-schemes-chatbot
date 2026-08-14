@@ -1,0 +1,21 @@
+- [x] Create project directory skeleton (templates, static/css, static/js, static/images, data, models, utils)
+- [x] Configure Flask server entrypoint (app.py) and basic requirements (requirements.txt)
+- [x] Implement semantic navigation system (Home, About, Government Schemes, Contact)
+- [x] Design visual mockup and interactive Chatbot Area (user input box, send button, message log)
+- [x] Set up sleek styles (glassmorphism dashboard layout, visual glows, scroll-effects, animations)
+- [x] Perform code compilation checks
+- [x] Add POST /chat API endpoint to app.py with validation logic
+- [x] Implement frontend Fetch flow in script.js connecting submit events to the Flask API
+- [x] Add client-side loading indicators and network/server exception boundaries
+- [x] Add user login and registration HTML forms
+- [x] Implement SQLite database wrapper with schemes auto-seeder, user register/login, and chat logs logic
+- [x] Configure app.py session controls and APIs (/api/chat, /api/history, /api/clear)
+- [x] Add dynamic header logins and secure page guards redirecting guests to login pages
+- [x] Implement client-side history auto-loading and preset sidebar search query dispatchers
+- [x] Update requirements.txt to include google-generativeai
+- [x] Create .env template and load configurations using python-dotenv in app.py
+- [x] Implement gemini_service.py to connect to the Gemini API with structured HTML instructions and error fallback states
+- [x] Modify database schemes schema in utils/db.py to include required_documents and seed documents lists
+- [x] Hook up models/recommender.py search logic: fallback to Gemini API if local search results are empty
+- [x] Expand database seeder in utils/db.py to include 90 schemes (15 schemes per category for all 6 categories)
+- [x] Implement automatic database count migration inside init_db() to drop and reseed schemes if count is below 90
