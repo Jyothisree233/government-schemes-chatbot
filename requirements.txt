@@ -3,3 +3,5 @@ python-dotenv==1.0.1
 google-generativeai
 faiss-cpu==1.14.3
 sentence-transformers==5.6.1
+langdetect
+deep-translator
