@@ -33,7 +33,7 @@ def generate_gemini_response(user_query, chat_history=None, rag_context=None):
         )
 
     try:
-        model_name = "gemini-2.5-flash"
+        model_name = "gemini-3.6-flash"
 
         model = genai.GenerativeModel(
             model_name=model_name,

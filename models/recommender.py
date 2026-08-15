@@ -1,7 +1,8 @@
 from utils.db import get_all_schemes
 from services.faiss_service import SchemeFAISS
 from gemini_service import generate_gemini_response
-
+from langdetect import detect
+from deep_translator import GoogleTranslator
 
 # Create FAISS search system once
 faiss_search = SchemeFAISS()
@@ -11,7 +12,6 @@ schemes = get_all_schemes()
 
 # Build FAISS index
 faiss_search.build_index(schemes)
-
 
 def generate_recommendation_response(user_message):
     """
@@ -32,15 +32,37 @@ def generate_recommendation_response(user_message):
 
     query = user_message.strip()
 
+    # Detect user language
+    try:
+        detected_language = detect(query)
+    except: 
+        detected_language = "en"
+
     if not query:
         return "<p>Please enter your question.</p>"
 
+    # Translate Telugu query to English for scheme retrieval
+    if detected_language == "te":
+        try:
+            query = GoogleTranslator(source="te", target="en").translate(query)
+        except Exception:
+            pass
     # 1. Retrieve relevant schemes using FAISS
     matched_schemes = faiss_search.search(query, top_k=5)
 
-    # 2. If FAISS finds no schemes, use Gemini normally
     if not matched_schemes:
-        return generate_gemini_response(query)
+        response = generate_gemini_response(query)
+
+        if detected_language == "te":
+            try:
+                response = GoogleTranslator(
+                    source="en",
+                    target="te"
+                ).translate(response)
+            except Exception:
+                pass
+
+        return response
 
     # 3. Build RAG context from retrieved schemes
     context_parts = []
@@ -62,8 +84,20 @@ Official Portal: {scheme.get('portal_link', '')}
 
     rag_context = "\n---\n".join(context_parts)
 
-    # 4. Send user question + retrieved scheme context to Gemini
-    return generate_gemini_response(
+    # Generate final Gemini response
+    response = generate_gemini_response(
         query,
         rag_context=rag_context
     )
+
+    # Translate response back to Telugu
+    if detected_language == "te":
+        try:
+            response = GoogleTranslator(
+                source="en",
+                target="te"
+            ).translate(response)
+        except Exception:
+            pass
+
+    return response
