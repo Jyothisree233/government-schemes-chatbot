@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for
-from utils.db import init_db, register_user, validate_user, save_chat_message, get_chat_history, clear_chat_history
+from utils.db import init_db, register_user, validate_user, save_chat_message, get_chat_history, clear_chat_history,get_user_by_username
 from models.recommender import generate_recommendation_response
 
 # Load environment configurations
@@ -95,6 +95,31 @@ def login():
     return render_template('login.html', error=error, success_msg=success_msg)
 
 @app.route('/logout')
+@app.route('/forgot-password', methods=['GET', 'POST'])
+def forgot_password():
+    if request.method == 'POST':
+        username = request.form.get('username', '').strip()
+
+        if not username:
+            return render_template(
+                'forgot_password.html',
+                error='Please enter your username.'
+            )
+
+        user = get_user_by_username(username)
+
+        if user:
+            return render_template(
+                'forgot_password.html',
+                success_msg='Username found. You can reset your password.'
+            )
+        else:
+            return render_template(
+                'forgot_password.html',
+                error='Username not found.'
+            )
+
+    return render_template('forgot_password.html')
 def logout():
     """
     Logs out the user and clears session tokens.

@@ -945,6 +945,23 @@ def validate_user(username, password):
     if user and check_password_hash(user['password'], password):
         return {'id': user['id'], 'username': user['username']}
     return None
+def get_user_by_username(username):
+    """
+    Checks whether a username exists.
+    Returns the user row if found, else None.
+    """
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        'SELECT id, username FROM users WHERE username = ?',
+        (username.strip(),)
+    )
+
+    user = cursor.fetchone()
+    conn.close()
+
+    return user
 
 # --- Chat History Functions ---
 
