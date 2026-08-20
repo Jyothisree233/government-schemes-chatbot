@@ -945,6 +945,22 @@ def validate_user(username, password):
     if user and check_password_hash(user['password'], password):
         return {'id': user['id'], 'username': user['username']}
     return None
+def update_user_password(user_id, new_password):
+    """
+    Updates a user's password securely.
+    """
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    hashed_password = generate_password_hash(new_password)
+
+    cursor.execute(
+        'UPDATE users SET password = ? WHERE id = ?',
+        (hashed_password, user_id)
+    )
+
+    conn.commit()
+    conn.close()
 def get_user_by_username(username):
     """
     Checks whether a username exists.
@@ -962,7 +978,23 @@ def get_user_by_username(username):
     conn.close()
 
     return user
+def get_user_by_email(email):
+    """
+    Finds a user by their registered email address.
+    Returns the user row if found, else None.
+    """
+    conn = get_db_connection()
+    cursor = conn.cursor()
 
+    cursor.execute(
+        'SELECT id, username, email FROM users WHERE email = ?',
+        (email.strip(),)
+    )
+
+    user = cursor.fetchone()
+    conn.close()
+
+    return user
 # --- Chat History Functions ---
 
 def save_chat_message(user_id, sender, message):

@@ -1,8 +1,10 @@
 import os
+import smtplib
+from email.message import EmailMessage
 from dotenv import load_dotenv
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for
 from sympy import re
-from utils.db import init_db, register_user, validate_user, save_chat_message, get_chat_history, clear_chat_history,get_user_by_username
+from utils.db import init_db, register_user, validate_user, save_chat_message, get_chat_history, clear_chat_history,get_user_by_username,get_user_by_email,update_user_password
 from models.recommender import generate_recommendation_response
 
 # Load environment configurations
@@ -75,7 +77,8 @@ def login():
     
     # Display registration success alert if navigated from register page
     if request.args.get('registered') == 'success':
-        success_msg = "Account created successfully! Please log in."
+        success_msg = "Account " \
+        "d successfully! Please log in."
 
     if request.method == 'POST':
         username = request.form.get('username', '').strip()
@@ -96,32 +99,121 @@ def login():
                 
     return render_template('login.html', error=error, success_msg=success_msg)
 
-@app.route('/logout')
 @app.route('/forgot-password', methods=['GET', 'POST'])
 def forgot_password():
     if request.method == 'POST':
-        username = request.form.get('username', '').strip()
+        email = request.form.get('email', '').strip()
 
-        if not username:
+        if not email:
             return render_template(
                 'forgot_password.html',
-                error='Please enter your username.'
+                error='Please enter your registered email.'
             )
 
-        user = get_user_by_username(username)
+        user = get_user_by_email(email)
 
-        if user:
+        if not user:
             return render_template(
                 'forgot_password.html',
-                success_msg='Username found. You can reset your password.'
+                error='No account found with this email.'
             )
-        else:
+
+        # Create reset token
+        token = os.urandom(32).hex()
+
+        # Store token temporarily in the session
+        session['reset_token'] = token
+        session['reset_user_id'] = user['id']
+
+        # Create reset link
+        reset_link = url_for(
+            'reset_password',
+            token=token,
+            _external=True
+        )
+
+        # Create email
+        message = EmailMessage()
+        message['Subject'] = 'SchemeAI - Password Reset'
+        message['From'] = os.environ.get('MAIL_USERNAME')
+        message['To'] = email
+
+        message.set_content(
+            f"""Hello {user['username']},
+
+We received a request to reset your SchemeAI password.
+
+Click the link below to reset your password:
+
+{reset_link}
+
+If you did not request this password reset, you can ignore this email.
+
+Regards,
+SchemeAI Team
+"""
+        )
+
+        try:
+            with smtplib.SMTP('smtp.gmail.com', 587) as server:
+                server.starttls()
+                server.login(
+                    os.environ.get('MAIL_USERNAME'),
+                    os.environ.get('MAIL_PASSWORD')
+                )
+                server.send_message(message)
+
             return render_template(
                 'forgot_password.html',
-                error='Username not found.'
+                success_msg='Password reset link has been sent to your email.'
+            )
+
+        except Exception as e:
+            print(f"Email sending error: {str(e)}")
+            return render_template(
+                'forgot_password.html',
+                error='Could not send the reset email. Please try again later.'
             )
 
     return render_template('forgot_password.html')
+@app.route('/reset-password/<token>', methods=['GET', 'POST'])
+def reset_password(token):
+    if session.get('reset_token') != token:
+        return "Invalid or expired password reset link.", 400
+
+    if request.method == 'POST':
+        new_password = request.form.get('password', '').strip()
+        confirm_password = request.form.get('confirm_password', '').strip()
+
+        if not new_password or not confirm_password:
+            return render_template(
+                'reset_password.html',
+                error='All fields are required.'
+            )
+
+        if len(new_password) < 6:
+            return render_template(
+                'reset_password.html',
+                error='Password must be at least 6 characters long.'
+            )
+
+        if new_password != confirm_password:
+            return render_template(
+                'reset_password.html',
+                error='Passwords do not match.'
+            )
+
+        user_id = session.get('reset_user_id')
+
+        update_user_password(user_id, new_password)
+
+        session.pop('reset_token', None)
+        session.pop('reset_user_id', None)
+
+        return redirect(url_for('login', reset='success'))
+
+    return render_template('reset_password.html')
+@app.route('/logout')
 def logout():
     """
     Logs out the user and clears session tokens.

@@ -5,3 +5,5 @@ faiss-cpu==1.14.3
 sentence-transformers==5.6.1
 langdetect
 deep-translator
+langdetect
+deep-translator
