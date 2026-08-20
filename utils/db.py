@@ -913,7 +913,7 @@ def init_db():
 
 # --- User Auth Functions ---
 
-def register_user(username, password):
+def register_user(username, email, password):
     """
     Registers a new user inside the database.
     Hashes the password securely.
@@ -922,7 +922,7 @@ def register_user(username, password):
     cursor = conn.cursor()
     hashed_password = generate_password_hash(password)
     try:
-        cursor.execute('INSERT INTO users (username, password) VALUES (?, ?)', (username.strip(), hashed_password))
+        cursor.execute('INSERT INTO users (username, email, password) VALUES (?, ?, ?)', (username.strip(), email.strip(), hashed_password))
         conn.commit()
         success = True
     except sqlite3.IntegrityError:
