@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for
+from sympy import re
 from utils.db import init_db, register_user, validate_user, save_chat_message, get_chat_history, clear_chat_history,get_user_by_username
 from models.recommender import generate_recommendation_response
 
@@ -40,18 +41,19 @@ def register():
     error = None
     if request.method == 'POST':
         username = request.form.get('username', '').strip()
+        email = request.form.get('email', '').strip()
         password = request.form.get('password', '').strip()
         
         # Validations
-        if not username or not password:
-            error = "Both username and password are required."
+        if not username or not email or not password:
+            error = "All fields are required."
         elif len(username) < 3:
             error = "Username must be at least 3 characters long."
         elif len(password) < 6:
             error = "Password must be at least 6 characters long."
         else:
             # Register user
-            success = register_user(username, password)
+            success = register_user(username, email, password)
             if success:
                 # Redirect to login page upon success
                 return redirect(url_for('login', registered='success'))
