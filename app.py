@@ -2,6 +2,7 @@ import os
 import resend
 from dotenv import load_dotenv
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for
+from itsdangerous import URLSafeTimedSerializer, BadSignature, SignatureExpired
 from sympy import re
 from utils.db import init_db, register_user, validate_user, save_chat_message, get_chat_history, clear_chat_history,get_user_by_username,get_user_by_email,update_user_password
 from models.recommender import generate_recommendation_response
@@ -13,6 +14,7 @@ app = Flask(__name__)
 
 # Basic Configuration
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'schemeai-dev-secret-key-12345')
+serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
 app.config['DEBUG'] = True
 
 # Initialize SQLite database and seed initial schemes
@@ -117,12 +119,9 @@ def forgot_password():
                 error='No account found with this email.'
             )
 
-        # Create reset token
-        token = os.urandom(32).hex()
-
-        # Store token temporarily in the session
-        session['reset_token'] = token
-        session['reset_user_id'] = user['id']
+        # Create a secure signed reset token
+        token = serializer.dumps(user['id'],
+        salt='password-reset')
 
         # Create reset link
         reset_link = url_for(
@@ -173,9 +172,16 @@ SchemeAI Team
 
 @app.route('/reset-password/<token>', methods=['GET', 'POST'])
 def reset_password(token):
-    if session.get('reset_token') != token:
+    try:
+        user_id = serializer.loads(
+            token,
+            salt='password-reset',
+            max_age=1800
+        )
+    except SignatureExpired:
         return "Invalid or expired password reset link.", 400
-
+    except BadSignature:
+        return "Invalid or expired password reset link.", 400
     if request.method == 'POST':
         new_password = request.form.get('password', '').strip()
         confirm_password = request.form.get('confirm_password', '').strip()
@@ -198,16 +204,12 @@ def reset_password(token):
                 error='Passwords do not match.'
             )
 
-        user_id = session.get('reset_user_id')
-
         update_user_password(user_id, new_password)
-
-        session.pop('reset_token', None)
-        session.pop('reset_user_id', None)
 
         return redirect(url_for('login', reset='success'))
 
     return render_template('reset_password.html')
+
 @app.route('/logout')
 def logout():
     """
