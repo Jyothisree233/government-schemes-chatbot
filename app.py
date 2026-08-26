@@ -1,6 +1,5 @@
 import os
-import smtplib
-from email.message import EmailMessage
+import resend
 from dotenv import load_dotenv
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for
 from sympy import re
@@ -132,14 +131,17 @@ def forgot_password():
             _external=True
         )
 
-        # Create email
-        message = EmailMessage()
-        message['Subject'] = 'SchemeAI - Password Reset'
-        message['From'] = os.environ.get('MAIL_USERNAME')
-        message['To'] = email
+        try:
+            resend.api_key = os.environ.get('RESEND_API_KEY')
 
-        message.set_content(
-            f"""Hello {user['username']},
+            if not resend.api_key:
+                raise Exception("RESEND_API_KEY is not configured")
+
+            resend.Emails.send({
+                "from": "onboarding@resend.dev",
+                "to": [email],
+                "subject": "SchemeAI - Password Reset",
+                "text": f"""Hello {user['username']},
 
 We received a request to reset your SchemeAI password.
 
@@ -152,16 +154,7 @@ If you did not request this password reset, you can ignore this email.
 Regards,
 SchemeAI Team
 """
-        )
-
-        try:
-            with smtplib.SMTP('smtp.gmail.com', 587) as server:
-                server.starttls()
-                server.login(
-                    os.environ.get('MAIL_USERNAME'),
-                    os.environ.get('MAIL_PASSWORD')
-                )
-                server.send_message(message)
+            })
 
             return render_template(
                 'forgot_password.html',
@@ -170,12 +163,14 @@ SchemeAI Team
 
         except Exception as e:
             print(f"Email sending error: {str(e)}")
+
             return render_template(
                 'forgot_password.html',
                 error='Could not send the reset email. Please try again later.'
             )
 
     return render_template('forgot_password.html')
+
 @app.route('/reset-password/<token>', methods=['GET', 'POST'])
 def reset_password(token):
     if session.get('reset_token') != token:
