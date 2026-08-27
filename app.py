@@ -78,8 +78,7 @@ def login():
     
     # Display registration success alert if navigated from register page
     if request.args.get('registered') == 'success':
-        success_msg = "Account " \
-        "d successfully! Please log in."
+        success_msg = "Account created successfully! Please log in."
 
     if request.method == 'POST':
         username = request.form.get('username', '').strip()
