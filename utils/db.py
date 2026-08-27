@@ -40,13 +40,24 @@ def init_db():
     
     # 1. Create Users Table
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS users (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            username TEXT UNIQUE NOT NULL,
-            password TEXT NOT NULL,
-            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-        )
-    ''')
+    CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT UNIQUE NOT NULL,
+        email TEXT UNIQUE NOT NULL,
+        password TEXT NOT NULL,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    )
+''')
+
+    # Add email column to existing users table if it is missing
+    cursor.execute("PRAGMA table_info(users)")
+    user_columns = [row[1] for row in cursor.fetchall()]
+
+    if 'email' not in user_columns:
+        print("Database update required: adding email column to users table...")
+        cursor.execute("ALTER TABLE users ADD COLUMN email TEXT")
+
+        conn.commit()
     
     # 2. Create Chat History Table
     cursor.execute('''
