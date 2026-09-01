@@ -360,7 +360,7 @@ def api_feedback():
         if not resend.api_key:
             raise Exception("RESEND_API_KEY is not configured")
 
-        resend.Emails.send({
+        response = resend.Emails.send({
             "from": "SchemeAI <noreply@yourdomain.com>",
             "to": ["jyothisreelakshmi233@gmail.com"],
             "subject": "New SchemeAI Feedback",
@@ -373,6 +373,7 @@ Message:
 {message}
 """
         })
+        print(f"Feedback email response: {response}")
 
         return jsonify({
             'status': 'success',
