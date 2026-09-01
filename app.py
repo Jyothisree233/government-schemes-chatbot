@@ -351,7 +351,28 @@ def api_feedback():
                 'message': 'All fields are required.'
             }), 400
 
+        # Save feedback to SQLite
         save_feedback(name, email, message)
+
+        # Send feedback to your email
+        resend.api_key = os.environ.get('RESEND_API_KEY')
+
+        if not resend.api_key:
+            raise Exception("RESEND_API_KEY is not configured")
+
+        resend.Emails.send({
+            "from": "SchemeAI <noreply@yourdomain.com>",
+            "to": ["jyothisreelakshmi129@gmail.com"],
+            "subject": "New SchemeAI Feedback",
+            "text": f"""New feedback received from SchemeAI.
+
+Name: {name}
+Email: {email}
+
+Message:
+{message}
+"""
+        })
 
         return jsonify({
             'status': 'success',
@@ -360,11 +381,8 @@ def api_feedback():
 
     except Exception as e:
         print(f"Feedback Error: {str(e)}")
+
         return jsonify({
             'status': 'error',
-            'message': 'Could not save feedback.'
-        }), 500 
-
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=False)
+            'message': 'Could not submit feedback.'
+        }), 500

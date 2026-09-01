@@ -1118,3 +1118,14 @@ def get_all_schemes():
     conn.close()
 
     return [dict(row) for row in results]
+def save_feedback(name, email, message):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    cursor.execute('''
+        INSERT INTO feedback (name, email, message)
+        VALUES (?, ?, ?)
+    ''', (name, email, message))
+
+    conn.commit()
+    conn.close()
