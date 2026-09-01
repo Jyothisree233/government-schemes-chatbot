@@ -362,7 +362,7 @@ def api_feedback():
 
         resend.Emails.send({
             "from": "SchemeAI <noreply@yourdomain.com>",
-            "to": ["jyothisreelakshmi129@gmail.com"],
+            "to": ["jyothisreelakshmi233@gmail.com"],
             "subject": "New SchemeAI Feedback",
             "text": f"""New feedback received from SchemeAI.
 
