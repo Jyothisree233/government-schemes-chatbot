@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for
 from itsdangerous import URLSafeTimedSerializer, BadSignature, SignatureExpired
 from sympy import re
-from utils.db import init_db, register_user, validate_user, save_chat_message, get_chat_history, clear_chat_history,get_user_by_username,get_user_by_email,update_user_password
+from utils.db import init_db, register_user, validate_user, save_chat_message, get_chat_history, clear_chat_history,get_user_by_username,get_user_by_email,update_user_password,save_feedback
 from models.recommender import generate_recommendation_response
 
 # Load environment configurations
@@ -136,7 +136,7 @@ def forgot_password():
                 raise Exception("RESEND_API_KEY is not configured")
 
             resend.Emails.send({
-                "from": "onboarding@resend.dev",
+                "from": "SchemeAI <noreply@yourdomain.com>",
                 "to": [email],
                 "subject": "SchemeAI - Password Reset",
                 "text": f"""Hello {user['username']},
@@ -330,6 +330,40 @@ def api_clear():
             'status': 'error',
             'message': 'Could not clear chat history.'
         }), 500
+@app.route('/api/feedback', methods=['POST'])
+def api_feedback():
+    try:
+        data = request.get_json(silent=True)
+
+        if not data:
+            return jsonify({
+                'status': 'error',
+                'message': 'Invalid feedback data.'
+            }), 400
+
+        name = data.get('name', '').strip()
+        email = data.get('email', '').strip()
+        message = data.get('message', '').strip()
+
+        if not name or not email or not message:
+            return jsonify({
+                'status': 'error',
+                'message': 'All fields are required.'
+            }), 400
+
+        save_feedback(name, email, message)
+
+        return jsonify({
+            'status': 'success',
+            'message': 'Feedback received! Thank you.'
+        })
+
+    except Exception as e:
+        print(f"Feedback Error: {str(e)}")
+        return jsonify({
+            'status': 'error',
+            'message': 'Could not save feedback.'
+        }), 500 
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

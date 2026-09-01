@@ -84,7 +84,17 @@ def init_db():
             portal_link TEXT NOT NULL
         )
     ''')
-    
+    # 3.1 Create Feedback Table
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS feedback (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            email TEXT NOT NULL,
+            message TEXT NOT NULL,
+            timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+
     conn.commit()
     
     # 4. Seed sample schemes (15 per category * 6 categories = 90 schemes total)

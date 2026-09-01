@@ -194,7 +194,7 @@
                     </ul>
                 </div>
                 <!-- Simple form UI -->
-                <form class="contact-form" onsubmit="event.preventDefault(); alert('Feedback received! Thank you.'); this.reset();">
+                <form class="contact-form" id="feedback-form">
                     <div class="form-group">
                         <label for="contact-name">Name</label>
                         <input type="text" id="contact-name" placeholder="Enter your name" required>
@@ -209,6 +209,40 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Send Feedback</button>
                 </form>
+                <script>
+                    document.getElementById('feedback-form').addEventListener('submit', async function(event) {
+                    event.preventDefault();
+
+                    const name = document.getElementById('contact-name').value;
+                    const email = document.getElementById('contact-email').value;
+                    const message = document.getElementById('contact-message').value;
+
+                    try {
+                        const response = await fetch('/api/feedback', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                        name: name,
+                        email: email,
+                        message: message
+                        })
+                    });
+                    
+                    const result = await response.json();
+                    if (result.status === 'success') {
+                        alert(result.message);
+                        this.reset();
+                    } else {
+                        alert(result.message);
+                 }
+                
+                } catch (error) {
+                    alert('Could not submit feedback. Please try again.');
+                }
+            });
+            </script>
             </div>
         </section>
 
