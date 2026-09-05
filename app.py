@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for
 from itsdangerous import URLSafeTimedSerializer, BadSignature, SignatureExpired
 from sympy import re
-from utils.db import init_db, register_user, validate_user, save_chat_message, get_chat_history, clear_chat_history,get_user_by_username,get_user_by_email,update_user_password,save_feedback
+from utils.db import init_db, register_user, validate_user, save_chat_message, get_chat_history, clear_chat_history,get_user_by_username,get_user_by_email,update_user_password
 from models.recommender import generate_recommendation_response
 
 # Load environment configurations
@@ -15,7 +15,7 @@ app = Flask(__name__)
 # Basic Configuration
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'schemeai-dev-secret-key-12345')
 serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
-app.config['DEBUG'] = True
+app.config['DEBUG'] = False
 
 # Initialize SQLite database and seed initial schemes
 with app.app_context():
@@ -330,60 +330,6 @@ def api_clear():
             'status': 'error',
             'message': 'Could not clear chat history.'
         }), 500
-@app.route('/api/feedback', methods=['POST'])
-def api_feedback():
-    try:
-        data = request.get_json(silent=True)
-
-        if not data:
-            return jsonify({
-                'status': 'error',
-                'message': 'Invalid feedback data.'
-            }), 400
-
-        name = data.get('name', '').strip()
-        email = data.get('email', '').strip()
-        message = data.get('message', '').strip()
-
-        if not name or not email or not message:
-            return jsonify({
-                'status': 'error',
-                'message': 'All fields are required.'
-            }), 400
-
-        # Save feedback to SQLite
-        save_feedback(name, email, message)
-
-        # Send feedback to your email
-        resend.api_key = os.environ.get('RESEND_API_KEY')
-
-        if not resend.api_key:
-            raise Exception("RESEND_API_KEY is not configured")
-
-        response = resend.Emails.send({
-            "from": "SchemeAI <noreply@yourdomain.com>",
-            "to": ["jyothisreelakshmi233@gmail.com"],
-            "subject": "New SchemeAI Feedback",
-            "text": f"""New feedback received from SchemeAI.
-
-Name: {name}
-Email: {email}
-
-Message:
-{message}
-"""
-        })
-        print(f"Feedback email response: {response}")
-
-        return jsonify({
-            'status': 'success',
-            'message': 'Feedback received! Thank you.'
-        })
-
-    except Exception as e:
-        print(f"Feedback Error: {str(e)}")
-
-        return jsonify({
-            'status': 'error',
-            'message': 'Could not submit feedback.'
-        }), 500
+    if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
