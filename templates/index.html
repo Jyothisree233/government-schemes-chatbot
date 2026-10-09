@@ -193,8 +193,8 @@
                         <li><i class="fa-solid fa-clock"></i> Mon - Fri, 9:00 AM - 5:00 PM</li>
                     </ul>
                 </div>
-                <!-- Simple form UI -->
                 <form class="contact-form" id="feedback-form">
+                    <div id="feedback-alert" style="display: none;" class="auth-alert"></div>
                     <div class="form-group">
                         <label for="contact-name">Name</label>
                         <input type="text" id="contact-name" placeholder="Enter your name" required>
@@ -207,42 +207,57 @@
                         <label for="contact-message">Message</label>
                         <textarea id="contact-message" rows="4" placeholder="Type your message..." required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Send Feedback</button>
+                    <button type="submit" id="feedback-submit-btn" class="btn btn-primary">
+                        <span>Send Feedback</span> <i class="fa-solid fa-paper-plane"></i>
+                    </button>
                 </form>
                 <script>
                     document.getElementById('feedback-form').addEventListener('submit', async function(event) {
-                    event.preventDefault();
+                        event.preventDefault();
+                        const alertBox = document.getElementById('feedback-alert');
+                        const submitBtn = document.getElementById('feedback-submit-btn');
+                        
+                        const name = document.getElementById('contact-name').value.trim();
+                        const email = document.getElementById('contact-email').value.trim();
+                        const message = document.getElementById('contact-message').value.trim();
 
-                    const name = document.getElementById('contact-name').value;
-                    const email = document.getElementById('contact-email').value;
-                    const message = document.getElementById('contact-message').value;
+                        if (!name || !email || !message) {
+                            alertBox.className = 'auth-alert error';
+                            alertBox.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Please fill in all required fields.';
+                            alertBox.style.display = 'flex';
+                            return;
+                        }
 
-                    try {
-                        const response = await fetch('/api/feedback', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                        name: name,
-                        email: email,
-                        message: message
-                        })
+                        submitBtn.disabled = true;
+                        submitBtn.innerHTML = '<span>Sending...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
+
+                        try {
+                            const response = await fetch('/api/feedback', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ name, email, message })
+                            });
+                            
+                            const result = await response.json();
+                            alertBox.style.display = 'flex';
+                            if (response.ok && result.status === 'success') {
+                                alertBox.className = 'auth-alert success';
+                                alertBox.innerHTML = '<i class="fa-solid fa-circle-check"></i> ' + result.message;
+                                this.reset();
+                            } else {
+                                alertBox.className = 'auth-alert error';
+                                alertBox.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> ' + (result.message || 'Submission failed.');
+                            }
+                        } catch (error) {
+                            alertBox.style.display = 'flex';
+                            alertBox.className = 'auth-alert error';
+                            alertBox.innerHTML = '<i class="fa-solid fa-wifi"></i> Could not connect to backend server. Please try again.';
+                        } finally {
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = '<span>Send Feedback</span> <i class="fa-solid fa-paper-plane"></i>';
+                        }
                     });
-                    
-                    const result = await response.json();
-                    if (result.status === 'success') {
-                        alert(result.message);
-                        this.reset();
-                    } else {
-                        alert(result.message);
-                 }
-                
-                } catch (error) {
-                    alert('Could not submit feedback. Please try again.');
-                }
-            });
-            </script>
+                </script>
             </div>
         </section>
 

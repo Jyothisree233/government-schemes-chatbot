@@ -114,12 +114,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             } else {
                 console.error('Failed to load chat history:', data.message);
-                appendMessage('bot', '<p style="color: #f87171;"><i class="fa-solid fa-circle-exclamation"></i> Could not load your past conversation history from database.</p>');
+                appendMessage('bot', '<p style="color: var(--accent-red); font-weight: 500;"><i class="fa-solid fa-circle-exclamation"></i> Could not load your past conversation history from database.</p>');
             }
         } catch (error) {
             if (historyLoader) historyLoader.remove();
             console.error('History load network error:', error);
-            appendMessage('bot', '<p style="color: #f87171;"><i class="fa-solid fa-wifi"></i> Connection failed while retrieving history from database.</p>');
+            appendMessage('bot', '<p style="color: var(--accent-red); font-weight: 500;"><i class="fa-solid fa-wifi"></i> Connection failed while retrieving history from database.</p>');
         }
     };
 
@@ -163,19 +163,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else {
                         // Handle server-returned validation error
                         const serverErrorMsg = data.message || 'Invalid server response.';
-                        appendMessage('bot', `<p style="color: #f87171; font-weight: 500;"><i class="fa-solid fa-triangle-exclamation"></i> Error: ${escapeHTML(serverErrorMsg)}</p>`);
+                        appendMessage('bot', `<p style="color: var(--accent-red); font-weight: 500;"><i class="fa-solid fa-triangle-exclamation"></i> Error: ${escapeHTML(serverErrorMsg)}</p>`);
                     }
                 } else {
                     // Handle non-200 server status errors
                     const errData = await response.json().catch(() => ({}));
                     const errMsg = errData.message || `Server responded with status ${response.status}`;
-                    appendMessage('bot', `<p style="color: #f87171; font-weight: 500;"><i class="fa-solid fa-triangle-exclamation"></i> Sorry, I encountered an issue. (${escapeHTML(errMsg)})</p>`);
+                    appendMessage('bot', `<p style="color: var(--accent-red); font-weight: 500;"><i class="fa-solid fa-triangle-exclamation"></i> Sorry, I encountered an issue. (${escapeHTML(errMsg)})</p>`);
                 }
             } catch (error) {
                 // Handle basic network/connection failure errors
                 removeTypingIndicator();
                 console.error('Fetch error:', error);
-                appendMessage('bot', `<p style="color: #f87171; font-weight: 500;"><i class="fa-solid fa-wifi"></i> Connection failed. Make sure your local Flask development server is running and try again.</p>`);
+                appendMessage('bot', `<p style="color: var(--accent-red); font-weight: 500;"><i class="fa-solid fa-wifi"></i> Connection failed. Make sure your local Flask development server is running and try again.</p>`);
             }
         });
     }

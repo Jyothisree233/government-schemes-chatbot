@@ -84,20 +84,21 @@ def init_db():
             portal_link TEXT NOT NULL
         )
     ''')
-    # 3.1 Create Feedback Table
+
+    # 4. Create Feedback Table
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS feedback (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT NOT NULL,
             email TEXT NOT NULL,
             message TEXT NOT NULL,
-            timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )
     ''')
 
     conn.commit()
     
-    # 4. Seed sample schemes (15 per category * 6 categories = 90 schemes total)
+    # 5. Seed sample schemes (15 per category * 6 categories = 90 schemes total)
     cursor.execute('SELECT COUNT(*) FROM schemes')
     if cursor.fetchone()[0] == 0:
         seed_schemes = [
@@ -1118,14 +1119,16 @@ def get_all_schemes():
     conn.close()
 
     return [dict(row) for row in results]
+
 def save_feedback(name, email, message):
+    """
+    Saves user feedback submission into SQLite.
+    """
     conn = get_db_connection()
     cursor = conn.cursor()
-
-    cursor.execute('''
-        INSERT INTO feedback (name, email, message)
-        VALUES (?, ?, ?)
-    ''', (name, email, message))
-
+    cursor.execute(
+        "INSERT INTO feedback (name, email, message) VALUES (?, ?, ?)",
+        (name, email, message)
+    )
     conn.commit()
     conn.close()
