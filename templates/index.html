@@ -23,7 +23,7 @@
         <header class="navbar">
             <div class="brand" onclick="window.location.href='/'" style="cursor: pointer;">
                 <div class="brand-logo">
-                    <i class="fa-solid fa-landmark"></i>
+                    <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="SchemeAI Logo" class="brand-logo-img">
                 </div>
                 <span class="brand-name">Scheme<span>AI</span></span>
             </div>
@@ -89,7 +89,7 @@
                     <div class="chat-header">
                         <div class="chat-bot-info">
                             <div class="chat-bot-avatar">
-                                <i class="fa-solid fa-robot"></i>
+                                <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="SchemeAI Engine" class="bot-logo-img">
                             </div>
                             <div class="chat-bot-status">
                                 <h3>SchemeAI Assistant</h3>
@@ -100,7 +100,7 @@
 
                     <div class="chat-messages-area" style="opacity: 0.7;">
                         <div class="chat-bubble bot">
-                            <div class="chat-avatar"><i class="fa-solid fa-robot"></i></div>
+                            <div class="chat-avatar"><img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="SchemeAI" class="bot-logo-img"></div>
                             <div class="chat-message-content">
                                 <p>Welcome to **SchemeAI**! Register or log in to search the database and fetch targeted recommendations.</p>
                             </div>

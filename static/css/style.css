@@ -380,8 +380,8 @@ section {
 }
 
 .chat-bot-avatar {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     background: #ffffff;
     display: flex;
@@ -390,6 +390,17 @@ section {
     color: var(--royal-purple-primary);
     font-size: 1rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    padding: 2px;
+}
+
+.chat-bot-avatar img,
+.chat-avatar img,
+.brand-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
 }
 
 .chat-bot-status h3 {
@@ -469,16 +480,19 @@ section {
 }
 
 .chat-avatar {
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
-    background: var(--royal-purple-primary);
+    background: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #ffffff;
     font-size: 0.85rem;
     flex-shrink: 0;
+    overflow: hidden;
+    padding: 2px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .chat-message-content {
