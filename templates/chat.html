@@ -11,7 +11,7 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Main Style Sheet -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=2">
 </head>
 <body class="dashboard-page">
     <div class="bg-glow bg-glow-1"></div>
@@ -54,7 +54,7 @@
                 <div class="chat-header">
                     <div class="chat-bot-info">
                         <div class="chat-bot-avatar">
-                            <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="SchemeAI Engine" class="bot-logo-img">
+                            <img src="{{ url_for('static', filename='images/logo.jpg') }}?v=2" alt="SchemeAI Engine" class="bot-logo-img">
                         </div>
                         <div class="chat-bot-status">
                             <h3>SchemeAI Engine</h3>
