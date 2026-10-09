@@ -234,3 +234,100 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     }
 });
+
+
+/* ==========================================================================
+   Global Feedback Modal Controller
+   ========================================================================== */
+
+function openFeedbackModal() {
+    const modal = document.getElementById('feedback-modal');
+    if (modal) {
+        modal.style.display = 'flex';
+        setTimeout(() => modal.classList.add('active'), 10);
+    }
+}
+
+function closeFeedbackModal() {
+    const modal = document.getElementById('feedback-modal');
+    if (modal) {
+        modal.classList.remove('active');
+        setTimeout(() => { modal.style.display = 'none'; }, 250);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Esc key close listener for feedback modal
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeFeedbackModal();
+    });
+
+    // Close on backdrop click
+    const modalOverlay = document.getElementById('feedback-modal');
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) closeFeedbackModal();
+        });
+    }
+
+    // Feedback Form AJAX Handler
+    const feedbackForm = document.getElementById('feedback-form');
+    if (feedbackForm) {
+        feedbackForm.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const alertBox = document.getElementById('feedback-alert');
+            const submitBtn = document.getElementById('feedback-submit-btn');
+            
+            const name = document.getElementById('contact-name').value.trim();
+            const email = document.getElementById('contact-email').value.trim();
+            const message = document.getElementById('contact-message').value.trim();
+
+            if (!name || !email || !message) {
+                if (alertBox) {
+                    alertBox.className = 'auth-alert error';
+                    alertBox.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Please fill in all required fields.';
+                    alertBox.style.display = 'flex';
+                }
+                return;
+            }
+
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span>Sending...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
+            }
+
+            try {
+                const response = await fetch('/api/feedback', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, message })
+                });
+                
+                const result = await response.json();
+                if (alertBox) {
+                    alertBox.style.display = 'flex';
+                    if (response.ok && result.status === 'success') {
+                        alertBox.className = 'auth-alert success';
+                        alertBox.innerHTML = '<i class="fa-solid fa-circle-check"></i> ' + result.message;
+                        this.reset();
+                        setTimeout(() => closeFeedbackModal(), 2000);
+                    } else {
+                        alertBox.className = 'auth-alert error';
+                        alertBox.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> ' + (result.message || 'Submission failed.');
+                    }
+                }
+            } catch (error) {
+                if (alertBox) {
+                    alertBox.style.display = 'flex';
+                    alertBox.className = 'auth-alert error';
+                    alertBox.innerHTML = '<i class="fa-solid fa-wifi"></i> Could not connect to backend server. Please try again.';
+                }
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<span>Send Feedback</span> <i class="fa-solid fa-paper-plane"></i>';
+                }
+            }
+        });
+    }
+});
