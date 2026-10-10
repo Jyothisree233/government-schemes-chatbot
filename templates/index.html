@@ -85,40 +85,58 @@
                 </div>
             </div>
 
-            <!-- Lock Mockup / UI Graphic Preview -->
+            <!-- Personalized Benefits Card -->
             <div class="hero-visual">
-                <div class="chat-container landing-chat-mock">
-                    <div class="chat-header">
-                        <div class="chat-bot-info">
-                            <div class="chat-bot-avatar">
-                                <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="SchemeAI Engine" class="bot-logo-img">
+                <div class="personalized-benefits-card">
+                    <div class="benefits-card-header">
+                        <span class="benefits-badge">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> Personalized Eligibility
+                        </span>
+                        <h3 class="benefits-title">Your Personalized Benefits</h3>
+                        <p class="benefits-description">
+                            Discover government schemes that match your eligibility and needs.
+                        </p>
+                    </div>
+
+                    <div class="benefits-list">
+                        <!-- Benefit Item 1: Education -->
+                        <div class="benefit-item">
+                            <div class="benefit-icon-wrapper">
+                                <i class="fa-solid fa-graduation-cap"></i>
                             </div>
-                            <div class="chat-bot-status">
-                                <h3>SchemeAI Assistant</h3>
-                                <p><span class="online-indicator"></span> Active Now</p>
+                            <div class="benefit-text">
+                                <h4>Education Support</h4>
+                                <p>Scholarships, student loans, & fee subventions.</p>
+                            </div>
+                        </div>
+
+                        <!-- Benefit Item 2: Healthcare -->
+                        <div class="benefit-item">
+                            <div class="benefit-icon-wrapper">
+                                <i class="fa-solid fa-notes-medical"></i>
+                            </div>
+                            <div class="benefit-text">
+                                <h4>Healthcare Benefits</h4>
+                                <p>Free health cover & medical assistance.</p>
+                            </div>
+                        </div>
+
+                        <!-- Benefit Item 3: Government Assistance -->
+                        <div class="benefit-item">
+                            <div class="benefit-icon-wrapper">
+                                <i class="fa-solid fa-building-columns"></i>
+                            </div>
+                            <div class="benefit-text">
+                                <h4>Government Assistance</h4>
+                                <p>Income support, pensions, & subsidies.</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="chat-messages-area" style="opacity: 0.7;">
-                        <div class="chat-bubble bot">
-                            <div class="chat-avatar"><img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="SchemeAI" class="bot-logo-img"></div>
-                            <div class="chat-message-content">
-                                <p>Welcome to **SchemeAI**! Register or log in to search the database and fetch targeted recommendations.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="chat-lock-overlay">
-                        <div class="lock-box">
-                            <i class="fa-solid fa-lock"></i>
-                            <h3>Secure Portal</h3>
-                            <p>Authentication is required to query eligible schemes and store your chat logs securely.</p>
-                            <a href="{{ url_for('login') }}" class="btn btn-primary btn-sm" style="margin-top: 1rem;">
-                                <span>Sign In to Access</span>
-                            </a>
-                        </div>
-                    </div>
+                    <a href="#schemes" class="btn btn-primary benefits-cta-full">
+                        <span>Start Exploring</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </section>
