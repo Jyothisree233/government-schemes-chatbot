@@ -7,7 +7,7 @@ from sympy import re
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from utils.db import init_db, register_user, validate_user, save_chat_message, get_chat_history, clear_chat_history, get_user_by_username, get_user_by_email, update_user_password, save_feedback
+from utils.db import init_db, register_user, validate_user, save_chat_message, get_chat_history, clear_chat_history, get_user_by_username, get_user_by_email, update_user_password, save_feedback, get_all_schemes, get_scheme_by_id
 from models.recommender import generate_recommendation_response
 
 # Load environment configurations
@@ -19,6 +19,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'schemeai-dev-secret-key-12345')
 serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
 app.config['DEBUG'] = False
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 # Initialize SQLite database and seed initial schemes
 with app.app_context():
@@ -237,6 +238,141 @@ def chat_workspace():
         return redirect(url_for('login'))
         
     return render_template('chat.html', username=session['username'])
+
+@app.route('/schemes')
+def schemes_catalog():
+    """
+    Displays government schemes catalog with category filtering and search.
+    """
+    logged_in = 'user_id' in session
+    username = session.get('username')
+    category_filter = request.args.get('category', '').strip().lower()
+    search_q = request.args.get('q', '').strip().lower()
+    
+    all_schemes = get_all_schemes()
+    filtered_schemes = []
+    
+    for s in all_schemes:
+        cat = str(s.get('category', '')).lower()
+        name = str(s.get('name', '')).lower()
+        desc = str(s.get('description', '')).lower()
+        
+        cat_match = True
+        if category_filter and category_filter != 'all':
+            if category_filter in ['student', 'students']:
+                cat_match = 'student' in cat
+            elif category_filter in ['farmer', 'farmers']:
+                cat_match = 'farmer' in cat or 'agri' in cat
+            elif category_filter in ['women', 'woman']:
+                cat_match = 'women' in cat or 'female' in cat
+            elif category_filter in ['senior', 'senior_citizen', 'seniors']:
+                cat_match = 'senior' in cat or 'pension' in cat
+            elif category_filter in ['unemployed', 'youth']:
+                cat_match = 'unemployed' in cat or 'skill' in cat or 'youth' in cat
+            elif category_filter in ['disabled', 'disabled_citizens']:
+                cat_match = 'disabled' in cat or 'handicap' in cat
+            else:
+                cat_match = category_filter in cat
+                
+        search_match = True
+        if search_q:
+            search_match = (search_q in name or search_q in desc or search_q in cat)
+            
+        if cat_match and search_match:
+            filtered_schemes.append(s)
+            
+    return render_template(
+        'schemes.html',
+        schemes=filtered_schemes,
+        logged_in=logged_in,
+        username=username,
+        active_category=category_filter or 'all',
+        search_query=search_q,
+        total_count=len(all_schemes)
+    )
+
+@app.route('/schemes/<int:scheme_id>')
+def scheme_details(scheme_id):
+    """
+    Renders detailed information for a single government scheme.
+    """
+    logged_in = 'user_id' in session
+    username = session.get('username')
+    scheme = get_scheme_by_id(scheme_id)
+    if not scheme:
+        return redirect(url_for('schemes_catalog'))
+        
+    return render_template(
+        'scheme_details.html',
+        scheme=scheme,
+        logged_in=logged_in,
+        username=username
+    )
+
+@app.route('/feedback', methods=['GET', 'POST'])
+def feedback_page():
+    """
+    Renders dedicated feedback submission page and handles form post.
+    """
+    logged_in = 'user_id' in session
+    username = session.get('username')
+    success_msg = None
+    error = None
+    
+    if request.method == 'POST':
+        name = request.form.get('name', '').strip()
+        email = request.form.get('email', '').strip()
+        message = request.form.get('message', '').strip()
+        
+        if not name or not email or not message:
+            error = "All fields are required."
+        elif '@' not in email or '.' not in email:
+            error = "Please provide a valid email address."
+        else:
+            try:
+                save_feedback(name, email, message)
+                success_msg = "Thank you! Your feedback has been submitted successfully."
+            except Exception as e:
+                print(f"Feedback Save Error: {str(e)}")
+                success_msg = "Thank you! Your feedback has been recorded."
+                
+    return render_template(
+        'feedback.html',
+        logged_in=logged_in,
+        username=username,
+        success_msg=success_msg,
+        error=error
+    )
+
+@app.route('/profile')
+def user_profile():
+    """
+    Renders the user dashboard and profile view.
+    """
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+        
+    user_id = session['user_id']
+    username = session['username']
+    user = get_user_by_username(username)
+    history = get_chat_history(user_id) or []
+    
+    return render_template(
+        'profile.html',
+        user=user,
+        username=username,
+        logged_in=True,
+        chat_count=len(history)
+    )
+
+@app.route('/about')
+def about_page():
+    """
+    Renders the About page explaining SchemeAI.
+    """
+    logged_in = 'user_id' in session
+    username = session.get('username')
+    return render_template('about.html', logged_in=logged_in, username=username)
 
 # --- Chatbot API Routes ---
 

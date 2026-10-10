@@ -658,7 +658,7 @@ def init_db():
                 "Unemployed youth or school/college dropouts seeking professional skills training.",
                 "Free skill training courses across multiple sectors, government certification, assessment fees coverage, and job placement assistance.",
                 "Aadhaar Card, Bank Account Details, Marksheets/Education Proof, Passport Size Photographs.",
-                "https://www.pmkvyofficial.org/"
+                "https://www.skillindiadigital.gov.in"
             ),
             (
                 "PMEGP (Prime Minister's Employment Generation Programme)",
@@ -798,11 +798,11 @@ def init_db():
                 "https://disabilityaffairs.gov.in/"
             ),
             (
-                "National Fellowship for Students with Disabilities",
+                "National Financial Assistance & Scholarship for Students with Disabilities",
                 "differently_abled",
-                "Fellowship grant to support disabled students in pursuing higher studies.",
+                "Financial assistance and scholarship grant to support disabled students in pursuing higher studies.",
                 "Students with benchmark disabilities (40% or more) who have secured admission in M.Phil or Ph.D. programs.",
-                "Monthly financial fellowship starting from ₹31,000 along with contingency grants for research equipment and writing assistance.",
+                "Monthly financial assistance starting from ₹31,000 along with contingency grants for research equipment and writing assistance.",
                 "Aadhaar Card, Disability Certificate (40% or more), Admission Letter for M.Phil/Ph.D., Master's Degree Marksheet, Caste/Category Certificate.",
                 "https://www.ugc.ac.in/"
             ),
@@ -1078,7 +1078,7 @@ def search_schemes(user_query):
         category = 'senior_citizen'
     elif any(word in query for word in ['unemployed', 'job', 'youth', 'skill', 'training', 'placement', 'enterprise', 'stipend']):
         category = 'unemployed'
-    elif any(word in query for word in ['disabled', 'handicap', 'divyang', 'blind', 'deaf', 'disability', 'fellowship']):
+    elif any(word in query for word in ['disabled', 'handicap', 'divyang', 'blind', 'deaf', 'disability', 'rehabilitation', 'assistive']):
         category = 'differently_abled'
         
     conn = get_db_connection()
@@ -1119,6 +1119,17 @@ def get_all_schemes():
     conn.close()
 
     return [dict(row) for row in results]
+
+def get_scheme_by_id(scheme_id):
+    """
+    Retrieves a single government scheme by its database ID.
+    """
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM schemes WHERE id = ?", (scheme_id,))
+    row = cursor.fetchone()
+    conn.close()
+    return dict(row) if row else None
 
 def save_feedback(name, email, message):
     """

@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (sender === 'bot') {
             bubble.innerHTML = `
-                <div class="chat-avatar"><img src="/static/images/logo.jpg" alt="SchemeAI" class="bot-logo-img"></div>
+                <div class="chat-avatar"><img src="/static/images/robot_mascot.jpg?v=13" alt="SchemeAI Robot" class="bot-logo-img"></div>
                 <div class="chat-message-content">${contentHTML}</div>
             `;
         } else {
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         indicator.classList.add('chat-bubble', 'bot', 'typing-indicator');
         indicator.id = 'typing-indicator';
         indicator.innerHTML = `
-            <div class="chat-avatar"><img src="/static/images/logo.jpg" alt="SchemeAI" class="bot-logo-img"></div>
+            <div class="chat-avatar"><img src="/static/images/robot_mascot.jpg?v=13" alt="SchemeAI Robot" class="bot-logo-img"></div>
             <div class="chat-message-content">
                 <span></span>
                 <span></span>
@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         // Reset message area display
                         chatMessages.innerHTML = `
                             <div class="chat-bubble bot">
-                                <div class="chat-avatar"><img src="/static/images/logo.jpg" alt="SchemeAI" class="bot-logo-img"></div>
+                                <div class="chat-avatar"><img src="/static/images/robot_mascot.jpg?v=13" alt="SchemeAI Robot" class="bot-logo-img"></div>
                                 <div class="chat-message-content">
                                     <p>Conversation history cleared successfully in the database. Tell me about yourself to start a new recommendation query!</p>
                                 </div>
