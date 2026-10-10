@@ -11,7 +11,7 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Main Style Sheet -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=13">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=14">
 </head>
 <body>
     <!-- Ambient Background Blobs (Lavender, Mint, Soft Pink) -->
@@ -65,7 +65,7 @@
 
                 <!-- Wide Pill Search Bar -->
                 <form action="{{ url_for('schemes_catalog') }}" method="GET" class="hero-search-pill">
-                    <i class="fa-solid fa-magnifying-glass" style="color: #682CEB; margin-right: 0.75rem; font-size: 1.05rem;"></i>
+                    <i class="fa-solid fa-magnifying-glass" style="color: #2054F6; margin-right: 0.75rem; font-size: 1.05rem;"></i>
                     <input type="text" name="q" placeholder="Search schemes or ask a question..." autocomplete="off">
                     <button type="submit" class="hero-search-arrow-btn" title="Search">
                         <i class="fa-solid fa-arrow-right"></i>
@@ -89,10 +89,12 @@
                 </div>
             </div>
 
-            <!-- Right: Floating 3D AI Robot with Speech Bubble -->
+            <!-- Right: Floating 3D AI Robot with Speech Bubble inside Circular Portal -->
             <div class="hero-robot-wrapper">
                 <div class="hero-speech-bubble">How can I help you?</div>
-                <img src="{{ url_for('static', filename='images/robot_mascot.png') }}?v=13" alt="SchemeAI 3D AI Robot" class="hero-robot-img">
+                <div class="hero-robot-circle">
+                    <img src="{{ url_for('static', filename='images/robot_mascot.jpg') }}?v=14" alt="SchemeAI 3D AI Robot" class="hero-robot-img">
+                </div>
             </div>
         </div>
     </div>

@@ -17,31 +17,31 @@
    ========================================================================== */
 
 :root {
-    /* Core Brand Tokens */
-    --primary-purple: #682CEB;
-    --violet-gradient: #8B3DFA;
-    --deep-purple: #352078;
-    --lavender: #EDE5FF;
-    --bg-pale-lavender: #F7F4FF;
+    /* Core Brand Tokens — Royal Blue / Cobalt & Royal Indigo Theme */
+    --primary-purple: #2563EB;
+    --violet-gradient: #4F46E5;
+    --deep-purple: #11235A;
+    --lavender: #E0E7FF;
+    --bg-pale-lavender: #F4F7FE;
     --mint-green: #B8F2D8;
     --soft-pink: #FFE5F0;
-    --sky-blue: #E3F3FF;
+    --sky-blue: #E0F2FE;
     --peach: #FFF0E5;
     --white: #FFFFFF;
-    --text-main: #29234B;
-    --text-secondary: #716B89;
-    --border-color: #E5DDF6;
+    --text-main: #1E293B;
+    --text-secondary: #64748B;
+    --border-color: #E2E8F0;
 
     /* Theme Aliases */
-    --bg-primary: #F7F4FF;
+    --bg-primary: #F4F7FE;
     --bg-card: #FFFFFF;
-    --text-primary: #29234B;
-    --text-muted: #716B89;
-    --purple-primary: #682CEB;
-    --royal-purple-primary: #682CEB;
-    --royal-purple-dark: #352078;
-    --royal-purple-light: #8B3DFA;
-    --soft-lavender: #EDE5FF;
+    --text-primary: #1E293B;
+    --text-muted: #64748B;
+    --purple-primary: #2563EB;
+    --royal-purple-primary: #2563EB;
+    --royal-purple-dark: #11235A;
+    --royal-purple-light: #4F46E5;
+    --soft-lavender: #E0E7FF;
 
     /* Semantic Status */
     --accent-emerald: #059669;
@@ -458,12 +458,12 @@ a:hover {
    HOMEPAGE MASTER HERO BANNER (Panel 1 - Rich Purple & Violet Gradient)
    ========================================================================== */
 .hero-banner-wrapper {
-    background: linear-gradient(135deg, #4A1D96 0%, #682CEB 45%, #8B3DFA 80%, #9D4EDD 100%);
+    background: linear-gradient(130deg, #132D76 0%, #1A40B5 20%, #2054F6 45%, #3B6BFF 65%, #5E62F1 85%, #7C5CEB 100%);
     border-radius: 0 0 36px 36px;
     position: relative;
     overflow: hidden;
     padding-bottom: 4rem;
-    box-shadow: 0 16px 40px rgba(53, 32, 120, 0.22);
+    box-shadow: 0 16px 45px rgba(19, 45, 118, 0.28);
 }
 
 .hero-banner-wrapper::before {
@@ -473,7 +473,7 @@ a:hover {
     right: -100px;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(184, 242, 216, 0.35) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(147, 197, 253, 0.35) 0%, transparent 70%);
     pointer-events: none;
 }
 
@@ -484,7 +484,7 @@ a:hover {
     left: 20%;
     width: 600px;
     height: 350px;
-    background: radial-gradient(circle, rgba(220, 208, 255, 0.25) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(196, 181, 253, 0.25) 0%, transparent 70%);
     pointer-events: none;
 }
 
@@ -504,8 +504,8 @@ a:hover {
 }
 
 .navbar-hero .brand-name span {
-    color: #D4F7E7;
-    -webkit-text-fill-color: #D4F7E7;
+    color: #93C5FD;
+    -webkit-text-fill-color: #93C5FD;
 }
 
 .navbar-hero .nav-links {
@@ -632,7 +632,7 @@ a:hover {
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary-purple), var(--violet-gradient));
+    background: #2054F6;
     border: none;
     color: var(--white);
     display: flex;
@@ -644,6 +644,7 @@ a:hover {
 }
 
 .hero-search-arrow-btn:hover {
+    background: #1A40B5;
     transform: scale(1.08);
 }
 
@@ -654,7 +655,7 @@ a:hover {
 }
 
 .btn-cta-chat {
-    background: linear-gradient(135deg, var(--primary-purple) 0%, var(--violet-gradient) 100%);
+    background: #172B7B;
     color: var(--white) !important;
     padding: 0.85rem 2.2rem;
     border-radius: var(--radius-pill);
@@ -664,21 +665,21 @@ a:hover {
     display: inline-flex;
     align-items: center;
     gap: 0.65rem;
-    box-shadow: 0 8px 24px rgba(104, 44, 235, 0.42);
-    border: none;
+    box-shadow: 0 8px 24px rgba(18, 38, 115, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     transition: var(--transition-smooth);
 }
 
 .btn-cta-chat:hover {
-    background: linear-gradient(135deg, #5820D0 0%, #7B2EE0 100%);
+    background: #112061;
     transform: translateY(-2px);
-    box-shadow: 0 12px 30px rgba(104, 44, 235, 0.55);
+    box-shadow: 0 12px 30px rgba(18, 38, 115, 0.6);
 }
 
 .btn-cta-explore {
     background: rgba(255, 255, 255, 0.12);
     color: var(--white) !important;
-    border: 2px solid rgba(237, 229, 255, 0.75);
+    border: 2px solid rgba(255, 255, 255, 0.6);
     padding: 0.85rem 2.2rem;
     border-radius: var(--radius-pill);
     font-weight: 700;
@@ -709,14 +710,14 @@ a:hover {
 
 .hero-speech-bubble {
     position: absolute;
-    top: -20px;
-    right: 40px;
+    top: -12px;
+    right: 25px;
     background: var(--white);
     border-radius: var(--radius-pill);
     padding: 0.65rem 1.4rem;
     font-weight: 700;
     font-size: 0.95rem;
-    color: var(--deep-purple);
+    color: #1E293B;
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
     z-index: 6;
     animation: floatBubble 5s ease-in-out infinite;
@@ -732,17 +733,32 @@ a:hover {
     border-color: var(--white) transparent;
 }
 
-.hero-robot-img {
+.hero-robot-circle {
     width: 360px;
     height: 360px;
-    object-fit: contain;
-    border-radius: 0 !important;
-    border: none !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    filter: drop-shadow(0 20px 35px rgba(35, 14, 84, 0.38));
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid rgba(255, 255, 255, 0.45);
+    box-shadow: 0 20px 48px rgba(10, 25, 80, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.08);
+    position: relative;
     animation: floatRobot 6s ease-in-out infinite;
-    transform-origin: center bottom;
+}
+
+.hero-robot-circle .hero-robot-img,
+.hero-robot-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 25%;
+    border-radius: 50% !important;
+    border: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+    display: block;
 }
 
 @keyframes floatBubble {
@@ -2970,14 +2986,27 @@ a:hover {
     .hero-speech-bubble::after {
         display: none !important;
     }
+    .hero-robot-circle {
+        width: 220px !important;
+        height: 220px !important;
+        border-radius: 50% !important;
+        border: 3px solid rgba(255, 255, 255, 0.45) !important;
+        box-shadow: 0 12px 28px rgba(10, 25, 80, 0.3) !important;
+        overflow: hidden !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    .hero-robot-circle .hero-robot-img,
     .hero-robot-img {
-        width: 200px !important;
-        height: 200px !important;
-        object-fit: contain !important;
-        border-radius: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center 25% !important;
+        border-radius: 50% !important;
         border: none !important;
         box-shadow: none !important;
-        filter: drop-shadow(0 12px 24px rgba(35, 14, 84, 0.35)) !important;
+        filter: none !important;
     }
     .quick-categories-section {
         padding: 0 1rem !important;
