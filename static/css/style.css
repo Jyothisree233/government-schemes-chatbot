@@ -1754,17 +1754,17 @@ a:hover {
 }
 
 /* ==========================================================================
-   DASHBOARD SIDEBAR (Panels 4 & 8 - Rich Purple Gradient)
+   DASHBOARD SIDEBAR (Royal Cobalt Blue to Royal Indigo Palette)
    ========================================================================== */
 .dashboard-sidebar {
-    background: linear-gradient(180deg, #4F20B2 0%, #361578 100%);
+    background: linear-gradient(180deg, #122B76 0%, #16369A 25%, #1D4ED8 50%, #2563EB 75%, #3B54E0 100%);
     color: var(--white);
     padding: 1.75rem 1.25rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
-    box-shadow: 4px 0 24px rgba(41, 18, 92, 0.25);
+    box-shadow: 4px 0 24px rgba(18, 43, 118, 0.28);
     z-index: 10;
 }
 
@@ -1779,8 +1779,8 @@ a:hover {
 }
 
 .dashboard-sidebar .brand-name span {
-    color: #D4F7E7;
-    -webkit-text-fill-color: #D4F7E7;
+    color: #93C5FD;
+    -webkit-text-fill-color: #93C5FD;
 }
 
 .sidebar-user-card {
@@ -1790,15 +1790,15 @@ a:hover {
     padding: 0.75rem 0.85rem;
     background: rgba(255, 255, 255, 0.12);
     border-radius: var(--radius-md);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.22);
 }
 
 .sidebar-user-avatar {
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--mint-green), var(--lavender));
-    color: var(--deep-purple);
+    background: linear-gradient(135deg, #93C5FD, #BFDBFE);
+    color: #11235A;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1814,7 +1814,7 @@ a:hover {
 
 .sidebar-user-info p {
     font-size: 0.75rem;
-    color: #CFC5EB;
+    color: #BFDBFE;
     display: flex;
     align-items: center;
     gap: 0.35rem;
@@ -1842,13 +1842,13 @@ a:hover {
     border-radius: var(--radius-md);
     font-size: 0.9rem;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.88);
     text-decoration: none;
     transition: var(--transition-smooth);
 }
 
 .sidebar-menu-link i {
-    color: #DCD0FF;
+    color: #93C5FD;
     font-size: 1.05rem;
 }
 
@@ -1858,14 +1858,14 @@ a:hover {
 }
 
 .sidebar-menu-link.active {
-    background: #EDE5FF;
-    color: #4F20B2;
+    background: #FFFFFF;
+    color: #1D4ED8;
     font-weight: 700;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 16px rgba(18, 43, 118, 0.22);
 }
 
 .sidebar-menu-link.active i {
-    color: #682CEB;
+    color: #2054F6;
 }
 
 .nav-section-title {
@@ -1873,7 +1873,7 @@ a:hover {
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.8px;
-    color: #CFC5EB;
+    color: #BFDBFE;
     margin: 1.25rem 0 0.5rem 0.5rem;
 }
 
@@ -1889,14 +1889,14 @@ a:hover {
     border-radius: var(--radius-pill);
     font-size: 0.85rem;
     font-weight: 600;
-    color: #EDE5FF;
+    color: #EFF6FF;
     background: rgba(255, 255, 255, 0.08);
     cursor: pointer;
     transition: var(--transition-smooth);
     display: flex;
     align-items: center;
     gap: 0.65rem;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.16);
 }
 
 .preset-queries li i {
@@ -2000,13 +2000,13 @@ a:hover {
 }
 
 .chat-header {
-    background: linear-gradient(135deg, var(--deep-purple) 0%, var(--primary-purple) 100%);
+    background: linear-gradient(130deg, #132D76 0%, #1A40B5 25%, #2054F6 60%, #3B6BFF 85%, #5E62F1 100%);
     padding: 1rem 1.75rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: var(--white);
-    box-shadow: 0 4px 14px rgba(53, 32, 120, 0.15);
+    box-shadow: 0 4px 18px rgba(19, 45, 118, 0.22);
 }
 
 .chat-bot-info {
@@ -2044,7 +2044,7 @@ a:hover {
 
 .chat-bot-status p {
     font-size: 0.775rem;
-    color: #E0D4FC;
+    color: #BFDBFE;
     display: flex;
     align-items: center;
     gap: 0.4rem;
@@ -2090,23 +2090,23 @@ a:hover {
 }
 
 .btn-chat-clear:hover {
-    background: var(--lavender);
-    color: var(--primary-purple);
-    border-color: #D3C4F5;
+    background: #EFF6FF;
+    color: #1D4ED8;
+    border-color: #BFDBFE;
     transform: translateY(-1px);
 }
 
 .btn-chat-feedback {
-    background: linear-gradient(135deg, var(--primary-purple) 0%, var(--violet-gradient) 100%);
+    background: #172B7B;
     color: var(--white) !important;
     border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 4px 14px rgba(104, 44, 235, 0.35);
+    box-shadow: 0 4px 14px rgba(23, 43, 123, 0.4);
 }
 
 .btn-chat-feedback:hover {
-    background: linear-gradient(135deg, #5820D0 0%, #7B2EE0 100%);
+    background: #112061;
     transform: translateY(-1px);
-    box-shadow: 0 6px 18px rgba(104, 44, 235, 0.45);
+    box-shadow: 0 6px 18px rgba(23, 43, 123, 0.55);
 }
 
 /* Message Bubble Log */
@@ -2117,7 +2117,7 @@ a:hover {
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
-    background: #FAF8FF;
+    background: #F4F7FE;
 }
 
 .chat-bubble {
@@ -2177,10 +2177,10 @@ a:hover {
 }
 
 .chat-bubble.user .chat-message-content {
-    background: linear-gradient(135deg, var(--primary-purple) 0%, var(--violet-gradient) 100%);
+    background: linear-gradient(135deg, #1D4ED8 0%, #2563EB 50%, #3B82F6 100%);
     color: var(--white);
     border-top-right-radius: 4px;
-    box-shadow: 0 6px 18px rgba(104, 44, 235, 0.25);
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.28);
 }
 
 /* AI RAG Box & Scheme Cards inside Chat */
@@ -2192,8 +2192,8 @@ a:hover {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
-    background: var(--lavender);
-    color: var(--primary-purple);
+    background: #EFF6FF;
+    color: #1D4ED8;
     padding: 0.25rem 0.75rem;
     border-radius: var(--radius-pill);
     font-size: 0.75rem;
@@ -2237,7 +2237,7 @@ a:hover {
 
 .chat-input-area input {
     flex-grow: 1;
-    background: #FAF8FF;
+    background: #F4F7FE;
     border: 1.5px solid var(--border-color);
     padding: 0.85rem 1.4rem;
     border-radius: var(--radius-pill);
@@ -2250,12 +2250,12 @@ a:hover {
 
 .chat-input-area input:focus {
     background: var(--white);
-    border-color: var(--primary-purple);
-    box-shadow: 0 0 0 4px rgba(104, 44, 235, 0.12);
+    border-color: #2054F6;
+    box-shadow: 0 0 0 4px rgba(32, 84, 246, 0.14);
 }
 
 .chat-send-btn {
-    background: linear-gradient(135deg, var(--primary-purple) 0%, var(--violet-gradient) 100%);
+    background: linear-gradient(135deg, #1D4ED8 0%, #2054F6 100%);
     border: none;
     width: 46px;
     height: 46px;
@@ -2267,13 +2267,14 @@ a:hover {
     justify-content: center;
     cursor: pointer;
     transition: var(--transition-smooth);
-    box-shadow: 0 4px 14px rgba(104, 44, 235, 0.3);
+    box-shadow: 0 4px 14px rgba(32, 84, 246, 0.35);
     flex-shrink: 0;
 }
 
 .chat-send-btn:hover {
+    background: linear-gradient(135deg, #1742B8 0%, #1A40B5 100%);
     transform: scale(1.06);
-    box-shadow: 0 6px 18px rgba(104, 44, 235, 0.4);
+    box-shadow: 0 6px 18px rgba(32, 84, 246, 0.45);
 }
 
 /* ==========================================================================
@@ -3067,7 +3068,7 @@ a:hover {
         overflow: hidden !important;
         height: 100vh !important;
         height: 100dvh !important;
-        background: #FAF8FF !important;
+        background: #F4F7FE !important;
         margin: 0 !important;
         padding: 0 !important;
     }
