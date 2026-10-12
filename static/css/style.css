@@ -1,19 +1,19 @@
 /* ==========================================================================
    SchemeAI — Full Project Modern UI Design System
    Colors:
-   - Primary Purple: #682CEB
-   - Violet Gradient: #8B3DFA
-   - Deep Purple: #352078
-   - Lavender: #EDE5FF
-   - Pale Lavender Background: #F7F4FF
+   - Primary Blue: #2563EB / #2054F6
+   - Indigo Gradient: #4F46E5
+   - Deep Navy: #11235A / #132D76
+   - Soft Ice Blue: #EFF6FF / #DBEAFE
+   - Pale Background: #F4F7FE
    - Mint Green: #B8F2D8
    - Soft Pink: #FFE5F0
-   - Sky Blue: #E3F3FF
+   - Sky Blue: #E0F2FE
    - Peach: #FFF0E5
    - White: #FFFFFF
-   - Main Text: #29234B
-   - Secondary Text: #716B89
-   - Border: #E5DDF6
+   - Main Text: #1E293B
+   - Secondary Text: #64748B
+   - Border: #E2E8F0
    ========================================================================== */
 
 :root {
@@ -55,9 +55,9 @@
     --radius-lg: 20px;
     --radius-xl: 28px;
     --radius-pill: 50px;
-    --shadow-subtle: 0 4px 16px rgba(104, 44, 235, 0.06);
-    --shadow-card: 0 12px 32px rgba(104, 44, 235, 0.08);
-    --shadow-elevated: 0 20px 48px rgba(104, 44, 235, 0.14);
+    --shadow-subtle: 0 4px 16px rgba(32, 84, 246, 0.06);
+    --shadow-card: 0 12px 32px rgba(32, 84, 246, 0.08);
+    --shadow-elevated: 0 20px 48px rgba(32, 84, 246, 0.14);
     --transition-smooth: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 
     /* Typography */
@@ -136,14 +136,14 @@ a:hover {
 .bg-glow-1 {
     width: 550px;
     height: 550px;
-    background: radial-gradient(circle, #EDE5FF 0%, #B8F2D8 60%, transparent 80%);
+    background: radial-gradient(circle, #DBEAFE 0%, #B8F2D8 60%, transparent 80%);
     top: -160px;
     right: -100px;
 }
 .bg-glow-2 {
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, #EDE5FF 0%, #FFE5F0 70%, transparent 80%);
+    background: radial-gradient(circle, #DBEAFE 0%, #FFE5F0 70%, transparent 80%);
     bottom: 120px;
     left: -120px;
 }
@@ -194,7 +194,7 @@ a:hover {
     justify-content: center;
     color: var(--white);
     font-size: 1.25rem;
-    box-shadow: 0 4px 14px rgba(104, 44, 235, 0.25);
+    box-shadow: 0 4px 14px rgba(32, 84, 246, 0.25);
     overflow: hidden;
     padding: 2px;
 }
@@ -242,12 +242,12 @@ a:hover {
 
 .nav-item:hover {
     color: var(--primary-purple);
-    background: #EDE5FF;
+    background: #EFF6FF;
     text-decoration: none !important;
 }
 
 .nav-item.active {
-    background: #EDE5FF;
+    background: #EFF6FF;
     color: var(--primary-purple) !important;
     font-weight: 700;
     text-decoration: none !important;
@@ -279,7 +279,7 @@ a:hover {
     color: var(--white);
     border-color: var(--primary-purple);
     transform: translateY(-2px);
-    box-shadow: 0 4px 14px rgba(104, 44, 235, 0.25);
+    box-shadow: 0 4px 14px rgba(32, 84, 246, 0.25);
     text-decoration: none !important;
 }
 
@@ -295,14 +295,14 @@ a:hover {
     gap: 0.5rem;
     padding: 0.45rem 1.15rem;
     border-radius: var(--radius-pill);
-    background: #FAF8FF;
+    background: #F4F7FE;
     border: 1.5px solid var(--border-color);
     color: var(--deep-purple) !important;
     font-weight: 700;
     font-size: 0.9rem;
     text-decoration: none !important;
     transition: var(--transition-smooth);
-    box-shadow: 0 2px 6px rgba(104, 44, 235, 0.05);
+    box-shadow: 0 2px 6px rgba(32, 84, 246, 0.05);
 }
 
 .user-pill-btn i {
@@ -312,10 +312,10 @@ a:hover {
 
 .user-pill-btn:hover {
     background: var(--lavender);
-    border-color: #D3C3FA;
+    border-color: #BFDBFE;
     color: var(--primary-purple) !important;
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(104, 44, 235, 0.12);
+    box-shadow: 0 4px 12px rgba(32, 84, 246, 0.12);
     text-decoration: none !important;
 }
 
@@ -326,14 +326,14 @@ a:hover {
     width: 38px;
     height: 38px;
     border-radius: var(--radius-pill);
-    background: #FAF8FF;
+    background: #F4F7FE;
     border: 1.5px solid var(--border-color);
     color: var(--text-secondary) !important;
     font-size: 0.95rem;
     text-decoration: none !important;
     transition: var(--transition-smooth);
     cursor: pointer;
-    box-shadow: 0 2px 6px rgba(104, 44, 235, 0.05);
+    box-shadow: 0 2px 6px rgba(32, 84, 246, 0.05);
 }
 
 .btn-nav-logout:hover {
@@ -351,7 +351,7 @@ a:hover {
     justify-content: center;
     padding: 0.45rem 1.25rem;
     border-radius: var(--radius-pill);
-    background: #FAF8FF;
+    background: #F4F7FE;
     border: 1.5px solid var(--border-color);
     color: var(--deep-purple) !important;
     font-weight: 700;
@@ -362,7 +362,7 @@ a:hover {
 
 .btn-nav-login-light:hover {
     background: var(--lavender);
-    border-color: #D3C3FA;
+    border-color: #BFDBFE;
     color: var(--primary-purple) !important;
     transform: translateY(-1px);
     text-decoration: none !important;
@@ -380,13 +380,13 @@ a:hover {
     font-weight: 700;
     font-size: 0.9rem;
     text-decoration: none !important;
-    box-shadow: 0 4px 14px rgba(104, 44, 235, 0.25);
+    box-shadow: 0 4px 14px rgba(32, 84, 246, 0.25);
     transition: var(--transition-smooth);
 }
 
 .btn-nav-register-light:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(104, 44, 235, 0.35);
+    box-shadow: 0 6px 18px rgba(32, 84, 246, 0.35);
     text-decoration: none !important;
 }
 
@@ -426,13 +426,13 @@ a:hover {
 .btn-primary {
     background: linear-gradient(135deg, var(--primary-purple) 0%, var(--violet-gradient) 100%);
     color: var(--white) !important;
-    box-shadow: 0 8px 20px rgba(104, 44, 235, 0.28);
+    box-shadow: 0 8px 20px rgba(32, 84, 246, 0.28);
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, #5720CC 0%, #792EE0 100%);
+    background: linear-gradient(135deg, #1D4ED8 0%, #2563EB 100%);
     transform: translateY(-2px);
-    box-shadow: 0 12px 28px rgba(104, 44, 235, 0.38);
+    box-shadow: 0 12px 28px rgba(32, 84, 246, 0.38);
 }
 
 .btn-secondary {
@@ -592,7 +592,7 @@ a:hover {
 }
 
 .hero-subtitle-lavender {
-    color: #E2D9FC;
+    color: #DBEAFE;
     font-size: 1.05rem;
     line-height: 1.6;
     margin-bottom: 2rem;
@@ -625,7 +625,7 @@ a:hover {
 }
 
 .hero-search-pill input::placeholder {
-    color: #8C84A8;
+    color: #94A3B8;
 }
 
 .hero-search-arrow-btn {
@@ -805,13 +805,13 @@ a:hover {
 
 .quick-cat-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 12px 28px rgba(104, 44, 235, 0.14);
+    box-shadow: 0 12px 28px rgba(32, 84, 246, 0.14);
 }
 
 .quick-cat-card:active,
 .quick-cat-card.active {
     transform: translateY(-2px);
-    box-shadow: 0 0 0 3px rgba(104, 44, 235, 0.25), 0 8px 20px rgba(104, 44, 235, 0.15);
+    box-shadow: 0 0 0 3px rgba(32, 84, 246, 0.25), 0 8px 20px rgba(32, 84, 246, 0.15);
 }
 
 .quick-cat-icon {
@@ -839,19 +839,19 @@ a:hover {
     line-height: 1.25;
 }
 
-/* 1. Students: Pale Lavender with Purple Icon */
+/* 1. Students: Pale Blue with Royal Blue Icon */
 .quick-cat-card.cat-card-student {
-    background: #EDE5FF;
-    border-color: #D9CBFA;
+    background: #EFF6FF;
+    border-color: #BFDBFE;
 }
 .cat-card-student .quick-cat-icon {
-    color: #682CEB;
+    color: #2563EB;
 }
 .cat-card-student .quick-cat-name {
-    color: #431E9E;
+    color: #1E40AF;
 }
 .quick-cat-card.cat-card-student:hover {
-    border-color: #682CEB;
+    border-color: #2563EB;
 }
 
 /* 2. Farmers: Pale Mint with Green Plant Icon */
@@ -931,7 +931,7 @@ a:hover {
 
 .bottom-empowerment-line {
     text-align: center;
-    color: #8C84A8;
+    color: #94A3B8;
     font-size: 0.9rem;
     font-weight: 500;
     margin-top: 1.5rem;
@@ -1064,12 +1064,12 @@ a:hover {
 }
 
 .cat-unemployed {
-    background: #EDE5FF;
-    border-color: #DDD6FE;
+    background: #EFF6FF;
+    border-color: #BFDBFE;
 }
 .cat-unemployed .cat-icon-circle,
 .cat-unemployed .cat-arrow-link {
-    color: #682CEB;
+    color: #2563EB;
 }
 
 .cat-disabled {
@@ -1125,7 +1125,7 @@ a:hover {
     border: 1.5px solid var(--border-color);
     border-radius: var(--radius-pill);
     padding: 0.35rem 0.45rem 0.35rem 1.25rem;
-    box-shadow: 0 4px 18px rgba(104, 44, 235, 0.08);
+    box-shadow: 0 4px 18px rgba(32, 84, 246, 0.08);
     width: 100%;
     max-width: 420px;
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1134,14 +1134,14 @@ a:hover {
 }
 
 .schemes-search-pill:hover {
-    border-color: #CFC5EB;
-    box-shadow: 0 6px 22px rgba(104, 44, 235, 0.12);
+    border-color: #BFDBFE;
+    box-shadow: 0 6px 22px rgba(32, 84, 246, 0.12);
 }
 
 .schemes-search-pill:focus-within {
     background: var(--white);
     border-color: var(--primary-purple);
-    box-shadow: 0 0 0 4px rgba(104, 44, 235, 0.14), 0 8px 24px rgba(104, 44, 235, 0.14);
+    box-shadow: 0 0 0 4px rgba(32, 84, 246, 0.14), 0 8px 24px rgba(32, 84, 246, 0.14);
 }
 
 .schemes-search-icon {
@@ -1172,7 +1172,7 @@ a:hover {
 }
 
 .schemes-search-pill input::placeholder {
-    color: #928AA8;
+    color: #94A3B8;
     font-weight: 400;
 }
 
@@ -1184,7 +1184,7 @@ a:hover {
     height: 28px;
     border-radius: 50%;
     color: var(--text-secondary);
-    background: #F3EFFC;
+    background: #EFF6FF;
     margin-right: 0.5rem;
     text-decoration: none;
     font-size: 0.75rem;
@@ -1193,7 +1193,7 @@ a:hover {
 }
 
 .schemes-search-clear:hover {
-    background: #EDE5FF;
+    background: #DBEAFE;
     color: var(--primary-purple);
     transform: scale(1.12);
 }
@@ -1212,13 +1212,13 @@ a:hover {
     cursor: pointer;
     transition: all 0.25s ease;
     flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(104, 44, 235, 0.28);
+    box-shadow: 0 4px 12px rgba(32, 84, 246, 0.28);
 }
 
 .schemes-search-btn:hover {
     transform: scale(1.06);
-    box-shadow: 0 6px 18px rgba(104, 44, 235, 0.4);
-    background: linear-gradient(135deg, #5820D0 0%, #7B2EE0 100%);
+    box-shadow: 0 6px 18px rgba(32, 84, 246, 0.4);
+    background: linear-gradient(135deg, #1D4ED8 0%, #2563EB 100%);
 }
 
 .schemes-search-btn:active {
@@ -1253,7 +1253,7 @@ a:hover {
     background: linear-gradient(135deg, var(--primary-purple), var(--violet-gradient));
     color: var(--white);
     border-color: transparent;
-    box-shadow: 0 4px 14px rgba(104, 44, 235, 0.25);
+    box-shadow: 0 4px 14px rgba(32, 84, 246, 0.25);
 }
 
 .schemes-grid {
@@ -1327,7 +1327,7 @@ a:hover {
     border: 1.5px solid var(--border-color);
     border-radius: var(--radius-xl);
     padding: 1.85rem 1.65rem;
-    box-shadow: 0 4px 16px rgba(104, 44, 235, 0.06);
+    box-shadow: 0 4px 16px rgba(32, 84, 246, 0.06);
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
@@ -1336,8 +1336,8 @@ a:hover {
 
 .scheme-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 28px rgba(104, 44, 235, 0.12);
-    border-color: #D3C4F5;
+    box-shadow: 0 12px 28px rgba(32, 84, 246, 0.12);
+    border-color: #BFDBFE;
 }
 
 .scheme-cat-badge {
@@ -1360,9 +1360,9 @@ a:hover {
 }
 
 .scheme-cat-badge.badge-student {
-    background: #EDE5FF;
-    color: #682CEB;
-    border: 1px solid #D9CBFA;
+    background: #EFF6FF;
+    color: #2563EB;
+    border: 1px solid #BFDBFE;
 }
 
 .scheme-cat-badge.badge-health {
@@ -1406,7 +1406,7 @@ a:hover {
     background: var(--lavender);
     color: var(--primary-purple);
     margin-bottom: 1rem;
-    border: 1px solid #DFD5F5;
+    border: 1px solid #BFDBFE;
 }
 
 .scheme-card h3 {
@@ -1446,14 +1446,14 @@ a:hover {
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
-    box-shadow: 0 4px 12px rgba(104, 44, 235, 0.22);
+    box-shadow: 0 4px 12px rgba(32, 84, 246, 0.22);
     transition: var(--transition-smooth);
 }
 
 .btn-scheme-view:hover {
-    background: linear-gradient(135deg, #5820D0 0%, #7B2EE0 100%);
+    background: linear-gradient(135deg, #1D4ED8 0%, #2563EB 100%);
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(104, 44, 235, 0.35);
+    box-shadow: 0 6px 16px rgba(32, 84, 246, 0.35);
 }
 
 .scheme-portal-link {
@@ -1499,7 +1499,7 @@ a:hover {
     align-items: center;
     justify-content: center;
     padding: 2.5rem 1.5rem;
-    background: radial-gradient(circle at 10% 20%, #EDE5FF 0%, #F7F4FF 50%, #B8F2D8 100%);
+    background: radial-gradient(circle at 10% 20%, #DBEAFE 0%, #F4F7FE 50%, #B8F2D8 100%);
     position: relative;
 }
 
@@ -1540,7 +1540,7 @@ a:hover {
     font-weight: 700;
     font-size: 0.95rem;
     color: var(--deep-purple);
-    box-shadow: 0 10px 24px rgba(104, 44, 235, 0.12);
+    box-shadow: 0 10px 24px rgba(32, 84, 246, 0.12);
     z-index: 5;
     animation: floatBubble 5s ease-in-out infinite;
 }
@@ -1563,7 +1563,7 @@ a:hover {
     border: none !important;
     background: transparent !important;
     box-shadow: none !important;
-    filter: drop-shadow(0 16px 30px rgba(104, 44, 235, 0.25));
+    filter: drop-shadow(0 16px 30px rgba(32, 84, 246, 0.25));
     animation: floatRobot 6s ease-in-out infinite;
 }
 
@@ -1595,7 +1595,7 @@ a:hover {
     justify-content: center;
     overflow: hidden;
     border: 2px solid var(--border-color);
-    box-shadow: 0 4px 12px rgba(104, 44, 235, 0.15);
+    box-shadow: 0 4px 12px rgba(32, 84, 246, 0.15);
 }
 
 .auth-robot-badge img {
@@ -1648,7 +1648,7 @@ a:hover {
 
 .input-with-icon input {
     width: 100%;
-    background: #FAF8FF;
+    background: #F4F7FE;
     border: 1.5px solid var(--border-color);
     padding: 0.85rem 2.8rem 0.85rem 2.85rem;
     border-radius: var(--radius-md);
@@ -1662,7 +1662,7 @@ a:hover {
 .input-with-icon input:focus {
     background: var(--white);
     border-color: var(--primary-purple);
-    box-shadow: 0 0 0 4px rgba(104, 44, 235, 0.12);
+    box-shadow: 0 0 0 4px rgba(32, 84, 246, 0.12);
 }
 
 .password-toggle-btn {
@@ -2338,7 +2338,7 @@ a:hover {
 
 .feedback-modal-body textarea {
     width: 100%;
-    background: #FAF8FF;
+    background: #F4F7FE;
     border: 1.5px solid var(--border-color);
     border-radius: var(--radius-md);
     padding: 0.85rem 1rem;
@@ -2353,7 +2353,7 @@ a:hover {
 .feedback-modal-body textarea:focus {
     background: var(--white);
     border-color: var(--primary-purple);
-    box-shadow: 0 0 0 4px rgba(104, 44, 235, 0.12);
+    box-shadow: 0 0 0 4px rgba(32, 84, 246, 0.12);
 }
 
 .modal-footer-actions {
@@ -2391,7 +2391,7 @@ a:hover {
 }
 
 .footer-brand p {
-    color: #CFC5EB;
+    color: #BFDBFE;
     font-size: 0.95rem;
     line-height: 1.6;
     max-width: 360px;
@@ -2413,7 +2413,7 @@ a:hover {
 }
 
 .footer-links a {
-    color: #CFC5EB;
+    color: #BFDBFE;
     text-decoration: none;
     font-size: 0.9rem;
     transition: var(--transition-smooth);
@@ -2430,7 +2430,7 @@ a:hover {
     padding: 1.5rem 1.5rem 0 1.5rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     text-align: center;
-    color: #A396CF;
+    color: #94A3B8;
     font-size: 0.85rem;
 }
 
@@ -2456,7 +2456,7 @@ a:hover {
 }
 
 .feedback-visual-panel {
-    background: linear-gradient(145deg, rgba(237, 229, 255, 0.85) 0%, rgba(184, 242, 216, 0.4) 100%);
+    background: linear-gradient(145deg, rgba(219, 234, 254, 0.85) 0%, rgba(184, 242, 216, 0.4) 100%);
     border: 1.5px solid var(--border-color);
     border-radius: var(--radius-xl);
     padding: 2.5rem 2rem;
@@ -2478,7 +2478,7 @@ a:hover {
     border: none !important;
     background: transparent !important;
     box-shadow: none !important;
-    filter: drop-shadow(0 14px 28px rgba(104, 44, 235, 0.22));
+    filter: drop-shadow(0 14px 28px rgba(32, 84, 246, 0.22));
     animation: floatRobot 6s ease-in-out infinite;
 }
 
@@ -2513,7 +2513,7 @@ a:hover {
 
 .form-group textarea.feedback-textarea {
     width: 100%;
-    background: #FAF8FF;
+    background: #F4F7FE;
     border: 1.5px solid var(--border-color);
     padding: 0.85rem 1.15rem;
     border-radius: var(--radius-md);
@@ -2528,7 +2528,7 @@ a:hover {
 .form-group textarea.feedback-textarea:focus {
     background: var(--white);
     border-color: var(--primary-purple);
-    box-shadow: 0 0 0 4px rgba(104, 44, 235, 0.12);
+    box-shadow: 0 0 0 4px rgba(32, 84, 246, 0.12);
 }
 
 .form-actions-split {
@@ -2561,7 +2561,7 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 10px 30px rgba(53, 32, 120, 0.25);
+    box-shadow: 0 10px 30px rgba(17, 35, 90, 0.25);
     margin-bottom: 2.5rem;
     position: relative;
     overflow: hidden;
@@ -2609,7 +2609,7 @@ a:hover {
 }
 
 .profile-meta p {
-    color: #DCD0FF;
+    color: #BFDBFE;
     font-size: 0.95rem;
     display: flex;
     align-items: center;
@@ -2728,7 +2728,7 @@ a:hover {
     align-items: center;
     justify-content: space-between;
     padding: 1rem 1.25rem;
-    background: #FAF8FF;
+    background: #F4F7FE;
     border: 1.5px solid var(--border-color);
     border-radius: var(--radius-md);
     text-decoration: none;
@@ -2758,7 +2758,7 @@ a:hover {
    ABOUT PAGE STYLING
    ========================================================================== */
 .about-hero {
-    background: linear-gradient(135deg, rgba(237, 229, 255, 0.75) 0%, rgba(184, 242, 216, 0.35) 100%);
+    background: linear-gradient(135deg, rgba(219, 234, 254, 0.75) 0%, rgba(184, 242, 216, 0.35) 100%);
     border-bottom: 1.5px solid var(--border-color);
     padding: 4.5rem 0;
     text-align: center;

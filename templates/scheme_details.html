@@ -11,7 +11,7 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Main Style Sheet -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=15">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=16">
 </head>
 <body class="public-page">
     <div class="bg-glow bg-glow-1"></div>
@@ -54,16 +54,16 @@
         <!-- Breadcrumbs (Panel 6) -->
         <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--text-secondary); margin: 1.5rem 0 1rem 0;">
             <a href="/" style="color: var(--primary-purple); text-decoration: none; font-weight: 600;">Home</a>
-            <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem; color: #A396CF;"></i>
+            <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem; color: #94A3B8;"></i>
             <a href="{{ url_for('schemes_catalog') }}" style="color: var(--primary-purple); text-decoration: none; font-weight: 600;">Schemes</a>
-            <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem; color: #A396CF;"></i>
+            <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem; color: #94A3B8;"></i>
             <span style="color: var(--deep-purple); font-weight: 700;">{{ scheme.name }}</span>
         </div>
 
         <!-- Scheme Header Card (Panel 6) -->
         <div style="background: var(--white); border: 1.5px solid var(--border-color); border-radius: var(--radius-xl); padding: 2rem 2.5rem; box-shadow: var(--shadow-card); display: flex; justify-content: space-between; align-items: center; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap;">
             <div style="display: flex; align-items: center; gap: 1.5rem;">
-                <div style="width: 64px; height: 64px; border-radius: var(--radius-md); background: #FAF7FF; border: 1.5px solid var(--border-color); display: flex; align-items: center; justify-content: center; font-size: 1.75rem; color: var(--primary-purple); flex-shrink: 0;">
+                <div style="width: 64px; height: 64px; border-radius: var(--radius-md); background: #F0F6FF; border: 1.5px solid var(--border-color); display: flex; align-items: center; justify-content: center; font-size: 1.75rem; color: var(--primary-purple); flex-shrink: 0;">
                     <i class="fa-solid fa-landmark"></i>
                 </div>
                 <div>
@@ -113,7 +113,7 @@
 
                     <!-- 4 Criteria Cards in 2x2 Grid (Panel 6) -->
                     <div class="scheme-criteria-2x2-grid">
-                        <div style="background: #FAF8FF; border: 1.5px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.25rem;">
+                        <div style="background: #F4F7FE; border: 1.5px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.25rem;">
                             <div style="color: var(--primary-purple); font-size: 1.2rem; margin-bottom: 0.4rem;">
                                 <i class="fa-solid fa-user-check"></i>
                             </div>
@@ -123,7 +123,7 @@
                             </div>
                         </div>
 
-                        <div style="background: #FAF8FF; border: 1.5px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.25rem;">
+                        <div style="background: #F4F7FE; border: 1.5px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.25rem;">
                             <div style="color: #059669; font-size: 1.2rem; margin-bottom: 0.4rem;">
                                 <i class="fa-solid fa-hand-holding-dollar"></i>
                             </div>
@@ -133,7 +133,7 @@
                             </div>
                         </div>
 
-                        <div style="background: #FAF8FF; border: 1.5px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.25rem;">
+                        <div style="background: #F4F7FE; border: 1.5px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.25rem;">
                             <div style="color: #0284C7; font-size: 1.2rem; margin-bottom: 0.4rem;">
                                 <i class="fa-solid fa-map-location-dot"></i>
                             </div>
@@ -143,7 +143,7 @@
                             </div>
                         </div>
 
-                        <div style="background: #FAF8FF; border: 1.5px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.25rem;">
+                        <div style="background: #F4F7FE; border: 1.5px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.25rem;">
                             <div style="color: #EA580C; font-size: 1.2rem; margin-bottom: 0.4rem;">
                                 <i class="fa-solid fa-layer-group"></i>
                             </div>
@@ -203,9 +203,9 @@
 
             <!-- Right Column: AI Assistant & Scheme Illustration Banner (Panel 6) -->
             <div>
-                <div style="background: linear-gradient(145deg, #FAF7FF 0%, #EDE5FF 100%); border: 1.5px solid var(--border-color); border-radius: var(--radius-xl); padding: 2rem; box-shadow: var(--shadow-card); text-align: center; margin-bottom: 2rem;">
-                    <div style="width: 140px; height: 140px; border-radius: 50%; overflow: hidden; margin: 0 auto 1.25rem auto; border: 4px solid var(--white); box-shadow: 0 10px 24px rgba(104, 44, 235, 0.15);">
-                        <img src="{{ url_for('static', filename='images/robot_mascot.jpg') }}?v=3" alt="SchemeAI Bot" style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="background: linear-gradient(145deg, #F0F6FF 0%, #EFF6FF 100%); border: 1.5px solid var(--border-color); border-radius: var(--radius-xl); padding: 2rem; box-shadow: var(--shadow-card); text-align: center; margin-bottom: 2rem;">
+                    <div style="width: 140px; height: 140px; border-radius: 50%; overflow: hidden; margin: 0 auto 1.25rem auto; border: 4px solid var(--white); box-shadow: 0 10px 24px rgba(32, 84, 246, 0.15);">
+                        <img src="{{ url_for('static', filename='images/robot_mascot.jpg') }}?v=16" alt="SchemeAI Bot" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <h4 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--deep-purple); margin-bottom: 0.5rem;">
                         Have questions on this scheme?

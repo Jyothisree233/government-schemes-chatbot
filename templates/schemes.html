@@ -11,7 +11,7 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Main Style Sheet -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=15">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=16">
 </head>
 <body class="public-page">
     <div class="bg-glow bg-glow-1"></div>
@@ -116,7 +116,7 @@
                             <i class="fa-solid fa-seedling"></i> Farmer
                         </span>
                     {% elif 'student' in scheme.category|lower %}
-                        <span style="background: #EDE5FF; color: #682CEB; font-weight: 700; font-size: 0.75rem; padding: 0.35rem 0.85rem; border-radius: var(--radius-pill); display: inline-flex; align-items: center; gap: 0.4rem;">
+                        <span style="background: #EFF6FF; color: #2563EB; font-weight: 700; font-size: 0.75rem; padding: 0.35rem 0.85rem; border-radius: var(--radius-pill); display: inline-flex; align-items: center; gap: 0.4rem;">
                             <i class="fa-solid fa-graduation-cap"></i> Student
                         </span>
                     {% elif 'women' in scheme.category|lower or 'female' in scheme.category|lower %}
@@ -136,7 +136,7 @@
                             <i class="fa-solid fa-wheelchair"></i> Disabled
                         </span>
                     {% else %}
-                        <span style="background: #EDE5FF; color: #682CEB; font-weight: 700; font-size: 0.75rem; padding: 0.35rem 0.85rem; border-radius: var(--radius-pill);">
+                        <span style="background: #EFF6FF; color: #2563EB; font-weight: 700; font-size: 0.75rem; padding: 0.35rem 0.85rem; border-radius: var(--radius-pill);">
                             {{ scheme.category|title }}
                         </span>
                     {% endif %}
@@ -159,7 +159,7 @@
         </div>
         {% else %}
         <div style="text-align: center; padding: 4rem 1.5rem; background: var(--white); border-radius: var(--radius-xl); border: 1.5px solid var(--border-color); margin: 2rem 0;">
-            <i class="fa-solid fa-folder-open" style="font-size: 3rem; color: #CFC5EB; margin-bottom: 1rem;"></i>
+            <i class="fa-solid fa-folder-open" style="font-size: 3rem; color: #94A3B8; margin-bottom: 1rem;"></i>
             <h3 style="font-family: var(--font-heading); color: var(--deep-purple); font-size: 1.4rem;">No schemes found</h3>
             <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Try adjusting your keyword search or select a different category filter.</p>
             <a href="{{ url_for('schemes_catalog') }}" class="btn btn-primary btn-sm">Reset Filters</a>

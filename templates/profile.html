@@ -11,7 +11,7 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Main Style Sheet -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=15">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=16">
 </head>
 <body class="dashboard-page">
     <div class="dashboard-container">
@@ -83,7 +83,7 @@
             <!-- Profile Info Banner Card (Panel 8) -->
             <div style="background: var(--white); border: 1.5px solid var(--border-color); border-radius: var(--radius-xl); padding: 2rem 2.5rem; box-shadow: var(--shadow-card); display: flex; justify-content: space-between; align-items: center; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap;">
                 <div style="display: flex; align-items: center; gap: 1.5rem;">
-                    <div style="width: 76px; height: 76px; border-radius: 50%; background: linear-gradient(135deg, var(--lavender), var(--mint-green)); display: flex; align-items: center; justify-content: center; font-size: 2.2rem; font-weight: 800; color: var(--deep-purple); border: 3px solid var(--white); box-shadow: 0 4px 14px rgba(104, 44, 235, 0.15);">
+                    <div style="width: 76px; height: 76px; border-radius: 50%; background: linear-gradient(135deg, var(--lavender), var(--mint-green)); display: flex; align-items: center; justify-content: center; font-size: 2.2rem; font-weight: 800; color: var(--deep-purple); border: 3px solid var(--white); box-shadow: 0 4px 14px rgba(32, 84, 246, 0.15);">
                         {{ username[0]|upper }}
                     </div>
                     <div>
@@ -104,10 +104,10 @@
             <!-- Two-Column Grid: Left (Stats + Preferences), Right (Quick Actions) -->
             <div class="profile-sections-layout">
                 <div>
-                    <!-- 3 Pastel Metrics Cards (Panel 8: Lavender, Mint, Peach) -->
+                    <!-- 3 Pastel Metrics Cards (Panel 8: Ice Blue, Mint, Peach) -->
                     <div class="profile-metrics-cards-grid">
-                        <div style="background: #FAF7FF; border: 1.5px solid #E5DDF6; border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; display: flex; align-items: center; gap: 1rem;">
-                            <div style="width: 46px; height: 46px; border-radius: 50%; background: #EDE5FF; color: #682CEB; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
+                        <div style="background: #F0F6FF; border: 1.5px solid #DBEAFE; border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; display: flex; align-items: center; gap: 1rem;">
+                            <div style="width: 46px; height: 46px; border-radius: 50%; background: #EFF6FF; color: #2563EB; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
                                 <i class="fa-solid fa-eye"></i>
                             </div>
                             <div>
@@ -143,7 +143,7 @@
                             My Preferences
                         </h3>
                         <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
-                            <span style="background: #EDE5FF; color: #682CEB; font-weight: 700; font-size: 0.85rem; padding: 0.45rem 1rem; border-radius: var(--radius-pill); display: inline-flex; align-items: center; gap: 0.4rem;">
+                            <span style="background: #EFF6FF; color: #2563EB; font-weight: 700; font-size: 0.85rem; padding: 0.45rem 1rem; border-radius: var(--radius-pill); display: inline-flex; align-items: center; gap: 0.4rem;">
                                 <i class="fa-solid fa-graduation-cap"></i> Student
                             </span>
                             <span style="background: #FFE5F0; color: #DB2777; font-weight: 700; font-size: 0.85rem; padding: 0.45rem 1rem; border-radius: var(--radius-pill); display: inline-flex; align-items: center; gap: 0.4rem;">
@@ -168,7 +168,7 @@
                                 <i class="fa-solid fa-layer-group"></i>
                                 <span>View Schemes</span>
                             </div>
-                            <i class="fa-solid fa-chevron-right" style="color: #A396CF; font-size: 0.8rem;"></i>
+                            <i class="fa-solid fa-chevron-right" style="color: #94A3B8; font-size: 0.8rem;"></i>
                         </a>
 
                         <a href="/chat" class="quick-action-link">
@@ -176,7 +176,7 @@
                                 <i class="fa-solid fa-comments"></i>
                                 <span>Start New Chat</span>
                             </div>
-                            <i class="fa-solid fa-chevron-right" style="color: #A396CF; font-size: 0.8rem;"></i>
+                            <i class="fa-solid fa-chevron-right" style="color: #94A3B8; font-size: 0.8rem;"></i>
                         </a>
 
                         <a href="/feedback" class="quick-action-link">
@@ -184,7 +184,7 @@
                                 <i class="fa-solid fa-comment-dots"></i>
                                 <span>Share Feedback</span>
                             </div>
-                            <i class="fa-solid fa-chevron-right" style="color: #A396CF; font-size: 0.8rem;"></i>
+                            <i class="fa-solid fa-chevron-right" style="color: #94A3B8; font-size: 0.8rem;"></i>
                         </a>
 
                         <a href="/forgot-password" class="quick-action-link">
@@ -192,7 +192,7 @@
                                 <i class="fa-solid fa-lock"></i>
                                 <span>Change Password</span>
                             </div>
-                            <i class="fa-solid fa-chevron-right" style="color: #A396CF; font-size: 0.8rem;"></i>
+                            <i class="fa-solid fa-chevron-right" style="color: #94A3B8; font-size: 0.8rem;"></i>
                         </a>
 
                         <a href="/logout" class="quick-action-link" style="color: var(--accent-red);">
@@ -200,7 +200,7 @@
                                 <i class="fa-solid fa-arrow-right-from-bracket" style="color: var(--accent-red);"></i>
                                 <span>Logout</span>
                             </div>
-                            <i class="fa-solid fa-chevron-right" style="color: #A396CF; font-size: 0.8rem;"></i>
+                            <i class="fa-solid fa-chevron-right" style="color: #94A3B8; font-size: 0.8rem;"></i>
                         </a>
                     </div>
                 </div>
