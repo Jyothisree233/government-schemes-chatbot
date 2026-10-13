@@ -1009,7 +1009,7 @@ def get_user_by_email(email):
     cursor = conn.cursor()
 
     cursor.execute(
-        'SELECT id, username, email FROM users WHERE email = ?',
+        'SELECT id, username, email FROM users WHERE LOWER(email) = LOWER(?)',
         (email.strip(),)
     )
 

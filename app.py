@@ -81,8 +81,7 @@ def notify_feedback(name, email, message):
     1. Notification email to the SchemeAI admin/team with feedback details.
     2. Confirmation receipt email to the citizen who submitted the feedback.
     """
-    mail_username = os.environ.get('MAIL_USERNAME', 'jyothisreelakshmi233@gmail.com')
-    admin_email = os.environ.get('NOTIFICATION_EMAIL') or mail_username
+    admin_email = os.environ.get('NOTIFICATION_EMAIL') or 'jyothisreelakshmi129@gmail.com'
 
     # 1. Admin notification email
     admin_subject = f"SchemeAI: New Feedback from {name}"
@@ -434,10 +433,13 @@ def feedback_page():
                 print(f"Feedback Save Error: {str(e)}")
                 success_msg = "Thank you! Your feedback has been recorded."
                 
+    user = get_user_by_username(username) if username else None
+
     return render_template(
         'feedback.html',
         logged_in=logged_in,
         username=username,
+        user=user,
         success_msg=success_msg,
         error=error
     )
