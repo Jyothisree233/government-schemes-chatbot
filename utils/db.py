@@ -992,7 +992,7 @@ def get_user_by_username(username):
     cursor = conn.cursor()
 
     cursor.execute(
-        'SELECT id, username FROM users WHERE username = ?',
+        'SELECT id, username, email, created_at FROM users WHERE username = ?',
         (username.strip(),)
     )
 
