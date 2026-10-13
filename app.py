@@ -28,7 +28,7 @@ with app.app_context():
 
 # --- Email Helpers ---
 
-def send_email(to_email, subject, body_text):
+def send_email(to_email, subject, body_text, from_email=None):
     """
     Sends an email using configured SMTP credentials.
     Tries SSL on port 465 first (fast & reliable on all networks).
@@ -41,8 +41,10 @@ def send_email(to_email, subject, body_text):
         print("[Email Warning] MAIL_USERNAME or MAIL_PASSWORD not configured in .env")
         return False
 
+    sender_display = from_email or os.environ.get('MAIL_FROM', 'jyothisreelakshmi129@gmail.com')
+
     msg = MIMEMultipart()
-    msg['From'] = f"SchemeAI <{mail_username}>"
+    msg['From'] = f"SchemeAI <{sender_display}>"
     msg['To'] = to_email
     msg['Subject'] = subject
     msg.attach(MIMEText(body_text, 'plain', 'utf-8'))
@@ -212,26 +214,36 @@ def login():
 
 @app.route('/forgot-password', methods=['GET', 'POST'])
 def forgot_password():
-    if request.method == 'POST':
-        email = request.form.get('email', '').strip()
+    default_email = request.args.get('email', '')
+    if not default_email and 'username' in session:
+        u = get_user_by_username(session['username'])
+        if u and u['email']:
+            default_email = u['email']
 
-        if not email:
+    if request.method == 'POST':
+        input_val = request.form.get('email', '').strip()
+
+        if not input_val:
             return render_template(
                 'forgot_password.html',
-                error='Please enter your registered email.'
+                default_email=default_email,
+                error='Please enter your registered email or username.'
             )
 
-        user = get_user_by_email(email)
+        # Allow lookup by registered email OR by username
+        user = get_user_by_email(input_val) or get_user_by_username(input_val)
 
         if not user:
             return render_template(
                 'forgot_password.html',
-                error='No account found with this email.'
+                default_email=input_val,
+                error='No account found with this email or username.'
             )
 
+        target_email = user['email'] if user['email'] else 'jyothisreelakshmi129@gmail.com'
+
         # Create a secure signed reset token
-        token = serializer.dumps(user['id'],
-        salt='password-reset')
+        token = serializer.dumps(user['id'], salt='password-reset')
 
         # Create reset link
         reset_link = url_for(
@@ -254,15 +266,22 @@ If you did not request this password reset, you can ignore this email.
 Regards,
 SchemeAI Team
 """
-            sent = send_email(email, "SchemeAI - Password Reset", email_text)
+            sent = send_email(
+                target_email,
+                "SchemeAI - Password Reset",
+                email_text,
+                from_email="jyothisreelakshmi129@gmail.com"
+            )
             if sent:
                 return render_template(
                     'forgot_password.html',
-                    success_msg='Password reset link has been sent to your email.'
+                    default_email=target_email,
+                    success_msg=f'Password reset link has been sent to {target_email}.'
                 )
             else:
                 return render_template(
                     'forgot_password.html',
+                    default_email=target_email,
                     error='Could not send the reset email. Please try again later.'
                 )
 
@@ -271,10 +290,11 @@ SchemeAI Team
 
             return render_template(
                 'forgot_password.html',
+                default_email=input_val,
                 error='Could not send the reset email. Please try again later.'
             )
 
-    return render_template('forgot_password.html')
+    return render_template('forgot_password.html', default_email=default_email)
 
 @app.route('/reset-password/<token>', methods=['GET', 'POST'])
 def reset_password(token):
