@@ -1,4 +1,5 @@
 import os
+import time
 import threading
 import resend
 from dotenv import load_dotenv
@@ -30,8 +31,8 @@ with app.app_context():
 def send_email(to_email, subject, body_text):
     """
     Sends an email using configured SMTP credentials.
-    Tries SSL on port 465 first (fast & reliable on all networks),
-    then falls back to port 587 with STARTTLS if needed.
+    Tries SSL on port 465 first (fast & reliable on all networks).
+    Includes automatic retry on transient handshake disconnection.
     """
     mail_username = os.environ.get('MAIL_USERNAME')
     mail_password = os.environ.get('MAIL_PASSWORD')
@@ -46,15 +47,20 @@ def send_email(to_email, subject, body_text):
     msg['Subject'] = subject
     msg.attach(MIMEText(body_text, 'plain', 'utf-8'))
 
-    # Attempt 1: Port 465 (SSL) - primary and most reliable
-    try:
-        with smtplib.SMTP_SSL('smtp.gmail.com', 465, timeout=12) as server:
-            server.login(mail_username, mail_password)
-            server.send_message(msg)
-            print(f"[Email Success] Sent email to {to_email} via SSL:465")
-            return True
-    except Exception as ssl_err:
-        print(f"[Email Warning] Port 465 SSL failed ({ssl_err}), trying port 587...")
+    # Attempt 1: Port 465 (SSL) with automatic retry on transient socket reset
+    for attempt in range(2):
+        try:
+            with smtplib.SMTP_SSL('smtp.gmail.com', 465, timeout=12) as server:
+                server.login(mail_username, mail_password)
+                server.send_message(msg)
+                print(f"[Email Success] Sent email to {to_email} via SSL:465")
+                return True
+        except Exception as ssl_err:
+            if attempt == 0:
+                print(f"[Email Retry] SSL:465 attempt 1 failed ({ssl_err}), retrying in 1s...")
+                time.sleep(1.0)
+            else:
+                print(f"[Email Warning] SSL:465 failed after retry ({ssl_err}), trying port 587...")
 
     # Attempt 2: Port 587 (STARTTLS fallback)
     try:
@@ -97,6 +103,7 @@ SchemeAI Notification Service
 
     # 2. Citizen confirmation email
     if email and '@' in email and '.' in email:
+        time.sleep(1.0)
         user_subject = "SchemeAI - Thank you for your feedback!"
         user_body = f"""Hello {name},
 
