@@ -1,4 +1,5 @@
 import os
+import threading
 import resend
 from dotenv import load_dotenv
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for
@@ -23,6 +24,107 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 # Initialize SQLite database and seed initial schemes
 with app.app_context():
     init_db()
+
+# --- Email Helpers ---
+
+def send_email(to_email, subject, body_text):
+    """
+    Sends an email using configured SMTP credentials.
+    Tries SSL on port 465 first (fast & reliable on all networks),
+    then falls back to port 587 with STARTTLS if needed.
+    """
+    mail_username = os.environ.get('MAIL_USERNAME')
+    mail_password = os.environ.get('MAIL_PASSWORD')
+
+    if not mail_username or not mail_password:
+        print("[Email Warning] MAIL_USERNAME or MAIL_PASSWORD not configured in .env")
+        return False
+
+    msg = MIMEMultipart()
+    msg['From'] = f"SchemeAI <{mail_username}>"
+    msg['To'] = to_email
+    msg['Subject'] = subject
+    msg.attach(MIMEText(body_text, 'plain', 'utf-8'))
+
+    # Attempt 1: Port 465 (SSL) - primary and most reliable
+    try:
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465, timeout=12) as server:
+            server.login(mail_username, mail_password)
+            server.send_message(msg)
+            print(f"[Email Success] Sent email to {to_email} via SSL:465")
+            return True
+    except Exception as ssl_err:
+        print(f"[Email Warning] Port 465 SSL failed ({ssl_err}), trying port 587...")
+
+    # Attempt 2: Port 587 (STARTTLS fallback)
+    try:
+        with smtplib.SMTP('smtp.gmail.com', 587, timeout=12) as server:
+            server.starttls()
+            server.login(mail_username, mail_password)
+            server.send_message(msg)
+            print(f"[Email Success] Sent email to {to_email} via STARTTLS:587")
+            return True
+    except Exception as tls_err:
+        print(f"[Email Error] Failed to send email to {to_email}: {tls_err}")
+        return False
+
+
+def notify_feedback(name, email, message):
+    """
+    Dispatches:
+    1. Notification email to the SchemeAI admin/team with feedback details.
+    2. Confirmation receipt email to the citizen who submitted the feedback.
+    """
+    mail_username = os.environ.get('MAIL_USERNAME', 'jyothisreelakshmi233@gmail.com')
+    admin_email = os.environ.get('NOTIFICATION_EMAIL') or mail_username
+
+    # 1. Admin notification email
+    admin_subject = f"SchemeAI: New Feedback from {name}"
+    admin_body = f"""Hello SchemeAI Team,
+
+A citizen has submitted new feedback on the SchemeAI portal:
+
+Name: {name}
+Email: {email}
+
+Message:
+{message}
+
+---
+SchemeAI Notification Service
+"""
+    send_email(admin_email, admin_subject, admin_body)
+
+    # 2. Citizen confirmation email
+    if email and '@' in email and '.' in email:
+        user_subject = "SchemeAI - Thank you for your feedback!"
+        user_body = f"""Hello {name},
+
+Thank you for reaching out to SchemeAI! We have successfully received your feedback:
+
+"{message}"
+
+Our team reviews every suggestion to continuously improve government scheme recommendations and access for citizens across India.
+
+If you have any further questions or suggestions, feel free to visit our portal anytime.
+
+Warm regards,
+SchemeAI Team
+Government Schemes Portal
+"""
+        send_email(email, user_subject, user_body)
+
+
+def notify_feedback_async(name, email, message):
+    """
+    Dispatches feedback emails in a background thread so the user UI responds instantly.
+    """
+    thread = threading.Thread(
+        target=notify_feedback,
+        args=(name, email, message),
+        daemon=True
+    )
+    thread.start()
 
 @app.route('/')
 def home():
@@ -133,17 +235,6 @@ def forgot_password():
         )
 
         try:
-            mail_username = os.environ.get('MAIL_USERNAME')
-            mail_password = os.environ.get('MAIL_PASSWORD')
-
-            if not mail_username or not mail_password:
-                raise Exception("MAIL_USERNAME or MAIL_PASSWORD is not configured in .env")
-
-            msg = MIMEMultipart()
-            msg['From'] = mail_username
-            msg['To'] = email
-            msg['Subject'] = "SchemeAI - Password Reset"
-
             email_text = f"""Hello {user['username']},
 
 We received a request to reset your SchemeAI password.
@@ -157,17 +248,17 @@ If you did not request this password reset, you can ignore this email.
 Regards,
 SchemeAI Team
 """
-            msg.attach(MIMEText(email_text, 'plain'))
-
-            with smtplib.SMTP('smtp.gmail.com', 587) as server:
-                server.starttls()
-                server.login(mail_username, mail_password)
-                server.send_message(msg)
-
-            return render_template(
-                'forgot_password.html',
-                success_msg='Password reset link has been sent to your email.'
-            )
+            sent = send_email(email, "SchemeAI - Password Reset", email_text)
+            if sent:
+                return render_template(
+                    'forgot_password.html',
+                    success_msg='Password reset link has been sent to your email.'
+                )
+            else:
+                return render_template(
+                    'forgot_password.html',
+                    error='Could not send the reset email. Please try again later.'
+                )
 
         except Exception as e:
             print(f"Email sending error: {str(e)}")
@@ -330,7 +421,8 @@ def feedback_page():
         else:
             try:
                 save_feedback(name, email, message)
-                success_msg = "Thank you! Your feedback has been submitted successfully."
+                notify_feedback_async(name, email, message)
+                success_msg = "Thank you! Your feedback has been submitted successfully. A confirmation email has been sent to your inbox."
             except Exception as e:
                 print(f"Feedback Save Error: {str(e)}")
                 success_msg = "Thank you! Your feedback has been recorded."
@@ -509,39 +601,12 @@ def api_feedback():
         # 1. Save to SQLite database
         save_feedback(name, email, message)
 
-        # 2. Dispatch email notification via SMTP
-        mail_username = os.environ.get('MAIL_USERNAME')
-        mail_password = os.environ.get('MAIL_PASSWORD')
-        recipient_email = os.environ.get('NOTIFICATION_EMAIL', 'jyothisreelakshmi129@gmail.com')
-
-        if mail_username and mail_password:
-            msg = MIMEMultipart()
-            msg['From'] = mail_username
-            msg['To'] = recipient_email
-            msg['Subject'] = f"SchemeAI New Feedback from {name}"
-
-            body = f"""Hello Team,
-
-You have received new feedback on SchemeAI:
-
-Name: {name}
-Email: {email}
-Message:
-{message}
-
-Regards,
-SchemeAI Notification Service
-"""
-            msg.attach(MIMEText(body, 'plain'))
-
-            with smtplib.SMTP('smtp.gmail.com', 587) as server:
-                server.starttls()
-                server.login(mail_username, mail_password)
-                server.send_message(msg)
+        # 2. Dispatch email notifications (admin alert + citizen confirmation)
+        notify_feedback_async(name, email, message)
 
         return jsonify({
             'status': 'success',
-            'message': 'Thank you! Your feedback has been submitted successfully.'
+            'message': 'Thank you! Your feedback has been submitted successfully. A confirmation email has been sent to your inbox.'
         })
 
     except Exception as e:
