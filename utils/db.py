@@ -103,826 +103,826 @@ def init_db():
     if cursor.fetchone()[0] == 0:
         seed_schemes = [
             # ==================== CATEGORY: STUDENT (15 Schemes) ====================
-            (
-                "PM Vidyalaxmi Scheme",
-                "student",
-                "Financial aid and interest subvention for students pursuing higher education.",
-                "Indian national students securing admission in higher education institutions in India or abroad.",
-                "Provides collateral-free and third-party-guarantee-free education loans up to ₹7.5 Lakhs with 3% interest subvention.",
-                "Aadhaar Card, Admission Letter from Institution, Fee Structure Document, Income Certificate of parents, Academic Marksheets (Class 10/12/Graduation).",
-                "https://pmvidyalaxmi.co.in/"
-            ),
-            (
-                "Post Matric Scholarship Scheme",
-                "student",
-                "Financial assistance for post-matriculation or post-secondary courses.",
-                "Students belonging to SC, ST, OBC, or EWS categories with family annual income less than ₹2.5 Lakhs.",
-                "100% reimbursement of compulsory non-refundable fees and monthly maintenance allowance.",
-                "Aadhaar Card, Caste Certificate (SC/ST/OBC), Income Certificate, Fee Receipt, Academic Marksheets, Bank Account Passbook.",
-                "https://scholarships.gov.in/"
-            ),
-            (
-                "National Means-cum-Merit Scholarship (NMMSS)",
-                "student",
-                "Scholarship for gifted EWS class IX-XII students to reduce dropouts.",
-                "Students of class IX with family income less than ₹3.5 Lakhs and scoring minimum 55% marks in class VIII.",
-                "An annual scholarship of ₹12,000 (₹1,000 per month) for classes IX to XII in government/government-aided schools.",
-                "Aadhaar Card, Class VIII Marksheet, Parental Income Certificate, Caste/Category Certificate.",
-                "https://scholarships.gov.in/"
-            ),
-            (
-                "Pragati Scholarship Scheme for Girl Students",
-                "student",
-                "Financial assistance for girl students pursuing technical diploma or degree education.",
-                "Maximum 2 girl children per family, admitted in 1st year degree/diploma technical courses with family income below ₹8 Lakhs.",
-                "₹50,000 per annum for tuition fees, study materials, computer/equipment purchase.",
-                "Aadhaar Card, Class 10 & 12 Marksheets, Income Certificate, Fee Receipt, AICTE Course Registration Receipt.",
-                "https://www.aicte-india.org/schemes/students-development-schemes"
-            ),
-            (
-                "Saksham Scholarship Scheme for Specially Abled Students",
-                "student",
-                "Support for differently-abled students pursuing technical education.",
-                "Specially abled students with disability level of 40% or more, admitted to AICTE approved technical courses with family income below ₹8 Lakhs.",
-                "₹50,000 per annum for tuition fees and assistance devices.",
-                "Disability Certificate (40%+), Aadhaar Card, Family Income Certificate, Course Admission proof, Marksheets.",
-                "https://www.aicte-india.org/schemes/students-development-schemes"
-            ),
-            (
-                "AICTE Swanath Scholarship Scheme",
-                "student",
-                "Support for orphans, children of parents who died in COVID-19, or wards of armed forces/paramilitary.",
-                "Students pursuing degree/diploma in AICTE approved colleges, belonging to the specified categories with family income below ₹8 Lakhs.",
-                "₹50,000 per annum for study, research, and hostel support.",
-                "Death Certificates of parents (or COVID-19 death proof/Defence service certificate), Income Certificate, Aadhaar Card.",
-                "https://www.aicte-india.org/schemes/students-development-schemes"
-            ),
-            (
-                "Prime Minister's Research Fellowship (PMRF)",
-                "student",
-                "Fellowship for doctoral research in science, technology, and engineering.",
-                "Students with high GATE score or CGPA from IITs, IISc, IISERs, NITs, Central Universities admitted to Ph.D. programs.",
-                "Fellowship of ₹70,000 to ₹80,000 per month along with a research grant of ₹2 Lakhs per year for 5 years.",
-                "GATE Scorecard, CGPA Transcripts, Research Proposal/Statement of Purpose, Recommendation Letters.",
-                "https://pmrf.in/"
-            ),
-            (
-                "Ishan Uday Special Scholarship Scheme",
-                "student",
-                "Special scholarship for North Eastern Region (NER) students for general/professional degree courses.",
-                "Students with domicile of NER states who have passed class XII and secured admission in university/college courses, with family income below ₹4.5 Lakhs.",
-                "Monthly scholarship of ₹5,400 for general degrees and ₹7,800 for technical/professional degrees.",
-                "Domicile Certificate, Income Certificate, Class 12 Marksheet, Admission/Joining Report from College.",
-                "https://www.ugc.ac.in/"
-            ),
-            (
-                "Central Sector Scheme of Scholarship for College and University Students",
-                "student",
-                "General merit scholarship for college students to meet daily educational expenses.",
-                "Students above the 80th percentile in Class 12 board exams, pursuing regular courses with family income below ₹4.5 Lakhs.",
-                "₹12,000 per annum for first three years (graduation) and ₹20,000 per annum for post-graduation.",
-                "Class 12 Marksheet, Income Certificate, Aadhaar Card, Bank Passbook, College Fee Receipt.",
-                "https://scholarships.gov.in/"
-            ),
-            (
-                "Prime Minister's Scholarship Scheme (PMSS)",
-                "student",
-                "Scholarship for wards of ex-servicemen, ex-coast guard, and deceased police personnel.",
-                "Wards and widows of ex-servicemen pursuing professional degree courses approved by regulatory bodies (AICTE, MCI, etc.).",
-                "₹3,000 per month for girls and ₹2,500 per month for boys.",
-                "Ex-serviceman Identity Card, Pension Payment Order (PPO), Class 12/Diploma marksheets, Admission certificate.",
-                "https://www.desw.gov.in/"
-            ),
-            (
-                "SHREYAS (Scholarships for Higher Education for Young Human Resources)",
-                "student",
-                "Financial fellowships and education loan subventions for OBC and EBC students.",
-                "OBC and EBC students pursuing higher education (Master's, M.Phil, or Ph.D.) with family income below specified limits.",
-                "Full interest subsidy on education loans and national fellowship grants for doctoral research.",
-                "OBC/EBC Certificate, Income Certificate, Loan Sanction Letter, University Admission Document, Aadhaar.",
-                "https://socialjustice.gov.in/"
-            ),
-            (
-                "National Overseas Scholarship (NOS)",
-                "student",
-                "Scholarship for marginalized students to pursue postgraduate and doctoral studies abroad.",
-                "SC, ST, landless agricultural laborers, and traditional artisans, aged below 35 with family income below ₹8 Lakhs.",
-                "Covers tuition fees, maintenance allowance, air passage, visa fees, and medical insurance in foreign universities.",
-                "Aadhaar Card, Caste Certificate, Income Certificate, Offer Letter from Foreign University, Passport, Marksheets.",
-                "https://nosmsje.gov.in/"
-            ),
-            (
-                "Central Sector Interest Subsidy Scheme (CSIS)",
-                "student",
-                "Full interest subsidy on education loans during the moratorium period.",
-                "Students belonging to EWS (Economically Weaker Section) with family income below ₹4.5 Lakhs, taking loans under Model Education Loan Scheme.",
-                "Saves EWS students from paying any interest on loans during the study period plus one year.",
-                "Loan Agreement, Income Certificate from designated authority, EWS Certificate, Aadhaar Card.",
-                "https://www.education.gov.in/"
-            ),
-            (
-                "Pre-Matric Scholarship Scheme for Minorities",
-                "student",
-                "Scholarship to encourage minority parents to send children to school.",
-                "Students of class I to X belonging to Muslim, Christian, Sikh, Buddhist, Jain, or Parsi communities, with family income below ₹1 Lakh.",
-                "Admission fee, tuition fee, and maintenance allowance up to ₹350 per month.",
-                "Self-declaration of Minority Community, Income Certificate, Previous Class Marksheet (min 50%), Aadhaar, Bank Details.",
-                "https://scholarships.gov.in/"
-            ),
-            (
-                "Maulana Azad National Fellowship (MANF)",
-                "student",
-                "Integrated fellowship for minority students pursuing higher studies.",
-                "Candidates belonging to minority communities cleared UGC-NET/CSIR-NET and registered for M.Phil or Ph.D.",
-                "Monthly fellowship starting from ₹31,000 for JRF and ₹35,000 for SRF along with contingency grants.",
-                "NET Qualification Certificate, Minority Community Declaration, University Registration Certificate, M.Phil/Ph.D Admission Letter.",
-                "https://www.ugc.ac.in/"
-            ),
+    (
+        "PM Vidyalaxmi Scheme",
+        "student",
+        "Financial aid and interest subvention for students pursuing higher education.",
+        "Indian national students securing admission in higher education institutions in India or abroad.",
+        "Provides collateral-free and third-party-guarantee-free education loans up to ₹7.5 Lakhs with 3% interest subvention.",
+        "Aadhaar Card, Admission Letter from Institution, Fee Structure Document, Income Certificate of parents, Academic Marksheets (Class 10/12/Graduation).",
+        "https://pmvidyalaxmi.co.in/"
+    ),
+    (
+        "Post Matric Scholarship Scheme",
+        "student",
+        "Financial assistance for post-matriculation or post-secondary courses.",
+        "Students belonging to SC, ST, OBC, or EWS categories with family annual income less than ₹2.5 Lakhs.",
+        "100% reimbursement of compulsory non-refundable fees and monthly maintenance allowance.",
+        "Aadhaar Card, Caste Certificate (SC/ST/OBC), Income Certificate, Fee Receipt, Academic Marksheets, Bank Account Passbook.",
+        "https://scholarships.gov.in/"
+    ),
+    (
+        "National Means-cum-Merit Scholarship (NMMSS)",
+        "student",
+        "Scholarship for gifted EWS class IX-XII students to reduce dropouts.",
+        "Students of class IX with family income less than ₹3.5 Lakhs and scoring minimum 55% marks in class VIII.",
+        "An annual scholarship of ₹12,000 (₹1,000 per month) for classes IX to XII in government/government-aided schools.",
+        "Aadhaar Card, Class VIII Marksheet, Parental Income Certificate, Caste/Category Certificate.",
+        "https://scholarships.gov.in/"
+    ),
+    (
+        "Pragati Scholarship Scheme for Girl Students",
+        "student",
+        "Financial assistance for girl students pursuing technical diploma or degree education.",
+        "Maximum 2 girl children per family, admitted in 1st year degree/diploma technical courses with family income below ₹8 Lakhs.",
+        "₹50,000 per annum for tuition fees, study materials, computer/equipment purchase.",
+        "Aadhaar Card, Class 10 & 12 Marksheets, Income Certificate, Fee Receipt, AICTE Course Registration Receipt.",
+        "https://scholarships.gov.in/"
+    ),
+    (
+        "Saksham Scholarship Scheme for Specially Abled Students",
+        "student",
+        "Special scholarship encouraging differently-abled youth to pursue technical education.",
+        "Students with disability of not less than 40% admitted in AICTE approved technical colleges with family income below ₹8 Lakhs.",
+        "₹50,000 per annum for tuition fee reimbursement, purchase of books, equipment, and assistive software.",
+        "Aadhaar Card, Disability Certificate (40%+), Admission Letter, Fee Receipt, Family Income Certificate.",
+        "https://scholarships.gov.in/"
+    ),
+    (
+        "AICTE Swanath Scholarship Scheme",
+        "student",
+        "Financial aid for orphans, children of parents deceased due to COVID-19, and wards of Armed Forces martyrs.",
+        "Orphans or wards of martyrs studying in AICTE approved diploma/degree institutions with family income under ₹8 Lakhs.",
+        "₹50,000 per annum towards educational expenses, boarding, and textbook purchases.",
+        "Death certificate of parents / Martyr proof, Bonafide Student Certificate, Aadhaar Card, Income Certificate.",
+        "https://scholarships.gov.in/"
+    ),
+    (
+        "Prime Minister's Research Fellowship (PMRF)",
+        "student",
+        "Attracting top talent to doctoral (Ph.D.) programs in premier institutions like IITs and IISc.",
+        "B.Tech/M.Tech/M.Sc graduates with minimum 8.0 CGPA or qualifying GATE score securing admission in Ph.D.",
+        "Monthly fellowship of ₹70,000 to ₹80,000 plus an annual research contingency grant of ₹2 Lakhs for 5 years.",
+        "GATE scorecard, Academic Transcripts, Ph.D. Admission Letter, Research Proposal, Recommendation Letters.",
+        "https://www.pmrf.in/"
+    ),
+    (
+        "Ishan Uday Special Scholarship Scheme",
+        "student",
+        "Promoting higher education among youth from the North Eastern Region (NER).",
+        "Students with domicile of North Eastern states who passed Class XII and secured admission in general/technical degree courses.",
+        "Monthly financial stipend of ₹5,400 for general degree and ₹7,800 for professional/medical/engineering degrees.",
+        "North-East Domicile Certificate, Class 12 Marksheet, College Admission Slip, Parental Annual Income Certificate.",
+        "https://scholarships.gov.in/"
+    ),
+    (
+        "Central Sector Scheme of Scholarship for College and University Students",
+        "student",
+        "Financial support to meritorious students from low-income families to meet day-to-day college expenses.",
+        "Students scoring above 80th percentile in Class 12 board exams pursuing regular degree courses with family income below ₹4.5 Lakhs.",
+        "₹12,000 per annum for the first 3 years of undergraduate study and ₹20,000 per annum at postgraduate level.",
+        "Class 12 Passing Certificate & Marksheet, Family Income Certificate, College Joining Report, Bank Passbook.",
+        "https://scholarships.gov.in/"
+    ),
+    (
+        "Prime Minister's Scholarship Scheme (PMSS)",
+        "student",
+        "Encouraging higher technical and professional education for wards of ex-servicemen and police personnel.",
+        "Dependent wards and widows of deceased/ex-service personnel of Armed Forces and Central Armed Police Forces (CAPF).",
+        "Monthly scholarship of ₹2,500 for boys and ₹3,000 for girls pursuing recognized professional degree courses.",
+        "Ex-serviceman PPO / Discharge Book, College Admission Letter, Marksheets of Class 12/Diploma, Relationship Certificate.",
+        "https://www.desw.gov.in/"
+    ),
+    (
+        "PM YASASVI Scholarship Scheme",
+        "student",
+        "Top-class school education scholarship for meritorious Other Backward Classes (OBC), EWS, and DNT students.",
+        "Students of Class 9 and Class 11 belonging to OBC, EBC, or DNT categories with parental income less than ₹2.5 Lakhs.",
+        "Scholarship up to ₹75,000 per year for Class 9–10 and up to ₹1,25,000 per year for Class 11–12 covering tuition and hostel fees.",
+        "Aadhaar Card, Category Certificate (OBC/EBC/DNT), Income Certificate, School Bonafide Certificate, Previous Year Marksheet.",
+        "https://scholarships.gov.in/"
+    ),
+    (
+        "National Overseas Scholarship (NOS)",
+        "student",
+        "Financial aid for students from disadvantaged communities to pursue Master's or Ph.D. degrees in top foreign universities.",
+        "Low-income students belonging to SC, de-notified nomadic tribes, and landless agricultural laborers with income below ₹8 Lakhs.",
+        "Full tuition fee reimbursement, annual living maintenance allowance of up to $15,400 / £9,900, contingency fees, and international airfare.",
+        "Offer Letter from Top 500 QS Ranked Foreign University, Caste Certificate, Income Certificate, Passport, Academic Transcripts.",
+        "https://www.myscheme.gov.in/schemes/nos-sc"
+    ),
+    (
+        "Central Sector Interest Subsidy Scheme (CSIS)",
+        "student",
+        "Full interest subvention on education loans during moratorium period for students from economically weaker sections.",
+        "Students with family annual gross income up to ₹4.5 Lakhs taking education loans for approved professional/technical courses in India.",
+        "Government pays 100% interest during the study period plus one year after course completion, reducing loan burden.",
+        "Income Certificate from authorized revenue officer, Loan Sanction Letter, Bonafide Student Certificate, Aadhaar Card.",
+        "https://www.education.gov.in/"
+    ),
+    (
+        "Pre-Matric Scholarship Scheme for Minorities",
+        "student",
+        "Encouraging parents from minority communities to send their school-age children to school.",
+        "Students from Muslim, Christian, Sikh, Buddhist, Jain, or Parsi communities studying in classes 1 to 10 with family income below ₹1 Lakh.",
+        "Admission fee, tuition fee reimbursement, and maintenance allowance directly credited to student bank accounts.",
+        "Minority Community Self-Declaration, Previous Year School Marksheet (50%+), Parent Income Certificate, Bank Passbook.",
+        "https://scholarships.gov.in/"
+    ),
+    (
+        "SHREYAS Scholarship Scheme",
+        "student",
+        "Higher education fellowships and overseas study assistance for SC and OBC scholars.",
+        "Meritorious SC and OBC graduate students pursuing M.Phil, Ph.D., and post-doctoral research in Indian universities.",
+        "Monthly fellowship equivalent to JRF/SRF rates (₹37,000 to ₹42,000 per month) plus annual contingency grants.",
+        "Caste Certificate, University Admission / Registration Order, Research Synopsis, Post-graduation Marksheet, Bank Account Details.",
+        "https://socialjustice.gov.in/"
+    ),
 
-            # ==================== CATEGORY: FARMER (15 Schemes) ====================
-            (
-                "PM-KISAN (Pradhan Mantri Kisan Samman Nidhi)",
-                "farmer",
-                "Direct income support scheme providing financial relief to all landholding farmers.",
-                "All small and marginal landholding farmer families across the country.",
-                "Direct cash benefit of ₹6,000 per year, transferred in three equal installments of ₹2,000 directly to bank accounts.",
-                "Aadhaar Card, Land Ownership Documents (Khatauni/Patta), Bank Account Details, Mobile Number.",
-                "https://pmkisan.gov.in/"
-            ),
-            (
-                "PM Fasal Bima Yojana (PMFBY)",
-                "farmer",
-                "Comprehensive crop insurance scheme protecting farmers against agricultural loss.",
-                "All farmers growing notified crops in notified areas, including tenant farmers.",
-                "Insurance cover against crop failure due to natural calamities, pests, or diseases at extremely low premium rates (1.5% to 2%).",
-                "Aadhaar Card, Land Records/Tenancy Agreement, Sowing Certificate from local authority, Bank Account Details.",
-                "https://pmfby.gov.in/"
-            ),
-            (
-                "Pradhan Mantri Krishi Sinchayee Yojana (PMKSY)",
-                "farmer",
-                "Water-conservation, micro-irrigation, and watershed development support to expand crop coverage.",
-                "All categories of farmers having cultivable land, with preference to water-stressed regions.",
-                "Up to 55% financial subsidy on installing drip and sprinkler micro-irrigation systems.",
-                "Land Ownership Proof, Aadhaar Card, Water Source Certificate, Soil/Land Mapping Details.",
-                "https://pmksy.gov.in/"
-            ),
-            (
-                "Soil Health Card Scheme",
-                "farmer",
-                "Assistance for testing soil quality and recommending proper chemical/organic fertilizer inputs.",
-                "All farmers holding land in India.",
-                "Free testing of soil samples and issuance of a detailed card advising crop-wise nutrient and fertilizer dosage.",
-                "Land Khatauni details, Aadhaar Card, Mobile Number.",
-                "https://soilhealth.dac.gov.in/"
-            ),
-            (
-                "Paramparagat Krishi Vikas Yojana (PKVY)",
-                "farmer",
-                "Promotion of organic farming clusters, PGS-India certification, and marketing assistance.",
-                "Small and marginal farmers willing to form clusters of 20 or more members for organic agriculture.",
-                "Financial assistance of ₹50,000 per hectare over 3 years for organic seeds, harvesting, and packaging support.",
-                "Land Records, Cluster Registration Form, Aadhaar Card of participants, PGS-India membership data.",
-                "https://dapshac.gov.in/"
-            ),
-            (
-                "PM Kisan Maandhan Yojana (PM-KMY)",
-                "farmer",
-                "Voluntary old age pension security scheme for small and marginal landholding farmers.",
-                "Small and marginal farmers aged between 18 and 40 years, with landholding up to 2 hectares.",
-                "Guaranteed monthly pension of ₹3,000 after attaining the age of 60, with matching contribution from central government.",
-                "Aadhaar Card, Land Possession proof, Bank Account Details, Mobile Number.",
-                "https://maandhan.in/"
-            ),
-            (
-                "Kisan Credit Card (KCC) Scheme",
-                "farmer",
-                "Direct credit card facility to fulfill seasonal credit requirements for cultivation and post-harvest.",
-                "All landholding farmers, including owner-cultivators, tenant farmers, and sharecroppers.",
-                "Low-interest short-term crop loans (up to ₹3 Lakhs) at 4% interest rate (after prompt repayment rebate).",
-                "Aadhaar Card, Land Revenue Records, Sowing Details, Address Proof, Passport photographs.",
-                "https://www.sbi.co.in/web/personal-banking/loans/agriculture-rural/kisan-credit-card"
-            ),
-            (
-                "Sub-Mission on Agricultural Mechanization (SMAM)",
-                "farmer",
-                "Subsidy support for purchasing agricultural machinery and establishing custom hiring centers.",
-                "Individual farmers, self-help groups, and agricultural cooperative societies.",
-                "40% to 50% capital subsidy on purchasing tractors, power tillers, rotavators, harvesters, and sprayers.",
-                "Aadhaar Card, Land Registry Details, Bank Account Passbook, Machinery Quotation, Caste/Category Certificate.",
-                "https://agrimachinery.nic.in/"
-            ),
-            (
-                "National Mission for Sustainable Agriculture (NMSA)",
-                "farmer",
-                "Assistance for adopting climate-resilient farming systems, rainfed area development, and agroforestry.",
-                "All farmers with preference given to small, marginal, and female farmers in dry/hilly tracts.",
-                "Subsidies on establishing integrated farming models, vermicompost units, and agroforestry plantations.",
-                "Land Proof, Domicile Certificate, Aadhaar, Bank Details, Water source documents.",
-                "https://nmsa.dac.gov.in/"
-            ),
-            (
-                "Interest Subvention Scheme for Short Term Crop Loans",
-                "farmer",
-                "Provides interest subvention on short term crop credit to reduce cultivation costs.",
-                "Farmers availing short-term crop loans up to ₹3 Lakhs from commercial, cooperative, or rural banks.",
-                "2% interest subvention for lending institutions and an additional 3% prompt repayment incentive for farmers.",
-                "Kisan Credit Card details, Loan account passbook, Land records, Sowing certificate.",
-                "https://www.nabard.org/"
-            ),
-            (
-                "Rashtriya Krishi Vikas Yojana (RKVY)",
-                "farmer",
-                "Development of allied agriculture sectors like dairy, poultry, fisheries, and post-harvest infrastructure.",
-                "Farmers, agri-entrepreneurs, and co-operative groups pursuing innovative agricultural setups.",
-                "Up to 25% to 50% funding grants for building cold storages, warehouses, organic inputs production units.",
-                "Aadhaar Card, Project Detailed Report (DPR), Land/Warehouse site layout plan, Bank reference check.",
-                "https://rkvy.nic.in/"
-            ),
-            (
-                "National Livestock Mission (NLM)",
-                "farmer",
-                "Entrepreneurship development and subsidy assistance for sheep, goat, pig, and poultry farming.",
-                "Individuals, self-help groups, cooperative societies, and joint liability groups.",
-                "50% capital subsidy (up to ₹25 Lakhs) for establishing animal breeding and meat processing units.",
-                "Aadhaar Card, Land allocation proof/lease, Project report, Bank loan sanction, training certificate.",
-                "https://nlm.udyamimitra.in/"
-            ),
-            (
-                "PM Matsya Sampada Yojana (PMMSY)",
-                "farmer",
-                "Subsidies, training, and insurance support for fish farming and aquaculture development.",
-                "Fishers, fish farmers, fish workers, self-help groups, and marine cooperatives.",
-                "40% (general) to 60% (women/SC/ST) subsidy on building fish ponds, buying boats, and establishing biofloc aquaculture systems.",
-                "Aadhaar Card, Domicile Certificate, Fisherman identity card (if available), Land lease or pond ownership proof, Bank Details.",
-                "https://pmmsy.dof.gov.in/"
-            ),
-            (
-                "Pradhan Mantri Kisan Sampada Yojana",
-                "farmer",
-                "Grants and infrastructure support for agro-processing clusters and cold chain development.",
-                "Farmer groups, agri-entrepreneurs, private food processors, and cooperatives.",
-                "35% to 50% grant assistance for setting up primary processing centers, dry warehouses, and cold storage chains.",
-                "Detailed Project Report (DPR), Land ownership/lease deeds, Bank term loan sanction, Aadhaar of directors/partners.",
-                "https://www.mofpi.gov.in/"
-            ),
-            (
-                "Mission for Integrated Development of Horticulture (MIDH)",
-                "farmer",
-                "Assistance for setting up orchards, nurseries, greenhouses, and polyhouses for high-value crops.",
-                "Farmers owning land or having long-term lease, pursuing fruit, vegetable, or flower cultivation.",
-                "35% to 50% subsidy support on establishing polyhouses, pack houses, and purchase of hybrid planting material.",
-                "Land ownership records, Domicile Proof, Aadhaar, Quotation from verified vendor, Bank Details.",
-                "https://midh.gov.in/"
-            ),
+    # ==================== CATEGORY: FARMER (15 Schemes) ====================
+    (
+        "PM-KISAN (Pradhan Mantri Kisan Samman Nidhi)",
+        "farmer",
+        "Direct income support of ₹6,000 annually to all landholding farmer families across the country.",
+        "All landholding farmer families having cultivable land in their names (subject to exclusion criteria for high income earners).",
+        "₹6,000 per year transferred directly into Aadhaar-seeded bank accounts in three equal installments of ₹2,000 every 4 months.",
+        "Aadhaar Card, Land Ownership Papers (Khatauni/Patta), Aadhaar-linked Bank Account Passbook, Active Mobile Number.",
+        "https://pmkisan.gov.in/"
+    ),
+    (
+        "PM Fasal Bima Yojana (PMFBY)",
+        "farmer",
+        "Comprehensive crop loss insurance coverage against natural calamities, droughts, floods, pests, and unseasonal rainfall.",
+        "All farmers including sharecroppers and tenant farmers growing notified crops in notified areas.",
+        "Comprehensive financial compensation for crop failure with farmers paying only 1.5% premium for Rabi, 2% for Kharif, and 5% for commercial crops.",
+        "Land Record Document (RoR/Khasra), Sowing Certificate / Crop Sowing Declaration, Bank Account Passbook, Aadhaar Card.",
+        "https://pmfby.gov.in/"
+    ),
+    (
+        "Pradhan Mantri Krishi Sinchayee Yojana (PMKSY)",
+        "farmer",
+        "Per Drop More Crop water efficiency and micro-irrigation drip/sprinkler subsidy for farmers.",
+        "All categories of farmers owning cultivable land, with special subsidy focus on small and marginal farmers.",
+        "Up to 55% financial subsidy for small & marginal farmers (45% for other farmers) on installing drip and sprinkler irrigation systems.",
+        "Land Ownership Records (7/12 extract / Patta), Electricity Connection Receipt (if pump operated), Aadhaar Card, Bank Details, Quotation of system.",
+        "https://pmksy.gov.in/"
+    ),
+    (
+        "Soil Health Card Scheme",
+        "farmer",
+        "Scientific soil nutrient testing and customized fertilizer advisory issued to farmers once every 3 years.",
+        "All farmers owning or cultivating farm plots in India.",
+        "Free soil sample analysis report showing levels of 12 nutrients, with precise chemical and bio-fertilizer dosage recommendations.",
+        "Land Identification Number, Aadhaar Card, Farmer Contact Details.",
+        "https://soilhealth.dac.gov.in/"
+    ),
+    (
+        "Paramparagat Krishi Vikas Yojana (PKVY)",
+        "farmer",
+        "Promoting organic farming, cluster cultivation, zero chemical inputs, and organic PGS certification.",
+        "Farmers willing to form clusters of 20 or more hectares and transition to traditional/organic agricultural practices.",
+        "Financial assistance of ₹50,000 per hectare for 3 years, of which ₹31,000 is directly paid for organic seeds, bio-fertilizers, and botanical extracts.",
+        "Aadhaar Card, Land Revenue Records, Farmer Group/Cluster Resolution, Bank Account Passbook.",
+        "https://jaivikkheti.in/"
+    ),
+    (
+        "PM Kisan Maandhan Yojana (PM-KMY)",
+        "farmer",
+        "Old age social security pension scheme for small and marginal landholding farmers.",
+        "Small and marginal farmers aged between 18 and 40 years possessing cultivable land up to 2 hectares.",
+        "Guaranteed minimum pension of ₹3,000 per month upon reaching 60 years of age, with 50% spousal family pension on subscriber demise.",
+        "Aadhaar Card, Land Possession Records / Khasra-Khatauni, Savings Bank Account Details, Nominee Aadhaar Card.",
+        "https://maandhan.in/"
+    ),
+    (
+        "Kisan Credit Card (KCC) Scheme",
+        "farmer",
+        "Adequate and timely institutional credit for farmers to meet cultivation and farm investment expenses.",
+        "All individual farmers, joint borrowers, tenant farmers, oral lessees, sharecroppers, and SHGs of farmers.",
+        "Revolving cash credit limit up to ₹3 Lakhs at an effective concessional interest rate of only 4% per annum upon prompt repayment.",
+        "Land Record Proof, Identity and Address Proof (Aadhaar/Voter ID), Passport size photograph, No-Dues Certificate from local banks.",
+        "https://www.myscheme.gov.in/schemes/kcc"
+    ),
+    (
+        "Sub-Mission on Agricultural Mechanization (SMAM)",
+        "farmer",
+        "Promoting farm mechanization and modern implements to improve productivity and reduce human drudgery.",
+        "Individual farmers, agricultural graduates, cooperative societies, Farmer Producer Organizations (FPOs), and Panchayats.",
+        "Subsidies from 40% to 50% for purchasing tractors, power tillers, rotavators, and setting up Custom Hiring Centers (up to ₹10 Lakhs subsidy).",
+        "Aadhaar Card, Land Ownership Copy, Caste Certificate (if SC/ST), Bank Passbook, Equipment Quotation from authorized dealer.",
+        "https://agrimachinery.nic.in/"
+    ),
+    (
+        "National Mission for Sustainable Agriculture (NMSA)",
+        "farmer",
+        "Promoting climate-resilient farming, rainfed area development, integrated farming systems, and resource conservation.",
+        "Farmers located in rainfed and drought-vulnerable agro-climatic zones.",
+        "Financial support up to 50% for constructing on-farm water harvesting ponds, vermicompost units, and adopting agroforestry.",
+        "Land Records (Khatoni/Khasra), Aadhaar Card, Bank Account Details, Farm Project Plan verified by agriculture officer.",
+        "https://nmsa.dac.gov.in/"
+    ),
+    (
+        "Interest Subvention Scheme for Short Term Crop Loans",
+        "farmer",
+        "Concessional interest rate for short-term farm crop credit through cooperative and commercial banks.",
+        "Farmers taking short-term agricultural production credit up to ₹3 Lakhs through KCC.",
+        "Normal interest rate of 7% subsidized to 4% effective interest rate through 3% Prompt Repayment Incentive (PRI).",
+        "Kisan Credit Card, Crop Loan Account Details, Land Sowing Records, Aadhaar Card.",
+        "https://www.nabard.org/"
+    ),
+    (
+        "Rashtriya Krishi Vikas Yojana (RKVY-RAFTAAR)",
+        "farmer",
+        "Grants and financial assistance for infrastructure creation, post-harvest management, and agricultural entrepreneurship.",
+        "Farmers, youth agri-entrepreneurs, self-help groups, and farmer cooperatives.",
+        "Seed-stage funding up to ₹25 Lakhs for agri-startups, alongside community grants for post-harvest cold storage and grain drying centers.",
+        "Detailed Business Project Report, Land Record or Lease Agreement, Aadhaar Card, Pan Card, Bank Account Details.",
+        "https://www.myscheme.gov.in/schemes/rkvy-raftaar"
+    ),
+    (
+        "National Livestock Mission (NLM)",
+        "farmer",
+        "Financial subsidy for setting up poultry, sheep, goat, piggery breeding farms and fodder production units.",
+        "Individual farmers, rural entrepreneurs, Farmer Producer Organizations (FPOs), self-help groups, and joint liability groups.",
+        "50% back-ended capital subsidy up to ₹50 Lakhs for sheep/goat breeding farms, and up to ₹25 Lakhs for poultry parent farm units.",
+        "Land Documents / Lease Agreement (minimum 10 years), Detailed Project Report (DPR), Bank Loan Sanction Letter, KYC Documents.",
+        "https://nlm.udyamimitra.in/"
+    ),
+    (
+        "PM Matsya Sampada Yojana (PMMSY)",
+        "farmer",
+        "Harnessing fisheries potential through modern aquaculture, biofloc units, fish feed plants, and deep-sea vessels.",
+        "Fishers, fish farmers, fish workers, fisheries cooperatives, self-help groups, and private entrepreneurs.",
+        "Financial subsidy of 40% for general category and 60% for women/SC/ST for ponds, cage culture, biofloc, re-circulatory systems (RAS), and ice trucks.",
+        "Aadhaar Card, Land / Water Body Ownership or Lease Deed, Project Proposal, Bank Passbook, Caste Certificate (if SC/ST).",
+        "https://pmmsy.dof.gov.in/"
+    ),
+    (
+        "Pradhan Mantri Kisan Sampada Yojana",
+        "farmer",
+        "Creating modern infrastructure for mega food parks, agro-processing clusters, and cold chain logistics.",
+        "Food processing entrepreneurs, farmer producer organizations, and agricultural cooperatives.",
+        "Capital grant-in-aid up to 50% of eligible project cost (up to ₹5 Crore) for food processing and value-addition units.",
+        "Detailed Project Report (DPR), Land Purchase/Lease Proof, Bank Loan In-principle Approval, Audited Financial Statements.",
+        "https://www.mofpi.gov.in/"
+    ),
+    (
+        "Mission for Integrated Development of Horticulture (MIDH)",
+        "farmer",
+        "Holistic growth of the horticulture sector including fruits, vegetables, root crops, spices, and flowers.",
+        "Horticulture farmers, nursery owners, and farmer producer groups.",
+        "Subsidies up to 50% for hi-tech polyhouses, shade net structures, quality planting materials, mushroom units, and pack houses.",
+        "Land Record Document (Khasra/Khatauni), Soil & Water Test Report, Quotation of Polyhouse/Equipment, Aadhaar Card, Bank Details.",
+        "https://midh.gov.in/"
+    ),
 
-            # ==================== CATEGORY: WOMEN (15 Schemes) ====================
-            (
-                "Pradhan Mantri Matru Vandana Yojana (PMMVY)",
-                "women",
-                "Maternity benefit program providing cash incentives for pregnant and lactating mothers.",
-                "Pregnant women and lactating mothers for the first living child in the family (income restrictions apply).",
-                "Direct cash incentive of ₹5,000 paid in three installments to compensate for wage loss and ensure adequate nutrition.",
-                "Aadhaar Card of Mother and Husband, Mother's Bank Passbook, MCP Card (Mother & Child Protection Card), Birth Certificate of child.",
-                "https://wcd.gov.in/schemes/pradhan-mantri-matru-vandana-yojana"
-            ),
-            (
-                "Mahila Coir Yojana",
-                "women",
-                "Skill development program with subsidy benefits to empower rural women artisans.",
-                "Rural women artisans who have undergone training in coir spinning activities.",
-                "75% subsidy on motorized coir spinning equipment along with a stipend of ₹3,000 during the training period.",
-                "Aadhaar Card, Passport Size Photograph, Training Completion Certificate from Coir Board, Category Certificate (if SC/ST/OBC).",
-                "https://msme.gov.in/"
-            ),
-            (
-                "Sukanya Samriddhi Yojana (SSY)",
-                "women",
-                "Small savings deposit account for the girl child offering high interest rates and triple tax exemptions.",
-                "Legal guardians of girl children aged below 10 years (maximum 2 accounts per family).",
-                "Offers a high rate of interest (currently ~8.2%) with full tax deduction under section 80C and tax-free maturity payouts.",
-                "Birth Certificate of girl child, Aadhaar Card of Parent/Guardian, PAN Card of Parent, Address Proof.",
-                "https://www.indiapost.gov.in/"
-            ),
-            (
-                "Beti Bachao Beti Padhao (BBBP)",
-                "women",
-                "National campaign and school incentives to prevent female foeticide and ensure girl child education.",
-                "All citizens, with special education support, scholarships, and security focus for school-going girls.",
-                "Provides awareness grants, school admission enrollment assistance, and safety audits around schools.",
-                "Domicile Certificate, Birth Proof of girl child, Aadhaar Card, School/College Admission Proof.",
-                "https://wcd.gov.in/schemes/beti-bachao-beti-padhao-em-back-to-basics"
-            ),
-            (
-                "Pradhan Mantri Ujjwala Yojana (PMUY)",
-                "women",
-                "Free LPG connections to women belonging to underprivileged households to eliminate clean-cooking barriers.",
-                "Adult women belonging to BPL households, SC/ST, forest dwellers, or landless agricultural families.",
-                "Free LPG gas connection with first cylinder refill and stove assistance worth ₹1,600 per connection.",
-                "BPL Ration Card, Aadhaar Card of all family members, Bank Account details, Address Proof.",
-                "https://www.pmuy.gov.in/"
-            ),
-            (
-                "Support to Training and Employment Programme for Women (STEP)",
-                "women",
-                "Employability skills training and entrepreneurship facilitation in agriculture, tailoring, and crafts.",
-                "Women artisans, weavers, and small workers aged 16 years and above.",
-                "Free vocational skill training, boarding facility, and financial assistance to form self-help groups.",
-                "Aadhaar Card, Passport photograph, Income Certificate, Caste/Category Certificate (if applicable).",
-                "https://wcd.gov.in/schemes/support-training-and-employment-programme-women-step"
-            ),
-            (
-                "Mahila E-Haat",
-                "women",
-                "A direct online marketing portal for displaying and selling products made by women entrepreneurs and self-help groups.",
-                "Women self-help groups (SHGs), NGOs, and individual female entrepreneurs.",
-                "Free online web store page listing products, direct payment routing from customers, and national buyer exposure.",
-                "Aadhaar Card, Business/NGO Registration Certificate, Photos of products, Bank Account details.",
-                "https://wcd.gov.in/"
-            ),
-            (
-                "Working Women Hostel Scheme",
-                "women",
-                "Provides safe, clean, and affordable hostel accommodation and daycare facilities in cities.",
-                "Working women, single/divorced/widowed women with salaries below specified thresholds (e.g. ₹50,000/month).",
-                "Subsidized rental housing in safe municipal zones, including daycare support for children up to 5 years.",
-                "Salary Certificate/Employment letter, Aadhaar Card, Address Proof of hometown, Marriage status affidavit.",
-                "https://wcd.gov.in/"
-            ),
-            (
-                "One Stop Centre Scheme (Sakhi)",
-                "women",
-                "Integrated support centers providing 24/7 medical, legal, and counseling services to women facing violence.",
-                "Any woman affected by domestic violence, harassment, or societal abuse, regardless of age or class.",
-                "Free immediate temporary shelter, legal guidance, psychological counseling, and police assistance.",
-                "No documentation is mandatory for receiving urgent rescue aid and support.",
-                "https://wcd.gov.in/"
-            ),
-            (
-                "Stand-Up India Scheme for Women",
-                "women",
-                "Bank loans to promote greenfield manufacturing, service, or trading business setups.",
-                "Women entrepreneurs aged above 18 years, starting their first business venture.",
-                "Collateral-free bank loans ranging from ₹10 Lakhs up to ₹1 Crore at low commercial interest rates.",
-                "Aadhaar Card, Business Project Report, Rent/Lease Agreement of site, PAN Card, Bank statements.",
-                "https://www.standupmitra.in/"
-            ),
-            (
-                "Lakhpati Didi Scheme",
-                "women",
-                "Skill training and financial linkages to help self-help group (SHG) women earn at least ₹1 Lakh annually.",
-                "Women members of Self-Help Groups (SHGs) registered under Deendayal Antyodaya Yojana - NRLM.",
-                "Free training in drone flying (Drone Didis), LED bulb making, tailoring, and micro-business management with bank loans.",
-                "SHG Membership Card/Certificate, Aadhaar Card, Bank account passbook, Domicile certificate.",
-                "https://nrlm.gov.in/"
-            ),
-            (
-                "Mahila Samman Savings Certificate (MSSC)",
-                "women",
-                "Small savings fixed deposit scheme designed to encourage savings among women.",
-                "Any female citizen (either for herself or on behalf of a minor girl child).",
-                "Guaranteed fixed interest rate of 7.5% per annum for a 2-year term with flexible partial withdrawal.",
-                "Aadhaar Card, PAN Card, Deposit Amount Check/Cash, Post Office Savings Application Form.",
-                "https://www.indiapost.gov.in/"
-            ),
-            (
-                "Pradhan Mantri Surakshit Matritva Abhiyan (PMSMA)",
-                "women",
-                "Free, comprehensive antenatal check-ups and diagnostic services on the 9th of every month.",
-                "All pregnant women in their second or third trimester across government medical facilities.",
-                "Free check-ups, sonography, blood tests, and iron-folic acid medicine distribution under specialized doctors.",
-                "MCP Card (Mother & Child Protection Card), Aadhaar Card, Previous Medical Reports.",
-                "https://pmsma.nhp.gov.in/"
-            ),
-            (
-                "Kasturba Gandhi Balika Vidyalaya (KGBV)",
-                "women",
-                "Residential schools providing quality upper primary and secondary education to girls.",
-                "Girls belonging to SC, ST, OBC, Minority, or BPL families who are dropouts or live in low female literacy zones.",
-                "100% free residential education, uniforms, boarding facilities, and textbooks.",
-                "Caste/Category Certificate, BPL Ration Card, Previous school transfer certificate (if applicable), Aadhaar Card.",
-                "https://samagra.education.gov.in/"
-            ),
-            (
-                "Nari Shakti Puraskar",
-                "women",
-                "National award recognition to acknowledge exceptional work done by individual women or institutions.",
-                "Women or institutions working towards economic/social empowerment of women with at least 5 years of service.",
-                "Cash prize of ₹2 Lakhs along with a formal certificate and citation presented by the President of India.",
-                "Detailed Nominee Profile, Achievements Report, Reference letters, Registration records (for institutions).",
-                "https://wcd.gov.in/"
-            ),
+    # ==================== CATEGORY: WOMEN (15 Schemes) ====================
+    (
+        "Pradhan Mantri Matru Vandana Yojana (PMMVY)",
+        "women",
+        "Maternity cash incentive scheme compensating wage loss and improving maternal and child nutrition.",
+        "Pregnant women and lactating mothers for the first child and second girl child (subject to eligibility conditions).",
+        "Direct cash benefit of ₹5,000 in two installments for the first child, and ₹6,000 in single installment for a second girl child.",
+        "Aadhaar Card of Mother and Husband, MCP Card (Mother & Child Protection Card), Mother's Bank Passbook, Birth Certificate of child.",
+        "https://pmmvy.wcd.gov.in/"
+    ),
+    (
+        "Sukanya Samriddhi Yojana (SSY)",
+        "women",
+        "Small deposit savings scheme for girl children offering highest government interest rate and tax exemption.",
+        "Parents or legal guardians of a girl child aged from birth up to 10 years (maximum 2 accounts per family).",
+        "High interest rate of 8.2% per annum compounded annually, with complete tax exemption on investment, interest, and maturity under Section 80C.",
+        "Birth Certificate of girl child, Identity and Address Proof of parent/guardian (Aadhaar/PAN), Passport photos.",
+        "https://www.indiapost.gov.in/"
+    ),
+    (
+        "Pradhan Mantri Ujjwala Yojana (PMUY)",
+        "women",
+        "Providing clean cooking fuel LPG connections to poor women to eliminate indoor pollution and health risks.",
+        "Adult women belonging to BPL households, SC/ST, SECC list, or most backward categories without existing LPG connection.",
+        "Free LPG domestic gas connection with deposit-free cylinder, pressure regulator, safety hose pipe, first cylinder refill, and gas stove.",
+        "BPL Ration Card / SECC Household proof, Aadhaar Card of all adult family members, Bank Account Passbook of the woman applicant.",
+        "https://www.pmuy.gov.in/"
+    ),
+    (
+        "Lakhpati Didi Scheme",
+        "women",
+        "Empowering rural women through Self Help Groups to achieve a sustainable annual income of over ₹1 Lakh.",
+        "Women members of Deendayal Antyodaya Yojana - National Rural Livelihoods Mission (DAY-NRLM) Self Help Groups.",
+        "Skill training in drone piloting, LED bulb making, organic fertilizers, livestock rearing, with micro-credit assistance up to ₹5 Lakhs.",
+        "Aadhaar Card, SHG Membership Verification Letter, Bank Account Passbook, Proof of Livelihood Activity.",
+        "https://nrlm.gov.in/"
+    ),
+    (
+        "Mahila Samman Savings Certificate (MSSC)",
+        "women",
+        "Government-backed small savings scheme designed specifically for women and girl investors.",
+        "Any woman for herself, or a guardian on behalf of a minor girl child.",
+        "Guaranteed 7.5% per annum fixed interest rate for a 2-year tenure, with flexible partial withdrawal facility up to 40% after one year.",
+        "Account Opening Form (from Post Office / Bank), Aadhaar Card, PAN Card, Passport size photograph.",
+        "https://www.indiapost.gov.in/"
+    ),
+    (
+        "Stand-Up India Scheme for Women",
+        "women",
+        "Facilitating bank loans between ₹10 Lakhs and ₹1 Crore for women establishing greenfield commercial enterprises.",
+        "Women entrepreneurs aged 18 years and above starting new business ventures in manufacturing, services, or trading.",
+        "Composite bank loans covering up to 85% of project cost with concessional interest rates and credit guarantee cover.",
+        "Business Project Report, Proof of Identity and Business Address, Lease Deed or Land Ownership Proof, Bank Account Statements.",
+        "https://www.myscheme.gov.in/schemes/suisw"
+    ),
+    (
+        "Beti Bachao Beti Padhao (BBBP)",
+        "women",
+        "National campaign to prevent gender-biased sex selection and ensure education and safety for every girl child.",
+        "All families and girl children across districts with adverse Child Sex Ratio (CSR).",
+        "Free school admission drives, institutional delivery incentives, provision of school toilets, and protection against early child marriage.",
+        "Birth Certificate of girl child, Aadhaar Card, Residence Proof.",
+        "https://www.myscheme.gov.in/schemes/bbbp"
+    ),
+    (
+        "Pradhan Mantri Surakshit Matritva Abhiyan (PMSMA)",
+        "women",
+        "Free, comprehensive, high-quality antenatal healthcare services provided on the 9th day of every month.",
+        "All pregnant women in their 2nd or 3rd trimester visiting government health centers and hospitals.",
+        "Free blood tests, urine investigations, ultrasound diagnostics, iron-folic supplements, and specialist OB-GYN consultations.",
+        "PMSMA Mother Card, Aadhaar Card, MCP Card (Mother & Child Protection Card).",
+        "https://pmsma.mohfw.gov.in/"
+    ),
+    (
+        "One Stop Centre Scheme (Sakhi)",
+        "women",
+        "Integrated single-window support for women affected by violence, harassment, or societal abuse.",
+        "Any woman facing physical, sexual, emotional, psychological, or economic abuse, irrespective of age, marital status, or caste.",
+        "Immediate emergency shelter up to 5 days, police assistance, medical treatment, legal aid, and professional psycho-social counseling under one roof.",
+        "No documentation required for receiving emergency aid and rescue support.",
+        "https://wcd.gov.in/"
+    ),
+    (
+        "Sakhi Niwas (Working Women Hostel Scheme)",
+        "women",
+        "Safe, affordable, and clean rental housing for working women located away from their families.",
+        "Employed, single, widowed, divorced, or separated women with monthly gross income up to ₹50,000 in cities.",
+        "Subsidized lodging with secure premises, nutritious meals, and day care facilities (creche) for children up to 5 years.",
+        "Employment Letter / Salary Slip, Aadhaar Card, Address Proof of permanent hometown, Passport size photograph.",
+        "https://wcd.gov.in/"
+    ),
+    (
+        "Deendayal Antyodaya Yojana - DAY-NRLM (Self Help Groups)",
+        "women",
+        "Organizing rural poor women into self-help groups and providing subsidized financial credit for micro-enterprises.",
+        "Rural women from poor and marginalized families forming groups of 10 to 20 members.",
+        "Revolving Fund of ₹20,000–₹30,000, Community Investment Fund up to ₹1.5 Lakhs, and collateral-free bank loans up to ₹20 Lakhs at 7% interest.",
+        "SHG Resolution Book, Member Aadhaar Cards, Group Bank Account Passbook, KYC documents.",
+        "https://nrlm.gov.in/"
+    ),
+    (
+        "Kasturba Gandhi Balika Vidyalaya (KGBV)",
+        "women",
+        "Residential schools providing quality upper primary and secondary education for underprivileged girls.",
+        "Girls aged 10–18 from SC, ST, OBC, minority, and BPL families who are dropouts or never enrolled in school.",
+        "100% free education, textbooks, uniforms, boarding, lodging, health check-ups, and vocational skill training.",
+        "Birth Certificate or Age Affidavit, Caste Certificate (if applicable), BPL Card / Income Proof, Previous School Leaving Certificate.",
+        "https://www.education.gov.in/"
+    ),
+    (
+        "Mahila Coir Yojana",
+        "women",
+        "Skill training and subsidized machinery distribution for women in coconut-producing coastal and rural areas.",
+        "Rural female workers and artisans interested in coir yarn spinning and value-added coir craft manufacturing.",
+        "75% government subsidy on motorized coir spinning ratts, 2-month training with monthly stipend of ₹3,000, and marketing linkage.",
+        "Aadhaar Card, Residence Proof, Age Proof (18+ years), Bank Account Details, Caste Certificate (if SC/ST).",
+        "https://msme.gov.in/"
+    ),
+    (
+        "Pradhan Mantri Awas Yojana - Urban (Women Co-Ownership Priority)",
+        "women",
+        "Housing subsidy scheme mandating female household headship or joint ownership to empower women.",
+        "Families belonging to EWS or LIG categories where the pucca house must be registered in the name of the female head or jointly.",
+        "Interest subsidy up to ₹2.67 Lakhs on housing loans, or direct central assistance of ₹1.5 Lakhs for individual house construction.",
+        "Aadhaar Card of female head and spouse, Income Certificate, Land ownership title, Non-ownership affidavit (no pucca house elsewhere).",
+        "https://pmaymis.gov.in/"
+    ),
+    (
+        "PM Vishwakarma for Women Tailors (Darzi) & Artisans",
+        "women",
+        "Special recognition, toolkit vouchers, and credit for traditional women tailors, basket weavers, and garland makers.",
+        "Traditional female artisans and craftspersons practicing hand-skill trades aged 18 years and above.",
+        "PM Vishwakarma Certificate & ID, ₹15,000 e-voucher for modern sewing/craft tools, 5-day training with ₹500/day stipend, and 5% interest loans up to ₹3 Lakhs.",
+        "Aadhaar Card, Active Mobile Number, Bank Account Passbook, Trade Self-declaration.",
+        "https://pmvishwakarma.gov.in/"
+    ),
 
-            # ==================== CATEGORY: SENIOR CITIZEN (15 Schemes) ====================
-            (
-                "Pradhan Mantri Vaya Vandana Yojana (PMVVY)",
-                "senior_citizen",
-                "Pension scheme offering social security and guaranteed returns for senior citizens.",
-                "Indian citizens aged 60 years and above.",
-                "Guaranteed interest rate of 7.4% per annum paid monthly as a pension for a policy term of 10 years.",
-                "Aadhaar Card, Age Proof (PAN Card/Birth Certificate), Bank Account Passbook for pension credit, Address Proof.",
-                "https://www.licindia.in/"
-            ),
-            (
-                "Indira Gandhi National Old Age Pension Scheme (IGNOAPS)",
-                "senior_citizen",
-                "Monthly financial pension support for older individuals in impoverished households.",
-                "Citizens aged 60 years and above belonging to households below the poverty line (BPL).",
-                "Monthly pension of ₹200 (for ages 60-79) and ₹500 (for age 80+) supplemented by state government contributions.",
-                "Aadhaar Card, Age Proof, BPL Card, Bank Account Details.",
-                "https://nsap.nic.in/"
-            ),
-            (
-                "Rashtriya Vayoshri Yojana (RVY)",
-                "senior_citizen",
-                "Provides free physical aids and assisted-living devices for low-income senior citizens.",
-                "Senior citizens aged 60 and above belonging to BPL families or earning less than ₹15,000/month, having age-related disabilities.",
-                "Free distribution of walking sticks, crutches, hearing aids, wheelchairs, and spectacles.",
-                "Aadhaar Card, BPL Ration Card / Income Certificate, Disability Certificate (if applicable), Passport size photograph.",
-                "https://socialjustice.gov.in/"
-            ),
-            (
-                "Senior Citizens Savings Scheme (SCSS)",
-                "senior_citizen",
-                "Government-backed savings scheme for seniors offering high returns and tax deductions.",
-                "Individuals aged 60 years and above (or 55 years for those retired under VRS).",
-                "Attractive interest rates (~8.2% paid quarterly) on deposits up to ₹30 Lakhs, with tax benefits under section 80C.",
-                "Aadhaar Card, PAN Card, Retirement proof/VRS documents, Bank account details, passport photographs.",
-                "https://www.indiapost.gov.in/"
-            ),
-            (
-                "Varishtha Pension Bima Yojana (VPBY)",
-                "senior_citizen",
-                "Government-supported immediate annuity pension scheme administered through LIC.",
-                "Indian senior citizens aged 60 years and above.",
-                "Guaranteed lifetime pension yield of 8% to 9% based on the lump-sum investment option.",
-                "Aadhaar Card, Address Proof, LIC Application form, Bank Details, Age Proof.",
-                "https://www.licindia.in/"
-            ),
-            (
-                "Pradhan Mantri Jan Aushadhi Yojana for Seniors",
-                "senior_citizen",
-                "Access to generic medicines at highly subsidized prices through specialized outlets.",
-                "All citizens, with special retail counters and discount facilities for senior citizens.",
-                "Reduces daily medical expenses by providing quality generic drugs at 50% to 90% discount compared to branded ones.",
-                "Doctor's Prescription, Aadhaar Card / Senior Citizen ID Card.",
-                "https://pmbi.gov.in/"
-            ),
-            (
-                "Vayoshreshtha Samman",
-                "senior_citizen",
-                "National awards presented to eminent senior citizens and institutions rendering services to the elderly.",
-                "Seniors aged above 60, or government/non-government institutions working for senior care.",
-                "National presidential citation, formal award, and cash incentives for outstanding contributions.",
-                "Detailed nomination forms, portfolio of social works, verification by state ministry.",
-                "https://socialjustice.gov.in/"
-            ),
-            (
-                "National Programme for Health Care of the Elderly (NPHCE)",
-                "senior_citizen",
-                "Specialized diagnostic, clinical, and rehabilitation services for elderly patients.",
-                "All senior citizens aged 60 years and above needing medical care.",
-                "Free geriatric clinics, dedicated wards in district hospitals, and free physiotherapy/rehab services.",
-                "Aadhaar Card, OPD Registration Slip, previous medical histories.",
-                "https://main.mohfw.gov.in/"
-            ),
-            (
-                "Elderline (14567)",
-                "senior_citizen",
-                "National helpline providing information, guidance, legal support, and abuse prevention.",
-                "All senior citizens across India facing distress, isolation, or legal family disputes.",
-                "Free tele-counseling, physical rescue of abandoned seniors, and legal mediation services.",
-                "No documentation is required for calling the toll-free assistance line.",
-                "https://socialjustice.gov.in/"
-            ),
-            (
-                "Reverse Mortgage Loan Scheme",
-                "senior_citizen",
-                "Loan facility allowing seniors to monetize their home equity for daily life costs.",
-                "House owners aged 60 years and above. The property must be self-occupied and residential.",
-                "Enables seniors to receive monthly payout streams from banks without having to repay the loan during their lifetime.",
-                "Property Ownership deeds, Tax assessment receipt, Age Proof, Aadhaar, Valuer Certificate.",
-                "https://www.nhb.org.in/"
-            ),
-            (
-                "Tax Benefits under Section 80D for Seniors",
-                "senior_citizen",
-                "Deduction limit benefits on health insurance premiums and medical expenditure.",
-                "Individual senior citizens paying health premiums or spending on medical needs.",
-                "Deduction benefit limit increased up to ₹50,000 (instead of standard ₹25,000) under annual income tax filing.",
-                "Health Insurance Premium Receipt, Medical bills, PAN Card.",
-                "https://www.incometax.gov.in/"
-            ),
-            (
-                "Tax Exemption under Section 80TTB for Seniors",
-                "senior_citizen",
-                "Deduction benefits on interest income earned from bank and post-office deposits.",
-                "Individual senior citizens filing income tax returns.",
-                "Exempts interest income up to ₹50,000 per year from savings and fixed deposit accounts from income tax.",
-                "Bank/Post office TDS certificates, Form 15H submission, PAN Card.",
-                "https://www.incometax.gov.in/"
-            ),
-            (
-                "SAGE (Seniorcare Aging Growth Engine)",
-                "senior_citizen",
-                "One-stop portal facilitating credible products and services for elderly care.",
-                "Senior citizens and their family members seeking assistive care, healthcare, or housing tech.",
-                "Connects users with government-verified startups offering smart elderly care technology and services.",
-                "Aadhaar Card, Senior Citizen ID card (if registering on custom startup portals).",
-                "https://sage.dosje.gov.in/"
-            ),
-            (
-                "SACRED (Senior Able Citizens for Re-Employment in Dignity)",
-                "senior_citizen",
-                "Web portal bringing job-seeking senior citizens and private employers together.",
-                "Senior citizens aged 60 and above with working capacity and specific experience.",
-                "Free job registration, resume listing, and direct interview matching with corporate/private employers.",
-                "Aadhaar Card, Education/Work Experience Certificates, CV/Bio-data, PAN Card.",
-                "https://sacred.dosje.gov.in/"
-            ),
-            (
-                "Integrated Programme for Senior Citizens (IPSrC)",
-                "senior_citizen",
-                "Grants-in-aid to non-government organizations for establishing old age homes and shelters.",
-                "Registered NGOs, voluntary groups, and municipal local bodies setting up senior care centers.",
-                "Financial aid covering building rent, staff salaries, food, and medicines to provide free shelter to homeless seniors.",
-                "NGO Registration License, Audited balance sheets, Land lease agreement, Police verification.",
-                "https://socialjustice.gov.in/"
-            ),
+    # ==================== CATEGORY: SENIOR CITIZEN (15 Schemes) ====================
+    (
+        "Ayushman Bharat (PM-JAY) for Senior Citizens 70+",
+        "senior_citizen",
+        "Universal free health insurance coverage for all senior citizens aged 70 years and above regardless of income.",
+        "Every Indian citizen aged 70 years and above, irrespective of economic standing or family income.",
+        "₹5 Lakh free health cover per year for secondary and tertiary hospitalization across all empaneled public and private hospitals.",
+        "Aadhaar Card with correct date of birth, Active Mobile Number for OTP verification, Ration Card (optional).",
+        "https://beneficiary.nha.gov.in/"
+    ),
+    (
+        "Pradhan Mantri Vaya Vandana Yojana (PMVVY)",
+        "senior_citizen",
+        "Government-backed pension scheme operated by LIC providing assured monthly returns on retirement lump-sum investments.",
+        "Senior citizens aged 60 years and above.",
+        "Assured return of 7.4% per annum payable monthly for 10 years on purchase price deposits up to ₹15 Lakhs.",
+        "Aadhaar Card, Age Proof (PAN Card / Passport), Bank Account Passbook, Retirement / Superannuation proof.",
+        "https://www.licindia.in/"
+    ),
+    (
+        "Indira Gandhi National Old Age Pension Scheme (IGNOAPS)",
+        "senior_citizen",
+        "Non-contributory monthly cash pension for destitute elderly citizens living below the poverty line.",
+        "Citizens aged 60 years and above belonging to a household listed in Below Poverty Line (BPL) records.",
+        "Monthly direct cash pension of ₹200–₹500 (plus additional state supplements up to ₹2,000/month depending on state).",
+        "BPL Card / SECC Household Data, Aadhaar Card, Age Proof, Bank Account Passbook seeded with Aadhaar.",
+        "https://www.myscheme.gov.in/schemes/ignoaps"
+    ),
+    (
+        "Atal Pension Yojana (APY)",
+        "senior_citizen",
+        "Guaranteed lifelong social security monthly pension scheme for citizens in the unorganized sector.",
+        "Indian citizens aged between 18 and 40 years holding a savings bank or post office account.",
+        "Guaranteed monthly pension of ₹1,000, ₹2,000, ₹3,000, ₹4,000, or ₹5,000 from age 60 until death, followed by spouse pension and return of corpus to nominee.",
+        "Savings Bank Account Number, Aadhaar Card, Active Mobile Number, Nominee details.",
+        "https://www.myscheme.gov.in/schemes/apy"
+    ),
+    (
+        "Senior Citizens Savings Scheme (SCSS)",
+        "senior_citizen",
+        "Government savings deposit offering safe, quarterly regular interest income with tax benefits.",
+        "Individuals aged 60 years and above (or 55 years for early retirees / superannuated personnel).",
+        "High guaranteed interest rate of 8.2% per annum paid quarterly on deposits up to ₹30 Lakhs with Section 80C tax deduction.",
+        "Age Proof (PAN Card / Passport), Aadhaar Card, Retirement Gratuity proof (if under 60), Bank/Post Office Account Details.",
+        "https://www.indiapost.gov.in/"
+    ),
+    (
+        "Rashtriya Vayoshri Yojana (RVY)",
+        "senior_citizen",
+        "Free distribution of physical assistive living devices for senior citizens suffering from age-related disabilities.",
+        "Senior citizens aged 60+ belonging to BPL category or earning monthly income less than ₹15,000.",
+        "Free supply of walking sticks, elbow crutches, walkers, hearing aids, wheelchairs, artificial dentures, and spectacles.",
+        "Aadhaar Card, Proof of Age (60+), BPL Card / Income Certificate from Tehsildar, Medical disability/impairment certificate.",
+        "https://alimco.in/"
+    ),
+    (
+        "Pradhan Mantri Bhartiya Janaushadhi Pariyojana",
+        "senior_citizen",
+        "Providing quality generic medicines and healthcare items to elderly citizens at 50% to 90% cheaper prices.",
+        "All citizens, with special cost-saving benefits for senior citizens managing diabetes, hypertension, and arthritis.",
+        "Access to over 1,800 essential generic medicines and 300 surgical products manufactured under strict WHO-GMP standards at affordable rates.",
+        "Doctor's Prescription (for prescription drugs), Patient Name, Contact Number.",
+        "https://janaushadhi.gov.in/"
+    ),
+    (
+        "National Programme for Health Care of the Elderly (NPHCE)",
+        "senior_citizen",
+        "Dedicated geriatric healthcare services through specialized senior wings and clinics in government hospitals.",
+        "All senior citizens aged 60 years and above across India.",
+        "Free dedicated geriatric OPD consultations, specialized senior inpatient wards, physiotherapy, and medicines at district hospitals.",
+        "Aadhaar Card / Age Proof, Previous Medical Records.",
+        "https://mohfw.gov.in/"
+    ),
+    (
+        "Reverse Mortgage Loan Scheme",
+        "senior_citizen",
+        "Allows elderly house owners to convert home equity into a regular tax-free monthly stream of income without selling.",
+        "Senior citizens aged 60 years and above owning a self-acquired, unencumbered residential property.",
+        "Periodic monthly cash payouts from the bank for up to 20 years while the senior citizen retains full ownership and residence rights for life.",
+        "Title Deed of Residential Property, Age Proof (PAN/Aadhaar), House Valuation and Municipal Tax Receipts, Permanent Residence Proof.",
+        "https://www.nhb.org.in/"
+    ),
+    (
+        "Pradhan Mantri Suraksha Bima Yojana (PMSBY)",
+        "senior_citizen",
+        "Subsidized accident death and permanent disability insurance cover for senior citizens up to 70 years.",
+        "All individuals aged 18 to 70 years having a bank account with auto-debit consent.",
+        "₹2 Lakh accidental death / full disability cover (₹1 Lakh for partial disability) for a nominal premium of just ₹20 per year.",
+        "Aadhaar Card, Bank Account Passbook, Auto-debit Mandate Form.",
+        "https://financialservices.gov.in/"
+    ),
+    (
+        "Pradhan Mantri Jeevan Jyoti Bima Yojana (PMJJBY)",
+        "senior_citizen",
+        "Subsidized renewable term life insurance protection for citizens up to age 55 (valid policy protection for family).",
+        "Bank account holders aged 18 to 50 years (coverage valid up to age 55).",
+        "₹2 Lakh life insurance sum assured payable to nominee upon death of subscriber due to any cause for ₹436/year.",
+        "Aadhaar Card, Bank Account Details, Nominee Aadhaar Card.",
+        "https://financialservices.gov.in/"
+    ),
+    (
+        "Integrated Programme for Senior Citizens (IPSrC)",
+        "senior_citizen",
+        "Financial grant-in-aid for running old age homes, day care centers, and continuous medical care for destitute elderly.",
+        "Senior citizens (60+) who are homeless, indigent, or lacking family support.",
+        "Free nutritious food, clean shelter, clothing, medical healthcare, and recreational facilities provided at registered Senior Homes.",
+        "Age proof (Aadhaar/Voter ID), Indigence / BPL Certificate (where required).",
+        "https://socialjustice.gov.in/"
+    ),
+    (
+        "Annapurna Scheme for Senior Citizens",
+        "senior_citizen",
+        "Meeting food security needs of indigent senior citizens who are not receiving pension under NOAPS.",
+        "Destitute senior citizens aged 65 years and above who are not receiving old age pension benefits.",
+        "10 kg of food grains (wheat/rice) provided completely free of charge every month through Fair Price Shops.",
+        "Aadhaar Card, Age Certificate, Certificate from revenue officer confirming non-receipt of pension, Ration Card.",
+        "https://www.myscheme.gov.in/schemes/ignoaps"
+    ),
+    (
+        "National Pension System (NPS for Senior Investors)",
+        "senior_citizen",
+        "Voluntary defined-contribution pension system allowing investments up to age 70 with market-linked returns.",
+        "Any citizen aged 18 to 70 years seeking systematic post-retirement pension accumulation.",
+        "Low fund management fees, tax deductions under 80CCD, flexibility to select asset allocation, and regular annuity payouts.",
+        "Aadhaar Card, PAN Card, CKYC Compliance, Bank Account Details.",
+        "https://www.myscheme.gov.in/schemes/nps"
+    ),
+    (
+        "Varishtha Nagrik Swasthya Seva & Wellness Centers",
+        "senior_citizen",
+        "Free primary medical consultations, geriatric screenings, and free diagnostic tests for elderly citizens.",
+        "All senior citizens aged 60 and above visiting Ayushman Bharat Health and Wellness Centers (Arogya Mandir).",
+        "Free screening for hypertension, diabetes, oral and breast cancers, cataract detection, and free supply of maintenance medicines.",
+        "Aadhaar Card or Senior Citizen ID Card.",
+        "https://mohfw.gov.in/"
+    ),
 
-            # ==================== CATEGORY: UNEMPLOYED (15 Schemes) ====================
-            (
-                "Pradhan Mantri Kaushal Vikas Yojana (PMKVY)",
-                "unemployed",
-                "Skill training certification scheme aiming to enable youth to take up industry-relevant training.",
-                "Unemployed youth or school/college dropouts seeking professional skills training.",
-                "Free skill training courses across multiple sectors, government certification, assessment fees coverage, and job placement assistance.",
-                "Aadhaar Card, Bank Account Details, Marksheets/Education Proof, Passport Size Photographs.",
-                "https://www.skillindiadigital.gov.in"
-            ),
-            (
-                "PMEGP (Prime Minister's Employment Generation Programme)",
-                "unemployed",
-                "Credit-linked subsidy program to generate employment opportunities by establishing micro-enterprises.",
-                "Any individual above 18 years of age. At least VIII standard pass for projects costing above ₹10 Lakhs.",
-                "Subsidies ranging from 15% to 35% on projects up to ₹50 Lakhs (manufacturing) or ₹20 Lakhs (service sectors).",
-                "Aadhaar Card, PAN Card, Project Report (Business Plan), Education Qualification Certificate (Class VIII pass or above), Caste/Category Certificate (if claiming special subsidy).",
-                "https://www.kviconline.gov.in/pmegpeportal/"
-            ),
-            (
-                "Deen Dayal Upadhyaya Grameen Kaushalya Yojana (DDU-GKY)",
-                "unemployed",
-                "Placement-linked skill training initiative focusing on rural poor youth to enhance earnings.",
-                "Rural youth aged between 15 and 35 years (up to 45 years for women, disabled, and minorities).",
-                "Free training, uniform, books, residential boarding, and assured job placement in corporate firms.",
-                "Aadhaar Card, BPL Ration Card, Caste/Category Certificate, School Leaving Certificate, Bank account details.",
-                "https://ddugky.gov.in/"
-            ),
-            (
-                "National Apprenticeship Promotion Scheme (NAPS)",
-                "unemployed",
-                "Financial sharing of training expenses and stipend to promote active apprenticeship training in industries.",
-                "Unemployed youth aged 15 and above, having basic school or ITI qualification, registered on apprenticeship portal.",
-                "Reimburses 25% of prescribed monthly stipend (up to ₹1,500/month per apprentice) directly to the employer, enabling job training.",
-                "Aadhaar Card, ITI / Educational Marksheet, Bank account passbook, Passport size photo.",
-                "https://www.apprenticeshipindia.gov.in/"
-            ),
-            (
-                "Pradhan Mantri Mudra Yojana (PMMY)",
-                "unemployed",
-                "Collateral-free business loans for setting up small shops, trade, or service startups.",
-                "Non-farm, non-corporate micro-enterprise owners or individuals starting a new business.",
-                "Provides loans in three categories: Shishu (up to ₹50,000), Kishore (up to ₹5 Lakhs), and Tarun (up to ₹10 Lakhs) at low rates.",
-                "Aadhaar Card, PAN Card, Business Address Proof, Machinery Quotation / Business Plan, Passport size photos.",
-                "https://www.mudra.org.in/"
-            ),
-            (
-                "Startup India Initiative",
-                "unemployed",
-                "Tax exemptions, patent filing assistance, and funding access to promote startup culture.",
-                "Individuals having innovative business concepts registered as Partnership, LLP, or Private Limited Company.",
-                "3-year income tax exemption, 80% rebate on patent filing costs, and access to the ₹10,000 Crore Fund of Funds.",
-                "Company Incorporation Certificate, Pitch Deck / Innovation write-up, PAN of company, Aadhaar of Directors.",
-                "https://www.startupindia.gov.in/"
-            ),
-            (
-                "Aatmanirbhar Bharat Rojgar Yojana (ABRY)",
-                "unemployed",
-                "Incentivizes employers to hire new employees by subsidizing monthly provident fund contributions.",
-                "New employees earning less than ₹15,000/month, hired by EPF-registered organizations.",
-                "Government pays 24% of monthly wages (12% employee + 12% employer share) as EPF contributions for 2 years.",
-                "Aadhaar Card, UAN (Universal Account Number) details, Bank passbook, Salary slip.",
-                "https://www.epfindia.gov.in/"
-            ),
-            (
-                "SANKALP Skill Development",
-                "unemployed",
-                "Strengthens institutional mechanisms for skill development and promotes quality livelihood training.",
-                "Unemployed youth, with special focus on women, SC/ST, and marginalized populations.",
-                "Supports quality skill training, standardized trainer certifications, and local entrepreneurship workshops.",
-                "Aadhaar Card, Domicile Certificate, Caste Certificate (if applicable), Education marksheets.",
-                "https://msde.gov.in/"
-            ),
-            (
-                "National Career Service (NCS)",
-                "unemployed",
-                "A digital marketplace offering career counseling, vocational guidance, and direct job match services.",
-                "Job seekers, students, employers, and private placement agencies.",
-                "Free portal for job applications, vacancy posting, skill assessments, and notifications for job fairs.",
-                "Aadhaar Card / Voter ID, Educational Certificates, Resume/Bio-data, Mobile Number.",
-                "https://www.ncs.gov.in/"
-            ),
-            (
-                "PM-YUVA (Yuva Udyamita Vikas Abhiyan)",
-                "unemployed",
-                "Entrepreneurship education, training, and mentorship network for aspiring young business owners.",
-                "Students and youth aged below 30 years, enrolled in PM-YUVA centers or colleges.",
-                "Free access to entrepreneurship courses, handholding services, and mentorship from industry leaders.",
-                "College Identity card (if applicable), Aadhaar Card, Passport photograph.",
-                "https://msde.gov.in/"
-            ),
-            (
-                "Pradhan Mantri Rojgar Protsahan Yojana (PMRPY)",
-                "unemployed",
-                "Incentivizes employers for generating new employment opportunities by funding pension contributions.",
-                "Registered employers under EPFO hiring new employees with wages up to ₹15,000/month.",
-                "Government pays the full 12.0% employer contribution towards Employee Pension Scheme (EPS) for 3 years.",
-                "Employer EPFO Registration Number, New Employee Aadhaar Card, EPF account details.",
-                "https://pmrpy.gov.in/"
-            ),
-            (
-                "MGNREGA",
-                "unemployed",
-                "Ensures livelihood security in rural areas by providing manual wage employment.",
-                "Adult members of rural households willing to do unskilled manual work.",
-                "Guaranteed 100 days of manual wage employment per year, paid directly to bank accounts within 15 days.",
-                "Rural Job Card (issued by Gram Panchayat), Aadhaar Card, Bank Account Details, Domicile Proof.",
-                "https://nrega.nic.in/"
-            ),
-            (
-                "Rural Self Employment Training Institutes (RSETI)",
-                "unemployed",
-                "Short-term intensive residential self-employment training with active bank credit linkages.",
-                "Rural youth aged between 18 and 45 years, possessing basic literacy.",
-                "Free training, lodging, food, and 2 years of post-training support to establish micro-business with bank loans.",
-                "Aadhaar Card, BPL Ration Card (if available), Passport size photos, School certificate.",
-                "https://www.rudsetitrust.org/"
-            ),
-            (
-                "Amrit Dharohar Capacity Building",
-                "unemployed",
-                "Nature-guide and tourism skill training for local youth around Ramsar wetland sites.",
-                "Local youth living in the immediate vicinity of notified Ramsar wetland sites.",
-                "Free training certification in hospitality, eco-tourism, and birdwatching to generate local employment.",
-                "Aadhaar Card, Address Proof near wetland site, Education Certificate (Class 10/12).",
-                "https://moef.gov.in/"
-            ),
-            (
-                "Udaan J&K Skill Training",
-                "unemployed",
-                "Corporate-linked training and placement scheme for graduates from Jammu & Kashmir.",
-                "Unemployed graduates, post-graduates, and three-year engineering diploma holders from Jammu & Kashmir.",
-                "Assures multi-month corporate skill training, travel allowance, free lodging, stipend, and final job placement.",
-                "Degree/Diploma Certificate, J&K Domicile Certificate, Aadhaar Card, Passport size photos.",
-                "https://www.nsdcindia.org/"
-            ),
+    # ==================== CATEGORY: UNEMPLOYED / SKILLS / SELF-EMPLOYMENT (15 Schemes) ====================
+    (
+        "PM Vishwakarma Scheme",
+        "unemployed",
+        "Flagship scheme supporting traditional artisans and craftspersons with toolkits, stipend, and concessional loans.",
+        "Artisans and craftspersons working in 18 notified family-based traditional trades (carpenters, blacksmiths, potters, masons, tailors, etc.) aged 18+.",
+        "PM Vishwakarma Certificate & ID Card, ₹15,000 modern toolkit e-voucher, skill training with ₹500/day stipend, and collateral-free enterprise loans up to ₹3 Lakhs at 5% interest.",
+        "Aadhaar Card, Mobile Number, Bank Account Passbook, Trade Self-Declaration.",
+        "https://pmvishwakarma.gov.in/"
+    ),
+    (
+        "Pradhan Mantri Kaushal Vikas Yojana (PMKVY 4.0)",
+        "unemployed",
+        "Short-term industry-aligned skill training and certification to enable youth to secure productive employment.",
+        "Any Indian youth aged 15–45 years who is unemployed, school/college dropout, or seeking marketable vocational skills.",
+        "Free industry-standard skill training across emerging tech, manufacturing, and services, recognized NSQF Certificate, and placement assistance.",
+        "Aadhaar Card, Bank Account Details, Educational Marksheet (if any), Passport size photographs.",
+        "https://www.skillindiadigital.gov.in/"
+    ),
+    (
+        "PM SVANidhi (PM Street Vendor's AtmaNirbhar Nidhi)",
+        "unemployed",
+        "Special microcredit facility for street vendors and small hawkers to restart and scale their livelihood businesses.",
+        "Urban and peri-urban street vendors vending before March 2020 (or holding Vending Certificate / Letter of Recommendation).",
+        "Collateral-free working capital loan of ₹10,000 in 1st tranche, ₹20,000 in 2nd tranche, and ₹50,000 in 3rd tranche, with 7% interest subsidy and digital cashback up to ₹1,200/year.",
+        "Certificate of Vending / Vendor Identity Card issued by Urban Local Body (ULB), Aadhaar Card, Bank Passbook.",
+        "https://pmsvanidhi.mohua.gov.in/"
+    ),
+    (
+        "Pradhan Mantri Mudra Yojana (PMMY)",
+        "unemployed",
+        "Providing institutional micro-loans up to ₹10 Lakhs to non-corporate, non-farm small and micro enterprises.",
+        "Any Indian citizen having a viable business plan for manufacturing, processing, trading, or service sector activities.",
+        "Collateral-free credit under 3 categories: Shishu (loans up to ₹50,000), Kishore (loans ₹50,000 to ₹5 Lakhs), and Tarun (loans ₹5 Lakhs to ₹10 Lakhs).",
+        "Business Proposal / Project Details, Identity & Address Proof (Aadhaar/PAN), Proof of Business Address, 6 months bank statement.",
+        "https://www.mudra.org.in/"
+    ),
+    (
+        "Prime Minister's Employment Generation Programme (PMEGP)",
+        "unemployed",
+        "Credit-linked subsidy program to generate continuous self-employment opportunities in rural and urban areas.",
+        "Any individual aged 18+ years (minimum 8th class pass for projects above ₹10 Lakhs in manufacturing and ₹5 Lakhs in service).",
+        "Government margin money subsidy of 15% to 35% on project costs up to ₹50 Lakhs for manufacturing units and ₹20 Lakhs for service units.",
+        "Detailed Project Report (DPR), Aadhaar Card, Caste / Special Category Certificate (if SC/ST/OBC/Women), Educational Qualification Certificate, EDP Training Certificate.",
+        "https://www.myscheme.gov.in/schemes/pmegp"
+    ),
+    (
+        "Startup India Initiative",
+        "unemployed",
+        "Tax benefits, patent fee reductions, seed fund access, and regulatory simplifications for innovative new ventures.",
+        "Entities incorporated as private limited company, LLP, or registered partnership within 10 years with turnover below ₹100 Crores.",
+        "3-year consecutive income tax holiday under Section 80IAC, 80% rebate on patent filings, fast-track exit, and access to ₹10,000 Crore Fund of Funds.",
+        "Certificate of Incorporation / Registration, Pitch Deck / Business Description, PAN Card of Entity, Founder Aadhaar Cards.",
+        "https://www.startupindia.gov.in/"
+    ),
+    (
+        "National Apprenticeship Promotion Scheme (NAPS)",
+        "unemployed",
+        "Promoting formal apprenticeship training in industries to bridge the academia-industry skill gap.",
+        "Youth aged 14 years and above possessing minimum educational qualification (5th/8th/10th/12th/ITI/Diploma/Degree).",
+        "Government shares 25% of prescribed monthly stipend paid to apprentices up to ₹1,500 per month, directly boosting employability.",
+        "Aadhaar Card, Highest Educational / Technical Certificate, Bank Account Details, Apprenticeship Portal Registration Number.",
+        "https://www.apprenticeshipindia.gov.in/"
+    ),
+    (
+        "Deen Dayal Upadhyaya Grameen Kaushalya Yojana (DDU-GKY)",
+        "unemployed",
+        "Demand-led placement-linked skill training for rural youth from poor households.",
+        "Rural youth aged 15 to 35 years (up to 45 years for women, SC/ST, and persons with disabilities) belonging to poor families.",
+        "100% free residential training, uniforms, books, lodging, and boarding, with mandatory minimum 70% job placement assurance at statutory wages.",
+        "BPL Ration Card / SECC Data, Aadhaar Card, Age Proof, Educational Marksheets, Bank Passbook.",
+        "https://kaushalpanjee.nic.in/"
+    ),
+    (
+        "National Career Service (NCS)",
+        "unemployed",
+        "Digital portal connecting job seekers with national employers, government recruitments, and career counselors.",
+        "Any unemployed youth, graduate, or professional looking for employment or career counseling.",
+        "Free online registration, verified job listings across IT, manufacturing, banking, and government sectors, job fairs, and resume building tools.",
+        "Aadhaar Card or Government Identity Card, Educational Certificates, Resume / Work Experience Details.",
+        "https://www.ncs.gov.in/"
+    ),
+    (
+        "e-Shram Portal (National Database of Unorganized Workers)",
+        "unemployed",
+        "National database issuing universal identity cards and social security scheme access to informal workers.",
+        "Unorganized workers, construction laborers, domestic workers, gig workers, and agricultural workers aged 16 to 59 years.",
+        "Universal 12-digit UAN card, direct access to social security welfare schemes, and ₹2 Lakh accidental death / permanent disability insurance cover.",
+        "Aadhaar Card, Active Mobile Number linked to Aadhaar, Savings Bank Account Passbook.",
+        "https://eshram.gov.in/"
+    ),
+    (
+        "MGNREGA (Mahatma Gandhi NREGA)",
+        "unemployed",
+        "Legal statutory guarantee of 100 days of wage employment in a financial year for rural adult workers.",
+        "Any adult member (18+) of a rural household willing to perform unskilled manual public work.",
+        "Statutory guaranteed minimum wage employment within 15 days of applying, with unemployment allowance if work is not provided.",
+        "Job Card Application, Aadhaar Card, Proof of Rural Residence, Bank / Post Office Account Details.",
+        "https://nrega.nic.in/"
+    ),
+    (
+        "PM Surya Ghar: Muft Bijli Yojana (Green Jobs & Entrepreneurship)",
+        "unemployed",
+        "Rooftop solar subsidy scheme creating green jobs for local technicians, installers, and small vendors.",
+        "Indian households wishing to install rooftop solar, alongside youth seeking training as Surya Mitras and solar vendors.",
+        "Up to ₹78,000 direct capital subsidy for 3kW rooftop solar setup, 300 units free monthly electricity, and certified installation employment.",
+        "Electricity Consumer Number & Bill, Aadhaar Card, Bank Account Details, Roof Ownership Proof.",
+        "https://pmsuryaghar.gov.in/"
+    ),
+    (
+        "Rural Self Employment Training Institutes (RSETI)",
+        "unemployed",
+        "Free short-term intensive vocational training and enterprise mentorship for rural youth.",
+        "Rural youth aged 18 to 45 years hailing from BPL families or under-privileged backgrounds.",
+        "Free residential training in 60+ trades (plumbing, motor mechanics, tailoring, food processing, photography) with guaranteed bank loan linkage for enterprise setup.",
+        "Aadhaar Card, BPL Certificate / Family Income Proof, School Leaving Marksheet, Passport Photographs.",
+        "https://www.myscheme.gov.in/schemes/rseti"
+    ),
+    (
+        "SANKALP Skill Development Programme",
+        "unemployed",
+        "Strengthening district skill committees and modernizing skill training infrastructure across states.",
+        "Youth enrolled in district-level vocational skill programs.",
+        "Standardized NSQF certifications, industry internships, micro-enterprise incubation, and career counseling centers.",
+        "Aadhaar Card, Enrollment Slip from local ITI / Government Skill Training Center.",
+        "https://msde.gov.in/"
+    ),
+    (
+        "PM-YUVA (Yuva Udyamita Vikas Abhiyan)",
+        "unemployed",
+        "Fostering entrepreneurship education, incubation, and mentorship for youth in colleges and polytechnics.",
+        "Students and young adults in higher educational institutes, ITIs, and polytechnics.",
+        "Access to business incubation centers, seed funding network connections, startup mentor bootcamps, and legal business advisory.",
+        "Student ID Card, Aadhaar Card, Business Concept Pitch Note.",
+        "https://msde.gov.in/"
+    ),
 
-            # ==================== CATEGORY: DIFFERENTLY ABLED (15 Schemes) ====================
-            (
-                "Deendayal Disabled Rehabilitation Scheme (DDRS)",
-                "differently_abled",
-                "Grants-in-aid assistance scheme to promote voluntary action for rehabilitation of disabled persons.",
-                "Non-governmental organizations (NGOs) providing rehabilitation services, education, and vocational training to disabled individuals.",
-                "Funds the creation of special schools, vocational training centers, and community rehabilitation centers to provide free services to disabled persons.",
-                "NGO Registration License, Disability Certificates of beneficiaries, audited account statement of NGO, Project utilization reports.",
-                "https://disabilityaffairs.gov.in/"
-            ),
-            (
-                "National Financial Assistance & Scholarship for Students with Disabilities",
-                "differently_abled",
-                "Financial assistance and scholarship grant to support disabled students in pursuing higher studies.",
-                "Students with benchmark disabilities (40% or more) who have secured admission in M.Phil or Ph.D. programs.",
-                "Monthly financial assistance starting from ₹31,000 along with contingency grants for research equipment and writing assistance.",
-                "Aadhaar Card, Disability Certificate (40% or more), Admission Letter for M.Phil/Ph.D., Master's Degree Marksheet, Caste/Category Certificate.",
-                "https://www.ugc.ac.in/"
-            ),
-            (
-                "ADIP Scheme (Purchase of Assisted Devices)",
-                "differently_abled",
-                "Assists needy disabled persons in purchasing durable, sophisticated aids and appliances.",
-                "Indian citizens with disability level of 40% or more, earning less than ₹30,000/month (gets full subsidy).",
-                "Free or subsidized distribution of tricycles, motorized wheelchairs, calipers, hearing aids, and artificial limbs.",
-                "Aadhaar Card, Disability Certificate (40%+), Income Certificate, Passport size photo.",
-                "https://www.adipco.in/"
-            ),
-            (
-                "Accessible India Campaign (Sugamya Bharat Abhiyan)",
-                "differently_abled",
-                "Nationwide campaign for achieving universal accessibility for persons with disabilities.",
-                "All disabled persons benefit from barrier-free public structures, transportation, and websites.",
-                "Mandates and funds building ramps, accessible toilets, tactile flooring, and screen-reader compliant portals.",
-                "No individual documentation required. Feedback can be registered via Sugamya Bharat app.",
-                "https://accessibleindia.gov.in/"
-            ),
-            (
-                "Unique Disability ID (UDID) Card",
-                "differently_abled",
-                "Single document card used nationwide to verify disability and avail government schemes.",
-                "Persons with any of the 21 disabilities recognized under the RPwD Act 2016.",
-                "A single Unique Disability ID card valid across all Indian states, streamlining eligibility checks for travel and concessions.",
-                "Aadhaar Card, Medical Authority Disability Certificate, Address Proof, Passport size photograph.",
-                "https://www.swavlambancard.gov.in/"
-            ),
-            (
-                "National Handicapped Finance Development Corporation (NHFDC) Loans",
-                "differently_abled",
-                "Subsidized interest rate loans to disabled individuals for starting self-employment ventures.",
-                "Disabled individuals aged 18-60 years with 40% or more disability and family income below specified limits.",
-                "Low-interest business loans ranging from ₹50,000 to ₹25 Lakhs at interest rates between 4% and 8% per annum.",
-                "Aadhaar Card, UDID Card / Disability Certificate, Project Report, Business Address proof, Bank check.",
-                "http://www.nhfdc.nic.in/"
-            ),
-            (
-                "Niramaya Health Insurance Scheme",
-                "differently_abled",
-                "Affordable health insurance cover for individuals with developmental disabilities.",
-                "Persons with Autism, Cerebral Palsy, Mental Retardation, and Multiple Disabilities.",
-                "Provides comprehensive health insurance coverage up to ₹1 Lakh per year for OPD/IPD medical expenses.",
-                "Disability Certificate, Legal Guardianship Certificate (if applicable), Aadhaar Card, Bank account passbook.",
-                "https://www.thenationaltrust.gov.in/"
-            ),
-            (
-                "Gharaunda Group Home Scheme",
-                "differently_abled",
-                "Lifelong group home shelter, care, and basic medical support for adults with severe disabilities.",
-                "Persons with developmental disabilities aged 18 years and above.",
-                "Free or subsidized residential boarding, food, caregiving, and recreational services for life.",
-                "Disability Certificate, Legal Guardianship document, Income Certificate, Aadhaar of parents/beneficiary.",
-                "https://www.thenationaltrust.gov.in/"
-            ),
-            (
-                "Sahyogi Caregiver Training",
-                "differently_abled",
-                "Training program to create a skilled pool of caregivers to support disabled persons at home.",
-                "Individuals aged 18 and above having primary interest in caregiving (disabled persons can nominate family members).",
-                "Free professional training in caregiving, certification, and listing on the national caregiver registry.",
-                "Aadhaar Card, Educational Certificate (Class 10/12 pass), Passport size photograph.",
-                "https://www.thenationaltrust.gov.in/"
-            ),
-            (
-                "Disha Early Intervention",
-                "differently_abled",
-                "Early intervention, screening, and school-readiness program for young disabled children.",
-                "Children with developmental disabilities aged 0 to 10 years.",
-                "Provides free therapy, speech correction, clinical screening, and basic pre-school learning to children.",
-                "Disability Certificate (if available), Parents' Aadhaar Cards, Address Proof, immunization card.",
-                "https://www.thenationaltrust.gov.in/"
-            ),
-            (
-                "Vikaas Day Care Scheme",
-                "differently_abled",
-                "Daycare facilities focusing on enhancing interpersonal, communication, and basic vocational skills.",
-                "Persons with developmental disabilities aged 10 years and above.",
-                "Subsidized daycare containing specialized trainers, speech therapy, and craft workshops.",
-                "Aadhaar Card, Disability Certificate, Parents' Income Certificate, Passport photos.",
-                "https://www.thenationaltrust.gov.in/"
-            ),
-            (
-                "Samarth Respite Care Homes",
-                "differently_abled",
-                "Short-term residential respite care facility for disabled individuals to relieve their families.",
-                "Persons with developmental disabilities whose primary family caregivers face health or emergency issues.",
-                "Provides free temporary food, lodging, and care services for up to 30 days in a year.",
-                "Aadhaar Card, Disability Certificate, Emergency request application form, Local authority verify.",
-                "https://www.thenationaltrust.gov.in/"
-            ),
-            (
-                "Scholarships for Students with Disabilities (Trust Fund)",
-                "differently_abled",
-                "Financial assistance for disabled students pursuing professional graduation and post-graduation.",
-                "Disabled students with 40% or more disability, admitted in recognized professional/technical courses.",
-                "Reimbursement of full college fees, books allowance, and a monthly maintenance stipend of up to ₹3,000.",
-                "Class 12/Graduation Marksheet, College Admission Letter, Fee Structure Receipt, Disability Certificate, Aadhaar Card.",
-                "https://scholarships.gov.in/"
-            ),
-            (
-                "Swavalamban Health Insurance",
-                "differently_abled",
-                "Affordable medical insurance to provide healthcare security for persons with disabilities.",
-                "Persons with disabilities (40% or more) aged between 18 and 65 years with family income below ₹3 Lakhs.",
-                "Comprehensive medical cover up to ₹2 Lakhs per annum for pre and post-hospitalization costs.",
-                "Disability Certificate, Income Certificate, Aadhaar Card, Bank account details.",
-                "https://www.niacl.co.in/"
-            ),
-            (
-                "Prerna Marketing Scheme",
-                "differently_abled",
-                "Financial assistance to showcase and sell craft items made by disabled artisans at national exhibitions.",
-                "Disabled artisans, self-help groups, and NGOs representing disabled crafts makers.",
-                "Funds travel expenses, stall rent, and marketing costs for participating in national Melas and exhibitions.",
-                "UDID Card / Disability Certificate, Artisan Identity Card, Registration document (if NGO), Photos of craft items.",
-                "https://www.thenationaltrust.gov.in/"
-            )
+    # ==================== CATEGORY: DIFFERENTLY ABLED / DIVYANGJAN (15 Schemes) ====================
+    (
+        "Unique Disability ID (UDID) Card (Swavlamban)",
+        "differently_abled",
+        "Single universal digital identity card for Divyangjan that eliminates the need to carry physical disability certificates.",
+        "Persons with disabilities (PwD) as recognized under the Rights of Persons with Disabilities Act (21 benchmark disabilities).",
+        "Pan-India universal recognition for railway/bus travel concessions, pension approvals, medical benefits, and scholarship disbursement.",
+        "Aadhaar Card, Medical Disability Certificate from authorized hospital, Passport size photograph, Address Proof.",
+        "https://www.swavlambancard.gov.in/"
+    ),
+    (
+        "ADIP Scheme (Purchase / Fitting of Assistive Devices)",
+        "differently_abled",
+        "Free distribution of modern, sophisticated, durable aids and assistive appliances for persons with disabilities.",
+        "Indian citizens with 40% or more disability and monthly family income up to ₹22,500.",
+        "Free motorized tricycles, smart canes, wheelchairs, digital hearing aids, braille kits, prosthetics, and cochlear implant surgeries (up to ₹6 Lakhs for children under 5).",
+        "Disability Certificate (40%+), Income Certificate / BPL Card, Aadhaar Card, Doctor's Prescription for device.",
+        "https://adip.depwd.gov.in/"
+    ),
+    (
+        "Deendayal Disabled Rehabilitation Scheme (DDRS)",
+        "differently_abled",
+        "Grant-in-aid to voluntary non-governmental organizations providing education and vocational rehabilitation for disabled children.",
+        "Persons with intellectual, hearing, visual, locomotor, and multiple disabilities.",
+        "Free special schooling, vocational rehabilitation, early intervention therapies, speech therapy, and free hostel accommodation.",
+        "Disability Certificate / UDID Card, Medical history, Recommendation from local district social welfare officer.",
+        "https://disabilityaffairs.gov.in/"
+    ),
+    (
+        "Accessible India Campaign (Sugamya Bharat Abhiyan)",
+        "differently_abled",
+        "Nation-wide campaign creating universal barrier-free physical and digital accessibility for persons with disabilities.",
+        "All persons with disabilities, elderly citizens, and individuals with temporary reduced mobility.",
+        "Ramps, tactile flooring, accessible toilets, audio signage, and lifts in public buildings, airports, railway stations, and government websites.",
+        "Citizen feedback / accessibility complaints can be registered directly on the Sugamya Bharat mobile app.",
+        "https://disabilityaffairs.gov.in/"
+    ),
+    (
+        "National Scholarship for Students with Disabilities",
+        "differently_abled",
+        "Pre-matric, post-matric, and top-class higher education scholarships for students with disabilities.",
+        "Students with 40% or more disability studying from Class 9 up to Post-Graduation / Ph.D. with family income below ₹2.5 Lakhs.",
+        "Full tuition fee reimbursement, maintenance allowance up to ₹4,000/month, book grants, and disability allowances for escorts/readers.",
+        "Disability Certificate / UDID, Previous Year Academic Marksheet, Family Income Certificate, College Fee Receipt, Bank Passbook.",
+        "https://scholarships.gov.in/"
+    ),
+    (
+        "Ayushman Bharat (PM-JAY) for Persons with Disabilities",
+        "differently_abled",
+        "Comprehensive free cashless health and surgical care for eligible families having persons with disabilities.",
+        "Families with disabled members listed under SECC criteria or eligible under state disability welfare registers.",
+        "Cashless medical and surgical cover up to ₹5 Lakhs per family per year covering critical illness, corrective surgeries, and hospitalization.",
+        "UDID Card / Disability Certificate, Aadhaar Card, Ration Card / SECC verification slip.",
+        "https://beneficiary.nha.gov.in/"
+    ),
+    (
+        "NHFDC Concessional Loans for Divyangjan Entrepreneurs",
+        "differently_abled",
+        "Low-interest financial assistance to help persons with disabilities start businesses or pursue professional studies.",
+        "Any Indian citizen with 40% or more disability aged 18 years and above.",
+        "Concessional loans up to ₹50 Lakhs for micro-enterprises and higher education at interest rates between 4% and 8% per annum, with 0.5% rebate for women.",
+        "UDID / Disability Certificate, Detailed Business Project Proposal, Identity & Address Proof, Bank Account Details.",
+        "https://www.myscheme.gov.in/schemes/nhfdc-eduloan"
+    ),
+    (
+        "Niramaya Health Insurance Scheme",
+        "differently_abled",
+        "Affordable health insurance cover for persons with Autism, Cerebral Palsy, Intellectual Disability, and Multiple Disabilities.",
+        "Individuals with Autism, Cerebral Palsy, Mental Retardation, or Multiple Disabilities without any upper age limit.",
+        "Health insurance cover up to ₹1 Lakh per year covering hospitalization, OPD consultations, corrective surgeries, dental treatment, and alternative therapies.",
+        "Disability Certificate under National Trust Act / UDID, BPL Card / Income Certificate, Aadhaar Card, Bank Account Details.",
+        "https://thenationaltrust.gov.in/"
+    ),
+    (
+        "Gharaunda Group Home Scheme for Adults with Disabilities",
+        "differently_abled",
+        "Lifelong residential shelter, medical supervision, and group home care for destitute adults with severe disabilities.",
+        "Adults with Autism, Cerebral Palsy, Mental Retardation, and Multiple Disabilities aged 18+ whose parents or guardians are deceased or unable to care.",
+        "Quality residential accommodation, nutritious food, medical care, therapy, and vocational engagement in supervised group homes.",
+        "Disability Certificate under National Trust Act / UDID, Death Certificate of parents/guardians (if applicable), BPL Certificate.",
+        "https://thenationaltrust.gov.in/"
+    ),
+    (
+        "Sahyogi Caregiver Training Scheme",
+        "differently_abled",
+        "Skill training program for family members and primary caregivers to assist persons with severe disabilities.",
+        "Family members, parents, and community workers willing to provide professional home-based care for disabled individuals.",
+        "Intensive certified training in patient handling, emergency first aid, speech enhancement, mobility assistance, and monthly stipend.",
+        "Aadhaar Card, 10th Standard Marksheet, Relationship Proof with disabled individual (if family caregiver).",
+        "https://thenationaltrust.gov.in/"
+    ),
+    (
+        "Disha Early Intervention and School Readiness",
+        "differently_abled",
+        "Therapy, day care, and early childhood intervention for children with developmental delays to enable inclusive schooling.",
+        "Children with developmental disabilities aged 0 to 10 years.",
+        "Specialized occupational therapy, speech therapy, physiotherapy, and psychological counseling to prepare children for mainstream schools.",
+        "Disability / Assessment Certificate, Birth Certificate, Aadhaar Card of child and parents.",
+        "https://thenationaltrust.gov.in/"
+    ),
+    (
+        "Vikaas Day Care Scheme",
+        "differently_abled",
+        "Enhancing interpersonal and vocational abilities of children and adults with intellectual and developmental disabilities.",
+        "Individuals with Autism, Cerebral Palsy, or Mental Retardation aged 10 years and above.",
+        "Day care facilities offering pre-vocational skill training, speech development, socialization, and recreational therapies.",
+        "National Trust Disability Certificate / UDID, Income Proof of parents, Aadhaar Card.",
+        "https://thenationaltrust.gov.in/"
+    ),
+    (
+        "Samarth Respite Care Homes",
+        "differently_abled",
+        "Short-term respite care and accommodation support for families of individuals with severe developmental disabilities.",
+        "Persons with Autism, Cerebral Palsy, and Multiple Disabilities needing temporary respite care during family emergencies.",
+        "Clean residential accommodation, round-the-clock medical attention, special meals, and recreational activities for short durations.",
+        "UDID / Disability Certificate, Emergency request letter from family guardian, KYC Proof.",
+        "https://thenationaltrust.gov.in/"
+    ),
+    (
+        "National Fellowship for Persons with Disabilities (NFPwD)",
+        "differently_abled",
+        "Fellowship financial support for disabled scholars pursuing M.Phil and Ph.D. degrees in Indian universities.",
+        "Persons with benchmark disabilities (40%+) who have qualified UGC-NET or CSIR-NET and secured Ph.D. admission.",
+        "Monthly fellowship of ₹31,000 for JRF and ₹35,000 for SRF, plus annual contingency grant and escort/reader allowance.",
+        "UGC-NET Result Card, Disability Certificate / UDID, Ph.D. Admission / Registration Proof, Bank Details.",
+        "https://www.ugc.ac.in/"
+    ),
+    (
+        "Incentives to Employers for Employing Persons with Disabilities",
+        "differently_abled",
+        "Government reimburses employer EPF and ESI contributions to encourage private sector hiring of persons with disabilities.",
+        "Private employers providing regular employment to persons with benchmark disabilities with monthly wages up to ₹25,000.",
+        "Government pays the employer's contribution to Employees Provident Fund (EPF) and ESI for the first 3 years of employment.",
+        "Employee UDID / Disability Certificate, Appointment Letter, EPF/ESI Registration Number of company, Salary Wage Register.",
+        "https://disabilityaffairs.gov.in/"
+    )
         ]
         cursor.executemany('''
             INSERT INTO schemes (name, category, description, eligibility, benefits, required_documents, portal_link)
