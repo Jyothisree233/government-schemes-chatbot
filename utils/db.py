@@ -110,7 +110,7 @@ def init_db():
                 "Indian national students securing admission in higher education institutions in India or abroad.",
                 "Provides collateral-free and third-party-guarantee-free education loans up to ₹7.5 Lakhs with 3% interest subvention.",
                 "Aadhaar Card, Admission Letter from Institution, Fee Structure Document, Income Certificate of parents, Academic Marksheets (Class 10/12/Graduation).",
-                "https://www.pmvidyalaxmi.gov.in/"
+                "https://pmvidyalaxmi.co.in/"
             ),
             (
                 "Post Matric Scholarship Scheme",
@@ -384,7 +384,7 @@ def init_db():
                 "Pregnant women and lactating mothers for the first living child in the family (income restrictions apply).",
                 "Direct cash incentive of ₹5,000 paid in three installments to compensate for wage loss and ensure adequate nutrition.",
                 "Aadhaar Card of Mother and Husband, Mother's Bank Passbook, MCP Card (Mother & Child Protection Card), Birth Certificate of child.",
-                "https://wcd.nic.in/schemes/pradhan-mantri-matru-vandana-yojana"
+                "https://wcd.gov.in/schemes/pradhan-mantri-matru-vandana-yojana"
             ),
             (
                 "Mahila Coir Yojana",
@@ -411,7 +411,7 @@ def init_db():
                 "All citizens, with special education support, scholarships, and security focus for school-going girls.",
                 "Provides awareness grants, school admission enrollment assistance, and safety audits around schools.",
                 "Domicile Certificate, Birth Proof of girl child, Aadhaar Card, School/College Admission Proof.",
-                "https://wcd.nic.in/schemes/beti-bachao-beti-padhao-em-back-to-basics"
+                "https://wcd.gov.in/schemes/beti-bachao-beti-padhao-em-back-to-basics"
             ),
             (
                 "Pradhan Mantri Ujjwala Yojana (PMUY)",
@@ -429,7 +429,7 @@ def init_db():
                 "Women artisans, weavers, and small workers aged 16 years and above.",
                 "Free vocational skill training, boarding facility, and financial assistance to form self-help groups.",
                 "Aadhaar Card, Passport photograph, Income Certificate, Caste/Category Certificate (if applicable).",
-                "https://wcd.nic.in/schemes/support-training-and-employment-programme-women-step"
+                "https://wcd.gov.in/schemes/support-training-and-employment-programme-women-step"
             ),
             (
                 "Mahila E-Haat",
@@ -438,7 +438,7 @@ def init_db():
                 "Women self-help groups (SHGs), NGOs, and individual female entrepreneurs.",
                 "Free online web store page listing products, direct payment routing from customers, and national buyer exposure.",
                 "Aadhaar Card, Business/NGO Registration Certificate, Photos of products, Bank Account details.",
-                "http://mahilaehaat-rmk.gov.in/"
+                "https://wcd.gov.in/"
             ),
             (
                 "Working Women Hostel Scheme",
@@ -447,7 +447,7 @@ def init_db():
                 "Working women, single/divorced/widowed women with salaries below specified thresholds (e.g. ₹50,000/month).",
                 "Subsidized rental housing in safe municipal zones, including daycare support for children up to 5 years.",
                 "Salary Certificate/Employment letter, Aadhaar Card, Address Proof of hometown, Marriage status affidavit.",
-                "https://wcd.nic.in/"
+                "https://wcd.gov.in/"
             ),
             (
                 "One Stop Centre Scheme (Sakhi)",
@@ -456,7 +456,7 @@ def init_db():
                 "Any woman affected by domestic violence, harassment, or societal abuse, regardless of age or class.",
                 "Free immediate temporary shelter, legal guidance, psychological counseling, and police assistance.",
                 "No documentation is mandatory for receiving urgent rescue aid and support.",
-                "https://wcd.nic.in/"
+                "https://wcd.gov.in/"
             ),
             (
                 "Stand-Up India Scheme for Women",
@@ -510,7 +510,7 @@ def init_db():
                 "Women or institutions working towards economic/social empowerment of women with at least 5 years of service.",
                 "Cash prize of ₹2 Lakhs along with a formal certificate and citation presented by the President of India.",
                 "Detailed Nominee Profile, Achievements Report, Reference letters, Registration records (for institutions).",
-                "https://wcd.nic.in/"
+                "https://wcd.gov.in/"
             ),
 
             # ==================== CATEGORY: SENIOR CITIZEN (15 Schemes) ====================
